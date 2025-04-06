@@ -5,6 +5,13 @@
 
 ---
 
+## 🛠️ Built With
+![Unity](https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white)
+![Aseprite](https://img.shields.io/badge/Aseprite-7D929E?style=for-the-badge&logo=aseprite&logoColor=white)
+![FMOD](https://img.shields.io/badge/FMOD-000000?style=for-the-badge&logo=fmod&logoColor=white)
+
+---
+
 ## 🎮 Gameplay Overview
 
 - **Genre:** 2D Pixel Art | Roguelike | Dungeon Crawler  
@@ -46,31 +53,24 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 ---
 
 
-## 🧪 Built With
-
-- 🎮 **Unity Engine** – Core development environment  
-- 💻 **C#** – Game logic & systems  
-- 🎨 **Aseprite** – Pixel art design  
-- 🔊 **FMOD Studio** – Audio and music integration
-
----
-
 ## 🧑‍💻 Author
 
 **Tuleeeeeeee**  
-Game Developer | Designer | Programmer  
+>Game Developer | Designer | Programmer  
 
 **duc-oizz25**  
-Project Manager | Game Developer | Programmer  
+>Project Manager | Game Developer | Programmer  
 
 **tpt133**  
-Sound Designer  
+>Sound Designer  
 
 **anhkhoatran00**  
-Game Designer | Artist  
+>Game Designer | Artist  
 
 **TranHuuMinhDuc**  
-Game Developer | Programmer  
+>Game Developer | Programmer  
+
+---
 
 ## 🗝️ Final Note
 > *“Downning? Nah. Upping.”*
