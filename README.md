@@ -1,52 +1,81 @@
-Redelve - A 2D Roguelike Game
-Welcome to Redelve, a 2D roguelike game where every death leads to a new beginning. Dive into the depths of an ever-changing dungeon as you fight your way through increasingly difficult levels. Each time you die, the dungeon shifts and changes, offering new challenges to overcome. Can you find your way to escape?
+# Redelve 🕳️  
+*A 2D Roguelike Dungeon Escape Game*
 
-Game Description
-Redelve is a dungeon-crawling, roguelike game where players must navigate through a mysterious and dangerous dungeon in order to escape. Each time you die, you are reborn at the beginning of the dungeon, but the layout is never the same. With each new run, the dungeon grows more unpredictable, testing your skills, adaptability, and determination.
+**Redelve** is a fast-paced, atmospheric roguelike where players must ascend a mysterious, ever-changing dungeon to escape. Each run reshapes the labyrinth, challenges your reflexes, and reveals whispers of your forgotten past. Death is only the beginning.
 
-Key Features:
-Procedural Dungeon Generation: Every run offers a unique dungeon layout, ensuring no two playthroughs are the same.
+---
 
-Challenging Combat: Face off against various enemies, each with its own attack patterns and weaknesses.
+## 🎮 Gameplay Overview
 
-Permadeath: Each death sends you back to the start, but the dungeon’s layout shifts, keeping the experience fresh and exciting.
+- **Genre:** 2D Pixel Art | Roguelike | Dungeon Crawler  
+- **Perspective:** Top-down  
+- **Core Loop:** Explore → Fight → Die → Rebirth → Escape  
 
-Simple yet Engaging Mechanics: A straightforward, easy-to-learn gameplay loop, with focus on exploration, combat, and survival.
+You awaken at the deepest floor of a dungeon, stripped of memory, purpose, and identity. The only thing clear: **you must go up.** Each time you fall, you are reborn — but the dungeon has changed. And perhaps, so have you.
 
-Story:
-You wake up at the bottom of a mysterious dungeon with no memory of how you got there. With no clear goal other than survival, you must find a way to escape by ascending through the layers of the dungeon. Each time you die, you are reborn at the beginning, but the dungeon is never the same. As you progress, you discover signs of your past, as well as cryptic messages hinting at the true nature of this place. Can you escape the cycle, or will you be trapped forever?
+---
 
-Playable Characters:
-The Stranger: A mysterious figure with no memory of who they are, wandering the dungeon in search of answers.
+## ✨ Features
 
-The Trapped One: Someone cursed to be stuck in a never-ending loop of death and rebirth, trying to find a way out.
+- ⚙️ **Procedural Generation** – No two runs are ever the same.
+- 🧠 **Tight, Responsive Controls** – Dodge, attack, survive.
+- 🔁 **Permadeath with Persistence** – Death resets the dungeon, but echoes remain.
+- 🧩 **Minimalist Lore & Environmental Storytelling** – Discover the mystery, piece by piece.
+- 🎭 **Multiple Playable Characters** – Each with unique visuals and subtle backstory cues.
 
-The Outsider: A being who doesn't belong in this world, seeking to escape the labyrinth that imprisons them.
+---
 
-The Escaper: A determined adventurer who has already escaped once and returned to break the cycle for good.
+## 🧍 Playable Characters
 
-How to Play:
-Movement: Use arrow keys or WASD to move your character.
+| Character       | Description |
+|----------------|-------------|
+Sergeant 	|A disciplined soldier with a burst-fire rifle. Trained, alert, and always ready for combat. Treats the dungeon like a battlefield.
+Nomad     |A wanderer with no clear past, carrying only a makeshift handgun. No training, just grit and luck. Doesn’t belong here — but won’t give up.
+Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike without sound. No one knows who they are — or what they’ve seen.
 
-Combat: Use your mouse to attack enemies and dodge their attacks.
+---
 
-Objective: Ascend through the dungeon levels and escape. Every time you die, you'll restart at the bottom, but the dungeon changes every time.
+## 🕹️ Controls
+
+| Action      | Input              |
+|-------------|--------------------|
+| Move        | WASD / Arrow Keys  |
+| Attack      | Left Mouse Click   |
+| Dash        | Right  Mouse Click |
+
+---
 
 
-Technologies Used:
-Unity Engine: Game development platform.
+## 🧪 Built With
 
-C#: Programming language used for scripting.
+- 🎮 **Unity Engine** – Core development environment  
+- 💻 **C#** – Game logic & systems  
+- 🎨 **Aseprite** – Pixel art design  
+- 🔊 **FMOD Studio** – Audio and music integration
 
-Aseprite: Pixel art design for characters and environment.
+---
 
-FMOD Studio: Sound and music integration.
+## 🧑‍💻 Author
 
-Contributors:
-Tuleeeeeeee - Game Developer, Programmer
-duc-oizz25 - Project Manager, Game Developer, Programmer
-tpt133 - Sound Designer
-anhkhoatran00 - Game Designer, Artist
-TranHuuMinhDuc - Game Developer, Programmer
+**Tuleeeeeeee**  
+Game Developer | Designer | Programmer  
+
+**duc-oizz25**  
+Project Manager | Game Developer | Programmer  
+
+**tpt133**  
+Sound Designer  
+
+**anhkhoatran00**  
+Game Designer | Artist  
+
+**TranHuuMinhDuc**  
+Game Developer | Programmer  
+
+## 🗝️ Final Note
+> *“Downning? Nah. Upping.”*
+
+
+
 
 
