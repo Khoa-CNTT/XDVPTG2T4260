@@ -48,7 +48,7 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 |-------------|--------------------|
 | Move        | WASD / Arrow Keys  |
 | Attack      | Left Mouse Click   |
-| Dash        | Right  Mouse Click |
+| ROll        | Right  Mouse Click |
 
 ---
 
