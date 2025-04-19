@@ -48,7 +48,7 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 |-------------|--------------------|
 | Move        | WASD / Arrow Keys  |
 | Attack      | Left Mouse Click   |
-| Dash        | Right  Mouse Click |
+| ROll        | Right  Mouse Click |
 
 ---
 
@@ -56,7 +56,7 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 ## 🧑‍💻 Author
 
 **Tuleeeeeeee**  
->Game Developer | Designer | Programmer  
+>Game Developer | Designer | Programmer | Artist 
 
 **duc-oizz25**  
 >Project Manager | Game Developer | Programmer  
