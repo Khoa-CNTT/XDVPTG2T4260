@@ -59,7 +59,7 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 >Game Developer | Designer | Programmer | Artist 
 
 **duc-oizz25**  
->Project Manager | Game Developer | Programmer  
+>Project Manager | Game Developer | Programmer | Level Design
 
 **tpt133**  
 >Sound Designer  
@@ -68,7 +68,7 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 >Game Designer | Artist  
 
 **TranHuuMinhDuc**  
->Game Developer | Programmer  
+>Game Developer | Programmer  | Level Design
 
 ---
 
