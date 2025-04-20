@@ -65,7 +65,7 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 >Sound Designer  
 
 **anhkhoatran00**  
->Game Designer | Artist  
+>Game Designer | Artist | UI/UX Designer
 
 **TranHuuMinhDuc**  
 >Game Developer | Programmer  | Level Design
