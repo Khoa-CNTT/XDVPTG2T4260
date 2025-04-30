@@ -38,7 +38,12 @@ namespace tuleeeeee.Data
         public bool isImmuneAfterHit = false;
         public float hitImmunityTime;
 
-   
+        #region Header WEAPON
+        [Space(10)]
+        [Header("WEAPON")]
+        #endregion
+        public WeaponDetailsSO startingWeapon;
+        public List<WeaponDetailsSO> startingWeaponList;
 
         #region Header OTHER
         [Space(10)]

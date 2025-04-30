@@ -59,5 +59,10 @@ namespace tuleeeeee.Misc
         public const string playerTag = "Player";
         public const string playerWeapon = "playerWeapon";
         #endregion
+
+        #region FIRING CONTROL
+        public const float useAimAngleDistance = 1.5f; // if the target distance is less than this then aim angle will beuse, 
+                                                       // otherwise the weapon aim angle will be used
+        #endregion
     }
 }

@@ -36,8 +36,18 @@ public class Player : MonoBehaviour
 
     private float moveSpeed;
 
+    #region EVENTS
+    [HideInInspector] public AimWeaponEvent AimWeaponEvent { get; private set; }
+    [HideInInspector] public SetActiveWeaponEvent SetActiveWeaponEvent { get; private set; }
+    [HideInInspector] public ActiveWeapon ActiveWeapon { get; private set; }
+    [HideInInspector] public FireWeaponEvent FireWeaponEvent { get; private set; }
+    [HideInInspector] public WeaponFiredEvent WeaponFiredEvent { get; private set; }
+    [HideInInspector] public ReloadWeaponEvent ReloadWeaponEvent { get; private set; }
+    [HideInInspector] public WeaponReloadedEvent WeaponReloadedEvent { get; private set; }
+    [HideInInspector] public StopReloadWeaponEvent StopReloadWeaponEvent { get; private set; }
+    #endregion
 
-
+    public List<Weapon> weaponList = new List<Weapon>();
     private void Awake()
     {
         #region Compoments
@@ -46,9 +56,18 @@ public class Player : MonoBehaviour
         Health = GetComponent<Health>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
-        #endregion
         StateManager = new StateManager();
-
+        #endregion
+        #region Events
+        AimWeaponEvent = GetComponent<AimWeaponEvent>();
+        SetActiveWeaponEvent = GetComponent<SetActiveWeaponEvent>();
+        ActiveWeapon = GetComponent<ActiveWeapon>();
+        FireWeaponEvent = GetComponent<FireWeaponEvent>();
+        WeaponFiredEvent = GetComponent<WeaponFiredEvent>();
+        ReloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
+        WeaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
+        StopReloadWeaponEvent = GetComponent<StopReloadWeaponEvent>();
+        #endregion
 
     }
     private void Start()
@@ -70,6 +89,7 @@ public class Player : MonoBehaviour
 
         moveSpeed = PlayerDetails.movementVelocity;
 
+        CreatePlayerStartingWeapon();
 
         SetPlayerHealth();
 
@@ -96,5 +116,34 @@ public class Player : MonoBehaviour
     public Vector3 GetPlayerPosition()
     {
         return transform.position;
+    }
+    private void CreatePlayerStartingWeapon()
+    {
+        weaponList.Clear();
+
+        foreach (WeaponDetailsSO weaponDetails in PlayerDetails.startingWeaponList)
+        {
+            AddWeaponToPlayer(weaponDetails);
+        }
+    }
+
+    private Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
+    {
+        Weapon weapon = new Weapon()
+        {
+            weaponDetails = weaponDetails,
+            weaponReloadTimer = 0f,
+            weaponClipRemainingAmmo = weaponDetails.weaponClipAmmoCapacity,
+            weaponRemainingAmmo = weaponDetails.weaponAmmoCapacity,
+            isWeaponReloading = false
+        };
+
+        weaponList.Add(weapon);
+
+        weapon.weaponListPosition = weaponList.Count;
+
+        SetActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
+
+        return weapon;
     }
 }

@@ -41,7 +41,6 @@ namespace tuleeeeee.Dungeon
         {
             if (collision.tag == Settings.playerTag && room != GameManager.Instance.GetCurrentRoom())
             {
-
                 this.room.isPreviouslyVisisted = true;
 
                 StaticEventHandler.CallRoomChangedEvent(room);
