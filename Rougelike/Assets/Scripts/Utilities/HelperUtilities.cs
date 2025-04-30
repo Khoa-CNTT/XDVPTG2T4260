@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEditor;
 using UnityEngine;
-using Enums;
+using tuleeeeee.Enums;
 
 namespace tuleeeeee.Utilities
 {

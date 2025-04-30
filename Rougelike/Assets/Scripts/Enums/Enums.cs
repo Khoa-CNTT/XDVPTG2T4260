@@ -1,6 +1,6 @@
 ﻿
 
-namespace Enums
+namespace tuleeeeee.Enums
 {
     public enum Orientation
     {
