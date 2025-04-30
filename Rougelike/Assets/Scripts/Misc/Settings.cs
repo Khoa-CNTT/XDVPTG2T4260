@@ -5,6 +5,11 @@ namespace tuleeeeee.Misc
 {
     public static class Settings
     {
+        #region UNITS
+        public const float pixelsPerUnit = 16f;
+        public const float tileSizePixels = 16f;
+        #endregion
+
         #region DUNGEON BUILD SETTINGS
         public const int maxDungeonRebuildAttemptsForRoomGraph = 1000;
         public const int maxDungeonBuildAttempts = 10;
@@ -30,6 +35,7 @@ namespace tuleeeeee.Misc
         public static int isMoving = Animator.StringToHash("isMoving");
 
         public static int rollUp = Animator.StringToHash("rollUp");
+        public static int rollUpRight = Animator.StringToHash("rollUpRight");
         public static int rollRight = Animator.StringToHash("rollRight");
         public static int rollLeft = Animator.StringToHash("rollLeft");
         public static int rollDown = Animator.StringToHash("rollDown");

@@ -10,6 +10,7 @@ TagManager:
   - frontTilemap
   - collisionTilemap
   - minimapTilemap
+  - playerWeapon
   layers:
   - Default
   - TransparentFX
@@ -18,20 +19,20 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - IgnoreAmmo
   - Camera1
   - Camera2
   - Player
   - MiniMap
   - Room
   - Wall
-  - 
-  - 
-  - 
-  - 
+  - PlayerAmmo
+  - Enemy
+  - EnemyAmmo
+  - Enviroment
   - PlayerWeapon
-  - 
-  - 
+  - EnemyWeapon
+  - Camera3
   - 
   - 
   - 

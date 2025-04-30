@@ -5,6 +5,7 @@ using tuleeeeee.Dungeon;
 using tuleeeeee.Misc;
 using tuleeeeee.Utilities;
 using tuleeeeee.Data;
+using tuleeeeee.StaticEvent;
 
 namespace tuleeeeee.Managers
 {
@@ -88,6 +89,7 @@ namespace tuleeeeee.Managers
                 Debug.LogError("Couldn't build dungeon from specified rooms and node graphs");
             }
 
+            StaticEventHandler.CallRoomChangedEvent(currentRoom);
 
             Vector3 playerPosition = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f,
                 (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);

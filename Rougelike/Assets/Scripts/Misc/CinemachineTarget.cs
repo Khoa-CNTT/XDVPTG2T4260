@@ -1,0 +1,56 @@
+﻿using Cinemachine;
+using System.Collections;
+using tuleeeeee.Managers;
+using tuleeeeee.Utilities;
+using UnityEngine;
+
+namespace tuleeeeee.Misc
+{
+    public class CinemachineTarget : MonoBehaviour
+    {
+        private CinemachineTargetGroup cinemachineTargetGroup;
+
+        [SerializeField] private Transform cursorTarget;
+
+        private void Awake()
+        {
+            cinemachineTargetGroup = GetComponent<CinemachineTargetGroup>();
+        }
+
+        void Start()
+        {
+            SetCinemachineTargetGroup();
+        }
+
+        private void SetCinemachineTargetGroup()
+        {
+            CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target
+            {
+                weight = 1f,
+                radius = 2.5f,
+                target = GameManager.Instance.GetPlayer().transform
+            };
+
+            CinemachineTargetGroup.Target cinemachineGroupTarget_cursor = new CinemachineTargetGroup.Target
+            {
+                // weight = 0.43f,
+                weight = 0.55f,
+                radius = 2f,
+                target = cursorTarget
+            };
+
+            CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[]{
+            cinemachineGroupTarget_player,
+            cinemachineGroupTarget_cursor
+        };
+
+            cinemachineTargetGroup.m_Targets = cinemachineTargetArray;
+        }
+
+        private void Update()
+        {
+            cursorTarget.position = HelperUtilities.GetMouseWorldPosition();
+
+        }
+    }
+}

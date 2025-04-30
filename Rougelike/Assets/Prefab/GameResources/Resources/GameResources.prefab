@@ -49,7 +49,7 @@ MonoBehaviour:
   currentPlayerSO: {fileID: 11400000, guid: 576fdc6a68156764a81a33e4b4b54d64, type: 2}
   playerDetailsList:
   - {fileID: 11400000, guid: e675825fe4222194d877308d0a8590eb, type: 2}
-  dimmedMaterial: {fileID: 0}
-  litMaterial: {fileID: 0}
-  variableLitShader: {fileID: 0}
+  dimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
+  litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  variableLitShader: {fileID: -6465566751694194690, guid: 4ba7b97ebdd457646b9d143848bb61b9, type: 3}
   materializeShader: {fileID: 0}

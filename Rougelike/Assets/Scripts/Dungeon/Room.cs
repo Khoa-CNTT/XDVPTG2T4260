@@ -5,7 +5,7 @@ using tuleeeeee.NodeGraph;
 
 namespace tuleeeeee.Dungeon
 {
-    public class Room : MonoBehaviour
+    public class Room 
     {
         public string id;
         public string templateID;

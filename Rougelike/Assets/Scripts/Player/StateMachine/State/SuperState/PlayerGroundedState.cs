@@ -21,7 +21,7 @@ public class PlayerGroundedState : PlayerState
     {
         base.Enter();
 
-       
+        player.RollState.ResetCanRoll();
     }
 
     public override void Exit()
@@ -35,6 +35,9 @@ public class PlayerGroundedState : PlayerState
         moveInput = player.InputHandler.RawMovementInput;
         dashInput = player.InputHandler.RollInput;
 
-       
+        if (moveInput != Vector2.zero && dashInput && player.RollState.CheckIfCanDash())
+        {
+            stateManager.ChangePlayerState(player.RollState);
+        }
     }
 }

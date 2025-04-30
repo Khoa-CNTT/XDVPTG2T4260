@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using tuleeeeee.Managers;
+using tuleeeeee.Misc;
+using tuleeeeee.StaticEvent;
 
 
 namespace tuleeeeee.Dungeon
@@ -21,6 +24,12 @@ namespace tuleeeeee.Dungeon
         [HideInInspector] public Tilemap minimapTilemap;
         [HideInInspector] public Bounds roomColliderBounds;
 
+        #region Header OBJECT REFERENCES
+        [Space(10)]
+        [Header("OBJECT REFERENCES")]
+        #endregion
+        [SerializeField] private GameObject environmentGameObject;
+
         private BoxCollider2D boxCollider2D;
 
         private void Awake()
@@ -28,12 +37,23 @@ namespace tuleeeeee.Dungeon
             boxCollider2D = GetComponent<BoxCollider2D>();
             roomColliderBounds = boxCollider2D.bounds;
         }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == Settings.playerTag && room != GameManager.Instance.GetCurrentRoom())
+            {
 
+                this.room.isPreviouslyVisisted = true;
+
+                StaticEventHandler.CallRoomChangedEvent(room);
+            }
+        }
         public void Initialise(GameObject roomGameobject)
         {
             PopulateTilemapMemberVariables(roomGameobject);
 
             BlockOffUnusedDoorway();
+            
+            AddDoorToRooms();
 
             DisableCollisionTilemapRenderer();
         }
@@ -173,7 +193,55 @@ namespace tuleeeeee.Dungeon
                 }
             }
         }
+        private void AddDoorToRooms()
+        {
+            if (room.roomNodeType.isCorridorEW || room.roomNodeType.isCorridorNS) return;
 
+            foreach (Doorway doorway in room.doorWayList)
+            {
+                if (doorway.doorPrefab != null && doorway.isConnected)
+                {
+                    float tileDistance = Settings.tileSizePixels / Settings.pixelsPerUnit;
+
+                    GameObject door = null;
+                    door = Instantiate(doorway.doorPrefab, gameObject.transform);
+
+                    if (doorway.orientation == Orientation.north)
+                    {
+                        door.transform.localPosition = new Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y + tileDistance, 0f);
+                    }
+                    else if (doorway.orientation == Orientation.south)
+                    {
+                        door.transform.localPosition = new Vector3(doorway.position.x + tileDistance / 2f, doorway.position.y, 0f);
+                    }
+                    else if (doorway.orientation == Orientation.east)
+                    {
+                        door.transform.localPosition = new Vector3(doorway.position.x + tileDistance, doorway.position.y + tileDistance * 1.25f, 0f);
+                    }
+                    else if (doorway.orientation == Orientation.west)
+                    {
+                        door.transform.localPosition = new Vector3(doorway.position.x, doorway.position.y + tileDistance * 1.25f, 0f);
+                    }
+
+                  
+                }
+            }
+        }
+        public void ActivateEnvironmentGameObjects()
+        {
+            if (environmentGameObject != null)
+            {
+                environmentGameObject.SetActive(true);
+            }
+        }
+
+        public void DeactivateEnvironmentGameObject()
+        {
+            if (environmentGameObject != null)
+            {
+                environmentGameObject.SetActive(false);
+            }
+        }
         private void DisableCollisionTilemapRenderer()
         {
             collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;

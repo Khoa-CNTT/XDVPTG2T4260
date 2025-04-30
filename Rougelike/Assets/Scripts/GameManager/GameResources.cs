@@ -5,8 +5,21 @@ using tuleeeeee.Misc;
 using tuleeeeee.NodeGraph;
 using UnityEngine;
 
-public class GameResources : SingletonMonoBehaviour<GameResources>
+public class GameResources : MonoBehaviour
 {
+    private static GameResources instance;
+
+    public static GameResources Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = Resources.Load<GameResources>("GameResources");
+            }
+            return instance;
+        }
+    }
     #region DUNGEON
     [Space(10)]
     [Header("DUNGEON")]
