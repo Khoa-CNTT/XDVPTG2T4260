@@ -4,6 +4,7 @@ using tuleeeeee.Enums;
 using tuleeeeee.Dungeon;
 using tuleeeeee.Misc;
 using tuleeeeee.Utilities;
+using tuleeeeee.Data;
 
 namespace tuleeeeee.Managers
 {
@@ -29,7 +30,8 @@ namespace tuleeeeee.Managers
         private Room currentRoom;
         private Room previousRoom;
 
-
+        private PlayerDetailsSO playerDetails;
+        private Player player;
 
 
         [HideInInspector] public GameState gameState;
@@ -37,11 +39,19 @@ namespace tuleeeeee.Managers
         {
             base.Awake();
 
+            playerDetails = GameResources.Instance.currentPlayerSO.playerDetails;
 
-
+            InstantiatePlayer();
         }
 
+        private void InstantiatePlayer()
+        {
+            GameObject playerGameObject = Instantiate(playerDetails.playerPrefab);
 
+            player = playerGameObject.GetComponent<Player>();
+
+            player.Initialize(playerDetails);
+        }
 
         private void Start()
         {
@@ -79,10 +89,10 @@ namespace tuleeeeee.Managers
             }
 
 
-
             Vector3 playerPosition = new Vector3((currentRoom.lowerBounds.x + currentRoom.upperBounds.x) / 2f,
                 (currentRoom.lowerBounds.y + currentRoom.upperBounds.y) / 2f, 0f);
 
+            player.gameObject.transform.position = HelperUtilities.GetSpawnPositionNearestToPlayer(playerPosition);
         }
 
         public void SetCurrentRoom(Room room)
@@ -96,7 +106,14 @@ namespace tuleeeeee.Managers
             return currentRoom;
         }
 
-
+        public Player GetPlayer()
+        {
+            return player;
+        }
+        public Sprite GetPlayerMiniMapIcon()
+        {
+            return playerDetails.playerMiniMapIcon;
+        }
 
         public DungeonLevelSO GetCurrentDungeonLevel()
         {

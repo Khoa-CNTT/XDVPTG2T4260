@@ -1,25 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using tuleeeeee.Data;
+using tuleeeeee.Misc;
 using tuleeeeee.NodeGraph;
 using UnityEngine;
 
-public class GameResources : MonoBehaviour
+public class GameResources : SingletonMonoBehaviour<GameResources>
 {
-
-    private static GameResources instance;
-
-    public static GameResources Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = Resources.Load<GameResources>("GameResources");
-            }
-            return instance;
-        }
-    }
-
     #region DUNGEON
     [Space(10)]
     [Header("DUNGEON")]
@@ -29,6 +16,16 @@ public class GameResources : MonoBehaviour
     #endregion
     public RoomNodeTypeListSO roomNodeTypeList;
     public GameObject playerSelectionPrefab;
+
+    #region Header PLAYER
+    [Space(10)]
+    [Header("PLAYER")]
+    #endregion
+    #region Tooltip
+    [Tooltip("The current player SO, used to reference the current player between scenes")]
+    #endregion
+    public CurrentPlayerSO currentPlayerSO;
+    public List<PlayerDetailsSO> playerDetailsList;
 
     #region Header MATERIALS
     [Space(10)]
@@ -40,5 +37,11 @@ public class GameResources : MonoBehaviour
     [Tooltip("Sprite-Lit_Default Material")]
     #endregion
     public Material litMaterial;
+
+    #region Tooltip
+    [Tooltip("Populate with the Variable Lit Shader")]
+    #endregion
+    public Shader variableLitShader;
+    public Shader materializeShader;
 }
 

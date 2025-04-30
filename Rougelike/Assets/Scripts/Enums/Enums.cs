@@ -10,7 +10,7 @@ namespace tuleeeeee.Enums
         north,
         none
     }
-    public enum AimDirection
+    public enum Direction
     {
         up,
         upright,

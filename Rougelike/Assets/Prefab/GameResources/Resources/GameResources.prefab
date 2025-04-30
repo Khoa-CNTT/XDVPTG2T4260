@@ -44,7 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3157500a24589ee4997f64d050c6ae78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNodeTypeList: {fileID: 0}
-  playerSelectionPrefab: {fileID: 0}
+  roomNodeTypeList: {fileID: 11400000, guid: 1909e485173cf7141b6c3a075bb7264c, type: 2}
+  playerSelectionPrefab: {fileID: 3099360811688160986}
+  currentPlayerSO: {fileID: 11400000, guid: 576fdc6a68156764a81a33e4b4b54d64, type: 2}
+  playerDetailsList:
+  - {fileID: 11400000, guid: e675825fe4222194d877308d0a8590eb, type: 2}
   dimmedMaterial: {fileID: 0}
   litMaterial: {fileID: 0}
+  variableLitShader: {fileID: 0}
+  materializeShader: {fileID: 0}

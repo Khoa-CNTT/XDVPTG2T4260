@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public StateManager StateManager { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
+    public PlayerRollState RollState { get; private set; }
     public PlayerDetailsSO PlayerDetails { get; private set; }
 
     #region Components
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
 
         IdleState = new PlayerIdleState(this, StateManager, PlayerDetails, "isIdle");
         MoveState = new PlayerMoveState(this, StateManager, PlayerDetails, "isMoving");
+        RollState = new PlayerRollState(this, StateManager, PlayerDetails, "isRolling");
 
         StateManager.InitializePlayer(IdleState);
     }

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef036d09015aab14dbfd274c56411fd9, type: 3}
+  m_Name: TheRobotDetails
+  m_EditorClassIdentifier: 
+  playerCharacterName: 
+  playerPrefab: {fileID: 7703595234823235495, guid: 7a208c07e50b59145bd61892be311b9a, type: 3}
+  runtimeAnimatorController: {fileID: 9100000, guid: e8a341fd95c7d274d8b004a419c57df2, type: 2}
+  playerHealthAmount: 100
+  isImmuneAfterHit: 0
+  hitImmunityTime: 0
+  startingWeapon: {fileID: 11400000, guid: 4973a01863f861b4bb03127fa634cbda, type: 2}
+  startingWeaponList:
+  - {fileID: 11400000, guid: 4973a01863f861b4bb03127fa634cbda, type: 2}
+  playerMiniMapIcon: {fileID: 21300000, guid: 8cf892816c05fb24f9631d3d51863022, type: 3}
+  playerHandSprite: {fileID: 21300000, guid: 8e3b099518485564daf941788b854663, type: 3}
+  movementVelocity: 8
+  rollCooldown: 0.2
+  maxHoldTime: 1
+  holdTimeScale: 0.25
+  rollTime: 0.6
+  rollVelocity: 20
+  drag: 10
+  rollEndYMultiplier: 0.2
+  distBetweenAfterImages: 0.5
