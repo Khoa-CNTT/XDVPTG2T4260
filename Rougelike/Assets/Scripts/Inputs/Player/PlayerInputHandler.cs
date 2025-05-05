@@ -3,7 +3,6 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 using tuleeeeee.Events;
-using UnityEngine.Windows;
 
 namespace tuleeeeee.MyInput
 {
@@ -76,6 +75,43 @@ namespace tuleeeeee.MyInput
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnScrollInput(InputAction.CallbackContext context)
+        {
+            Vector2 newInput = context.ReadValue<Vector2>();
+            ScrollEvent.Invoke(newInput);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnSelectWeapon(InputAction.CallbackContext context)
+        {
+            string pressedKey = context.control.name;
+            int number = int.Parse(pressedKey);
+
+            SelectWeaponEvent.Invoke(number);
+        }
+
+        public void OnFastSwitchWeapon(InputAction.CallbackContext context)
+        {
+            bool isClick = false;
+            if (context.started)
+            {
+                isClick = true;
+            }
+            else if (context.canceled)
+            {
+                isClick= false;
+            }
+
+            FastSwitchWeaponEvent.Invoke(isClick);
+        }
+
+        /// <summary>
         /// Method called when the user input roll
         /// </summary>
         /// <param name="context"></param>
@@ -118,8 +154,14 @@ namespace tuleeeeee.MyInput
         #region EVENTS
 
         private readonly LookEvent onLookEvent = new LookEvent();
+        private readonly ScrollEvent onScrollEvent = new ScrollEvent();
+        private readonly SelectWeaponEvent onSelectWeaponEvent = new SelectWeaponEvent();
+        private readonly FastSwitchWeaponEvent onFastSwitchWeaponEvent = new FastSwitchWeaponEvent();
         private readonly AttackEvent onAttackEvent = new AttackEvent();
         public UnityEvent<Vector2> LookEvent => onLookEvent;
+        public UnityEvent<Vector2> ScrollEvent => onScrollEvent;
+        public UnityEvent<int> SelectWeaponEvent => onSelectWeaponEvent;
+        public UnityEvent<bool> FastSwitchWeaponEvent => onFastSwitchWeaponEvent;
         public UnityEvent<bool> AttackEvent => onAttackEvent;
 
         #endregion

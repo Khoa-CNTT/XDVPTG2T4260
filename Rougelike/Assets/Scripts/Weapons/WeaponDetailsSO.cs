@@ -20,6 +20,9 @@ public class WeaponDetailsSO : ScriptableObject
     #endregion
     public Vector3 weaponShootPosition;
     public AmmoDetailsSO weaponCurrentAmmo;
+    public WeaponShootEffectSO weaponShootEffect;
+    public SoundEffectSO weaponFiringSoundEffect;
+    public SoundEffectSO weaponReloadingSoundEffect;
 
     #region Header WEAPON OPERATING VALUES
     [Space(10)]
@@ -39,8 +42,8 @@ public class WeaponDetailsSO : ScriptableObject
     {
         HelperUtilities.ValidateCheckEmptyString(this, nameof(weaponName), weaponName);
         HelperUtilities.ValidateCheckNullValue(this, nameof(weaponCurrentAmmo), weaponCurrentAmmo);
-       /* HelperUtilities.ValidateCheckPositiveValue(this, nameof(weaponFireRate), weaponFireRate, false);
-        HelperUtilities.ValidateCheckPositiveValue(this, nameof(weaponPrechargeTime), weaponPrechargeTime, true);*/
+        HelperUtilities.ValidateCheckPositiveValue(this, nameof(weaponFireRate), weaponFireRate, false);
+        HelperUtilities.ValidateCheckPositiveValue(this, nameof(weaponPrechargeTime), weaponPrechargeTime, true);
 
         if (!hasInfiniteAmmo)
         {

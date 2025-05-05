@@ -16,6 +16,18 @@ namespace tuleeeeee.StateMachine
             CurrentPlayerState.Enter();
         }
 
-        
+        public EnemyState CurrentEnemyState { get; private set; }
+
+        public void InitializeEnemy(EnemyState stratingState)
+        {
+            CurrentEnemyState = stratingState;
+            CurrentEnemyState.Enter();
+        }
+        public void ChangeEnemyState(EnemyState newState)
+        {
+            CurrentEnemyState.Exit();
+            CurrentEnemyState = newState;
+            CurrentEnemyState.Enter();
+        }
     }
 }

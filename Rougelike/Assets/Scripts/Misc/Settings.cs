@@ -27,9 +27,7 @@ namespace tuleeeeee.Misc
         public static int aimUp = Animator.StringToHash("aimUp");
         public static int aimDown = Animator.StringToHash("aimDown");
         public static int aimUpRight = Animator.StringToHash("aimUpRight");
-        public static int aimUpLeft = Animator.StringToHash("aimUpLeft");
         public static int aimRight = Animator.StringToHash("aimRight");
-        public static int aimLeft = Animator.StringToHash("aimLeft");
 
         public static int isIdle = Animator.StringToHash("isIdle");
         public static int isMoving = Animator.StringToHash("isMoving");
@@ -37,11 +35,9 @@ namespace tuleeeeee.Misc
         public static int rollUp = Animator.StringToHash("rollUp");
         public static int rollUpRight = Animator.StringToHash("rollUpRight");
         public static int rollRight = Animator.StringToHash("rollRight");
-        public static int rollLeft = Animator.StringToHash("rollLeft");
         public static int rollDown = Animator.StringToHash("rollDown");
 
         public static int flipUp = Animator.StringToHash("flipUp");
-
         public static int flipRight = Animator.StringToHash("flipRight");
         public static int flipLeft = Animator.StringToHash("flipLeft");
         public static int flipDown = Animator.StringToHash("flipDown");
@@ -60,9 +56,31 @@ namespace tuleeeeee.Misc
         public const string playerWeapon = "playerWeapon";
         #endregion
 
+        #region AUDIO
+        public const float musicFadeOutTime = 0.5f;
+        public const float musicFadeInTime = 0.5f;
+        #endregion
+
         #region FIRING CONTROL
         public const float useAimAngleDistance = 1.5f; // if the target distance is less than this then aim angle will beuse, 
                                                        // otherwise the weapon aim angle will be used
+        #endregion
+
+        #region ENEMY PARAMETERS
+        public const int defaultEnemyHealth = 20;
+        #endregion
+
+        #region ASTAR PATHFINDING PARAMETERS
+        public const int defaultAStarMovementPenalty = 40;
+        public const int preferredPathAStarMovementPenalty = 1;
+        public const int targetFrameRateToSpreadPathfindingOver = 60;
+        public const float playerMoveDistanceToRebuildPath = 3f;
+        public const float enemyPathRebulidCooldown = 2f;
+        #endregion
+
+        #region UI PARAMETERS
+        public const float uiAmmoIconSpacing = 4f;
+        public const float uiHeartSpacing = 16f;
         #endregion
     }
 }

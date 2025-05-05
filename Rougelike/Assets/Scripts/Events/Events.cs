@@ -16,5 +16,12 @@ namespace tuleeeeee.Events
     /// </summary>
     public class LookEvent : UnityEvent<Vector2> { }
 
+    /// <summary>
+    ///     An event representing a scroll input (y axis)
+    /// </summary>
+    public class ScrollEvent : UnityEvent<Vector2> { }
+
+    public class SelectWeaponEvent : UnityEvent<int> { }
+    public class FastSwitchWeaponEvent : UnityEvent<bool> { }
 
 }

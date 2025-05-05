@@ -34,7 +34,6 @@ public class PlayerRollState : PlayerAbilityState
         player.InputHandler.UseRollInput();
 
         isHolding = true;
-        rollDirection = Vector2.right * player.InputHandler.RawMovementInput;
         Movement.CheckIfShouldFlip(xInput);
 
         Time.timeScale = playerData.holdTimeScale;
@@ -50,6 +49,7 @@ public class PlayerRollState : PlayerAbilityState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        Movement.CheckIfShouldFlip(xInput);
 
         if (!isExitingState)
         {
@@ -71,14 +71,12 @@ public class PlayerRollState : PlayerAbilityState
                     startTime = Time.time;
                     Movement.RB.drag = playerData.drag;
 
-                    Movement.CheckIfShouldFlip(xInput);
                     Movement.SetVelocity(playerData.rollVelocity, rollDirection);
                     RollAnimation(rollDirection);
                 }
             }
             else
             {
-                Movement.CheckIfShouldFlip(xInput);
                 Movement.SetVelocity(playerData.rollVelocity, rollDirection);
                 RollAnimation(rollDirection);
 

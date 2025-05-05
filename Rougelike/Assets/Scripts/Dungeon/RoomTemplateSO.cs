@@ -26,6 +26,15 @@ namespace tuleeeeee.Dungeon
 
         [HideInInspector] public GameObject previousPrefab;
 
+        #region Header ROOM MUSIC
+
+        [Space(10)]
+        [Header("ROOM MUSIC")]
+
+        #endregion ROOM MUSIC
+        public MusicTrackSO battleMusic;
+        public MusicTrackSO ambientMusic;
+
         #region Header ROOM CONFIGURATION
 
         [Space(10)]
@@ -72,6 +81,13 @@ namespace tuleeeeee.Dungeon
         [Tooltip("Each possible spawn position (used for enemies and chests) for the room in tilemap coordinates should be added to this array")]
         #endregion Tooltip
         public Vector2Int[] spawnPositionArray;
+
+        #region  Header ENEMY DETAILS
+        [Space(10)]
+        [Header("ENEMY DETAILS")]
+        #endregion
+        public List<SpawnableObjectByLevel<EnemyDetailsSO>> enemiesByLevelList;
+        public List<RoomEnemySpawnParameters> roomEnemySpawnParametersList;
 
         /// <summary>
         /// Returns the list of Entrances for the room template

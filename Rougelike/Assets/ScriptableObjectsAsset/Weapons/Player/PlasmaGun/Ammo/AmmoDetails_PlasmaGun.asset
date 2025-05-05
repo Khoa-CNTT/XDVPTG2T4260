@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09930ba9f5d1cd4696a7df815e5ad95, type: 3}
+  m_Name: AmmoDetails_PlasmaGun
+  m_EditorClassIdentifier: 
+  ammoName: Plasma Blaster Ammo
+  isPlayerAmmo: 0
+  ammoSprite: {fileID: 21300000, guid: 235148474781139408d89a8a111ed234, type: 3}
+  ammoPrefabArray:
+  - {fileID: 3483073856098982742, guid: 7f70ebe5bb389cc4ab6e6399a59d990f, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: 33a55999e44f4724191171c59fc64319, type: 2}
+  ammoChargeTime: 0.1
+  ammoChargeMaterial: {fileID: 2100000, guid: 8906ff5d458c0ba4d8d1d0177dfd5df5, type: 2}
+  ammoDamage: 5
+  ammoSpeedMin: 50
+  ammoSpeedMax: 50
+  ammoRange: 20
+  ammoRotationSpeed: 1
+  ammoSpreadMin: 0.5
+  ammoSpreadMax: 1
+  ammoSpawnAmountMin: 1
+  ammoSpawnAmountMax: 1
+  ammoSpawnIntervalMin: 0
+  ammoSpawnIntervalMax: 0
+  isAmmoTrail: 1
+  ammoTrailTime: 0.07
+  ammoTrailMaterial: {fileID: 2100000, guid: 2ef2465a3a837364582062cff57d384d, type: 2}
+  ammoTrailStartWidth: 0.079
+  ammoTrailEndWidth: 0.15

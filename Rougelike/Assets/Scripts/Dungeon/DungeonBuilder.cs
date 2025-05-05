@@ -18,8 +18,6 @@ namespace tuleeeeee.Dungeon
         private RoomNodeTypeListSO roomNodeTypeList;
         private bool dungeonBuildSuccessful;
 
-
-
         private void OnEnable()
         {
             GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", 0f);
@@ -29,7 +27,6 @@ namespace tuleeeeee.Dungeon
         {
             GameResources.Instance.dimmedMaterial.SetFloat("Alpha_Slider", 1f);
         }
-
 
         protected override void Awake()
         {
@@ -88,7 +85,7 @@ namespace tuleeeeee.Dungeon
             }
             else
             {
-                UnityEngine.Debug.Log("No room Node graphs in list");
+                Debug.Log("No room Node graphs in list");
                 return null;
             }
         }
@@ -105,7 +102,7 @@ namespace tuleeeeee.Dungeon
                 }
                 else
                 {
-                    UnityEngine.Debug.Log("Duplicate Room Template Key In " + roomTemplateList);
+                    Debug.Log("Duplicate Room Template Key In " + roomTemplateList);
                 }
             }
         }
@@ -122,29 +119,24 @@ namespace tuleeeeee.Dungeon
             }
             else
             {
-                UnityEngine.Debug.Log("No Entrance Node");
+                Debug.Log("No Entrance Node");
                 return false;
             }
 
             bool noRoomOverlaps = true;
             noRoomOverlaps = ProcessRommsInOpenRoomNodeQueue(roomNodeGraph, openRoomNodeQueue, noRoomOverlaps);
 
-            // Debug.Log(openRoomNodeQueue.Count);
-            // Debug.Log(noRoomOverlaps);
             return openRoomNodeQueue.Count == 0 && noRoomOverlaps;
         }
 
         private bool ProcessRommsInOpenRoomNodeQueue(RoomNodeGraphSO roomNodeGraph, Queue<RoomNodeSO> openRoomNodeQueue, bool noRoomOverlaps)
         {
-
-
             while (openRoomNodeQueue.Count > 0 && noRoomOverlaps)
             {
                 RoomNodeSO roomNode = openRoomNodeQueue.Dequeue();
 
                 foreach (RoomNodeSO childRoomNode in roomNodeGraph.GetChildRoomNodes(roomNode))
                 {
-
                     if (childRoomNode != null)
                     {
                         openRoomNodeQueue.Enqueue(childRoomNode);
@@ -159,8 +151,6 @@ namespace tuleeeeee.Dungeon
 
                     dungeonBuilderRoomDictionary.Add(room.id, room);
                 }
-
-
                 else
                 {
                     Room parentRoom = dungeonBuilderRoomDictionary[roomNode.parentRoomNodeIDList[0]];
@@ -205,7 +195,6 @@ namespace tuleeeeee.Dungeon
             {
                 if (!doorway.isConnected && !doorway.isUnavailable)
                 {
-                    // Debug.Log("unconnected doorway");
                     yield return doorway;
                 }
             }
@@ -277,7 +266,7 @@ namespace tuleeeeee.Dungeon
                     break;
             }
 
-            //room lowerbounds, upper bound
+            // Room lowerbounds, upper bound
             room.lowerBounds = parentDoorwayPosition + adjustment + room.templateLowerBounds - doorway.position;
             room.upperBounds = room.lowerBounds + room.templateUpperBounds - room.templateLowerBounds;
 
@@ -367,12 +356,11 @@ namespace tuleeeeee.Dungeon
                 }
             }
 
-            if (matchingRoomTemplateList.Count == 0)
-            {
-                return null;
-            }
+            if (matchingRoomTemplateList.Count == 0) return null;
 
-            return matchingRoomTemplateList[UnityEngine.Random.Range(0, matchingRoomTemplateList.Count)];
+            RoomTemplateSO roomTemplateUsed = matchingRoomTemplateList[UnityEngine.Random.Range(0, matchingRoomTemplateList.Count)];
+
+            return roomTemplateUsed;
         }
 
         private Room CreateRoomFromRoomTemplate(RoomTemplateSO roomTemplate, RoomNodeSO roomNode)
@@ -382,10 +370,14 @@ namespace tuleeeeee.Dungeon
             room.id = roomNode.id;
             room.templateID = roomTemplate.guid;
             room.prefab = roomTemplate.prefab;
+            room.battleMusic = roomTemplate.battleMusic;
+            room.ambientMusic = roomTemplate.ambientMusic;
             room.roomNodeType = roomTemplate.roomNodeType;
             room.lowerBounds = roomTemplate.lowerBounds;
             room.upperBounds = roomTemplate.upperBounds;
             room.spawnPositionArray = roomTemplate.spawnPositionArray;
+            room.enemiesByLevelList = roomTemplate.enemiesByLevelList;
+            room.roomEnemySpawnParametersList = roomTemplate.roomEnemySpawnParametersList;
             room.templateLowerBounds = roomTemplate.lowerBounds;
             room.templateUpperBounds = roomTemplate.upperBounds;
 
@@ -402,6 +394,11 @@ namespace tuleeeeee.Dungeon
             else
             {
                 room.parentRoomID = roomNode.parentRoomNodeIDList[0];
+            }
+
+            if (room.GetNumberOfEnemiesToSpawn(GameManager.Instance.GetCurrentDungeonLevel()) == 0)
+            {
+                room.isClearedOfEnemies = true;
             }
 
             return room;
