@@ -169,10 +169,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.10481771
+    x: 0.016770486
     y: 0
-    width: 0.79050934
-    height: 1
+    width: 0.9668318
+    height: 0.99999994
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -430,6 +430,9 @@ MonoBehaviour:
   - prefab: {fileID: 2905535786968711655, guid: d948f932dd1b19346b934ba7b1ab38ea, type: 3}
     poolSize: 5
     componentType: AmmoHitEffect
+  - prefab: {fileID: 3483073856098982742, guid: fe7199c37ff877143a36bc73898b930f, type: 3}
+    poolSize: 10
+    componentType: IFireable
 --- !u!4 &283806549
 Transform:
   m_ObjectHideFlags: 0

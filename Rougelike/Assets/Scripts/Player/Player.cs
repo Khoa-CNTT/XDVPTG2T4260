@@ -52,11 +52,11 @@ public class Player : MonoBehaviour
     public List<Weapon> weaponList = new List<Weapon>();
     private void OnEnable()
     {
-
+        HealthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
     }
     private void OnDisable()
     {
-
+        HealthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
     }
     private void Awake()
     {

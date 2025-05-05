@@ -89,8 +89,14 @@ PrefabInstance:
       insertIndex: 6
       addedObject: {fileID: 3256701429790698341}
     - targetCorrespondingSourceObject: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
-      insertIndex: -1
+      insertIndex: 7
       addedObject: {fileID: 5544904611251489766}
+    - targetCorrespondingSourceObject: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1197524594124887522}
+    - targetCorrespondingSourceObject: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6557476301741451389}
     - targetCorrespondingSourceObject: {fileID: 7533541550117226655, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3019662656132761779}
@@ -186,6 +192,30 @@ CircleCollider2D:
   m_Offset: {x: 0.08, y: 0.6}
   serializedVersion: 2
   m_Radius: 0.55
+--- !u!114 &1197524594124887522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703595234823235495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd38661de21bda4fa14a6e4b1f0b648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6557476301741451389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703595234823235495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715a204348e4dca449bbcde308c396e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8229629588005338165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7533541550117226655, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
