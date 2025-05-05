@@ -79,10 +79,9 @@ public class Bullet : MonoBehaviour, IFireable
         if (health != null)
         {
             isColliding = true;
-            Debug.Log("Hitttttttttttttt");
             health.TakeDamge(ammoDetails.ammoDamage);
 
-            /* if (health.enemy != null)
+           /*  if (health.enemy != null)
              {
                  enemyHit = true;
              }*/

@@ -36,11 +36,11 @@ public class HealthUI : MonoBehaviour
         ClearHealthBar();
 
         int healthHearts = Mathf.CeilToInt(healthEventArgs.healthPercent * 5f);
-     //   int fullHeart = Mathf.CeilToInt(GameManager.Instance.GetPlayer().PlayerDetails.playerHealthAmount * 100f / 20f);
+        int fullHeart = Mathf.CeilToInt(GameManager.Instance.GetPlayer().PlayerDetails.playerHealthAmount * 100f / 20f);
 
         for (int i = 0; i < healthHearts; i++)
         {
-            GameObject heart = Instantiate(GameResources.Instance.heartPrefab, transform);
+            GameObject heart = Instantiate((i < healthHearts) ? GameResources.Instance.heartPrefab : GameResources.Instance.emptyHeartPrefab, transform);
 
             heart.GetComponent<RectTransform>().anchoredPosition = new Vector2(Settings.uiHeartSpacing * i, 0f);
 

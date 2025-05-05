@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 259e53b355c712e4a8a7db133e9f6d0f, type: 2}
   preferredEnemyPathTile: {fileID: 11400000, guid: cde56ba11ddc0ec4889203f31c16e9dc, type: 2}
   ammoIconPrefab: {fileID: 7295225173006167845, guid: e38aed01f014be145b2da2630cc6c216, type: 3}
+  emptyHeartPrefab: {fileID: 7295225173006167845, guid: 0b3ca87b67385c24db705411d784eb96, type: 3}
   heartPrefab: {fileID: 7295225173006167845, guid: d3e457eb4c2fe1b468a25792d02f67c6, type: 3}
   chestItemPrefab: {fileID: 0}
   scorePrefab: {fileID: 0}

@@ -96,6 +96,7 @@ public class GameResources : MonoBehaviour
     [Header("UI")]
     #endregion
     public GameObject ammoIconPrefab;
+    public GameObject emptyHeartPrefab;
     public GameObject heartPrefab;
     public GameObject chestItemPrefab;
     public GameObject scorePrefab;
