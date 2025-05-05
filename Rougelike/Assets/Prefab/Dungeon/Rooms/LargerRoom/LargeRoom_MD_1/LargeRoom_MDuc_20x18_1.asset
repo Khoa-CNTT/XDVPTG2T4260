@@ -15,7 +15,7 @@ MonoBehaviour:
   guid: 004fa409593c9444d91b6e127ca32b82
   prefab: {fileID: 8355784810037384008, guid: 168e904361385fa469122688732f0957, type: 3}
   previousPrefab: {fileID: 8355784810037384008, guid: 168e904361385fa469122688732f0957, type: 3}
-  roomNodeType: {fileID: 0}
+  roomNodeType: {fileID: 11400000, guid: 03f92153417923e40a7b6608e9b022b4, type: 2}
   lowerBounds: {x: -13, y: -12}
   upperBounds: {x: 12, y: 12}
   doorwayList:
