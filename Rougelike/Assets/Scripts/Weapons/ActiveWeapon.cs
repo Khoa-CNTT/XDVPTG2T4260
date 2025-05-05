@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using tuleeeeee.Utilities;
 using UnityEngine;
 
-[RequireComponent(typeof(SetActiveWeaponEvent))]
-[DisallowMultipleComponent]
 public class ActiveWeapon : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
@@ -40,14 +38,14 @@ public class ActiveWeapon : MonoBehaviour
         currentWeapon = weapon;
         weaponSpriteRenderer.sprite = currentWeapon.weaponDetails.weaponSprite;
 
-        if (weaponPolygonCollider2D != null && weaponSpriteRenderer.sprite != null)
+    /*    if (weaponPolygonCollider2D != null && weaponSpriteRenderer.sprite != null)
         {
             List<Vector2> spritePhysicsShapePointsList = new List<Vector2>();
             weaponSpriteRenderer.sprite.GetPhysicsShape(0, spritePhysicsShapePointsList);
 
             weaponPolygonCollider2D.points = spritePhysicsShapePointsList.ToArray();
         }
-
+*/
         weaponShootPositionTransform.localPosition = currentWeapon.weaponDetails.weaponShootPosition;
     }
 

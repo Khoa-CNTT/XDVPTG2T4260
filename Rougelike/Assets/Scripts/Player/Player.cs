@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using tuleeeeee.Data;
+using tuleeeeee.Managers;
 using tuleeeeee.Misc;
 using tuleeeeee.MyInput;
 using tuleeeeee.StateMachine;
@@ -17,9 +18,8 @@ using UnityEngine;
 [DisallowMultipleComponent]*/
 public class Player : MonoBehaviour
 {
-    public Movement Movement { get => movement != null ? movement : Core.GetCoreComponent(ref movement); }
-
-    private Movement movement;
+    public Health Health { get => health != null ? health : Core.GetCoreComponent(ref health); }
+    private Health health;
     public StateManager StateManager { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
@@ -29,31 +29,40 @@ public class Player : MonoBehaviour
     #region Components
     public Core Core { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
-    public Health Health { get; private set; }
     public SpriteRenderer SpriteRenderer { get; private set; }
     public Animator Animator { get; private set; }
     #endregion
 
     private float moveSpeed;
+    private bool isPlayerMovementDisabled;
 
     #region EVENTS
-    [HideInInspector] public AimWeaponEvent AimWeaponEvent { get; private set; }
-    [HideInInspector] public SetActiveWeaponEvent SetActiveWeaponEvent { get; private set; }
-    [HideInInspector] public ActiveWeapon ActiveWeapon { get; private set; }
-    [HideInInspector] public FireWeaponEvent FireWeaponEvent { get; private set; }
-    [HideInInspector] public WeaponFiredEvent WeaponFiredEvent { get; private set; }
-    [HideInInspector] public ReloadWeaponEvent ReloadWeaponEvent { get; private set; }
-    [HideInInspector] public WeaponReloadedEvent WeaponReloadedEvent { get; private set; }
-    [HideInInspector] public StopReloadWeaponEvent StopReloadWeaponEvent { get; private set; }
+    public AimWeaponEvent AimWeaponEvent { get; private set; }
+    public SetActiveWeaponEvent SetActiveWeaponEvent { get; private set; }
+    public ActiveWeapon ActiveWeapon { get; private set; }
+    public FireWeaponEvent FireWeaponEvent { get; private set; }
+    public WeaponFiredEvent WeaponFiredEvent { get; private set; }
+    public ReloadWeaponEvent ReloadWeaponEvent { get; private set; }
+    public WeaponReloadedEvent WeaponReloadedEvent { get; private set; }
+    public StopReloadWeaponEvent StopReloadWeaponEvent { get; private set; }
+    public HealthEvent HealthEvent { get; private set; }
+    public DestroyedEvent DestroyedEvent { get; private set; }
     #endregion
 
     public List<Weapon> weaponList = new List<Weapon>();
+    private void OnEnable()
+    {
+
+    }
+    private void OnDisable()
+    {
+
+    }
     private void Awake()
     {
         #region Compoments
         Core = GetComponentInChildren<Core>();
         InputHandler = GetComponent<PlayerInputHandler>();
-        Health = GetComponent<Health>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
         StateManager = new StateManager();
@@ -67,6 +76,8 @@ public class Player : MonoBehaviour
         ReloadWeaponEvent = GetComponent<ReloadWeaponEvent>();
         WeaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
         StopReloadWeaponEvent = GetComponent<StopReloadWeaponEvent>();
+        HealthEvent = GetComponentInChildren<HealthEvent>();
+        DestroyedEvent = GetComponent<DestroyedEvent>();    
         #endregion
 
     }
@@ -76,6 +87,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if (isPlayerMovementDisabled) return;
         Core.LogicUpdate();
         StateManager.CurrentPlayerState.LogicUpdate();
     }
@@ -89,18 +101,26 @@ public class Player : MonoBehaviour
 
         moveSpeed = PlayerDetails.movementVelocity;
 
+        SetPlayerHealth();
+        
         CreatePlayerStartingWeapon();
 
-        SetPlayerHealth();
-
         //  SetPlayerAnimationSpeed();
-
 
         IdleState = new PlayerIdleState(this, StateManager, PlayerDetails, "isIdle");
         MoveState = new PlayerMoveState(this, StateManager, PlayerDetails, "isMoving");
         RollState = new PlayerRollState(this, StateManager, PlayerDetails, "isRolling");
 
         StateManager.InitializePlayer(IdleState);
+    }
+
+    private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
+    {
+
+        if (healthEventArgs.healthAmount <= 0f)
+        {
+            DestroyedEvent.CallDestroyedEvent(true, 0);
+        }
     }
 
     private void SetPlayerHealth()
@@ -113,10 +133,6 @@ public class Player : MonoBehaviour
         Animator.speed = moveSpeed / Settings.baseSpeedForEnemyAnimation;
     }
 
-    public Vector3 GetPlayerPosition()
-    {
-        return transform.position;
-    }
     private void CreatePlayerStartingWeapon()
     {
         weaponList.Clear();
@@ -145,5 +161,21 @@ public class Player : MonoBehaviour
         SetActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
 
         return weapon;
+    }
+
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
+
+    public void EnablePlayer()
+    {
+        isPlayerMovementDisabled = false;
+    }
+
+    public void DisablePlayer()
+    {
+        isPlayerMovementDisabled = true;
+        StateManager.ChangePlayerState(IdleState);
     }
 }

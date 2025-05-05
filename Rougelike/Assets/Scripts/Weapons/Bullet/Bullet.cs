@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using tuleeeeee.Misc;
+using tuleeeeee.StaticEvent;
 using tuleeeeee.Utilities;
 using UnityEngine;
 
@@ -12,14 +13,17 @@ public class Bullet : MonoBehaviour, IFireable
     private Vector3 fireDirectionVector;
     private float fireDirectionAngle;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb2d;
     private AmmoDetailsSO ammoDetails;
     private float ammoChargeTimer;
     private bool isAmmoMaterialSet = false;
     private bool overrideAmmoMovement;
+    private bool isColliding = false;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -35,31 +39,82 @@ public class Bullet : MonoBehaviour, IFireable
             isAmmoMaterialSet = true;
         }
 
-        Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
-
-        transform.position += distanceVector;
-
-        ammoRange -= distanceVector.magnitude;
-
-        if (ammoRange < 0f)
+        if (!overrideAmmoMovement)
         {
-            DisableAmmo();
+            Vector3 distanceVector = fireDirectionVector * ammoSpeed * Time.deltaTime;
+
+            //transform.position += distanceVector;
+
+            ammoRange -= distanceVector.magnitude;
+
+            if (ammoRange < 0f)
+            {
+                if (ammoDetails.isPlayerAmmo)
+                {
+                    StaticEventHandler.CallMultiplierEvent(false);
+                }
+                DisableAmmo();
+            }
         }
     }
-
+    private void FixedUpdate()
+    {
+        rb2d.velocity = fireDirectionVector * ammoSpeed;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (isColliding) return;
+        DealDamage(collision);
+
+        AmmoHitEffect();
         DisableAmmo();
+    }
+
+    private void DealDamage(Collider2D collision)
+    {
+        Health health = collision.GetComponentInChildren<Health>();
+
+        bool enemyHit = false;
+
+        if (health != null)
+        {
+            isColliding = true;
+            Debug.Log("Hitttttttttttttt");
+            health.TakeDamge(ammoDetails.ammoDamage);
+
+            /* if (health.enemy != null)
+             {
+                 enemyHit = true;
+             }*/
+
+        }
+
+
+        if (ammoDetails.isPlayerAmmo)
+        {
+            if (enemyHit)
+            {
+                StaticEventHandler.CallMultiplierEvent(true);
+            }
+            else
+            {
+                StaticEventHandler.CallMultiplierEvent(false);
+            }
+        }
     }
 
 
     public void InitialiseAmmo(AmmoDetailsSO ammoDetails,
         float aimAngle, float weaponAimAngle, float ammoSpeed,
-        Vector3 weaponAimDirectionVector, bool overrideAmmoMovement = false)
+        Vector3 weaponAimDirectionVector, float fireTime,
+        bool overrideAmmoMovement = false)
     {
         #region Ammo
         this.ammoDetails = ammoDetails;
-        SetFireDirection(ammoDetails, aimAngle, weaponAimAngle, weaponAimDirectionVector);
+
+        isColliding = false;
+
+        SetFireDirection(ammoDetails, aimAngle, weaponAimAngle, weaponAimDirectionVector, fireTime);
 
         spriteRenderer.sprite = ammoDetails.ammoSprite;
 
@@ -68,7 +123,6 @@ public class Bullet : MonoBehaviour, IFireable
             ammoChargeTimer = ammoDetails.ammoChargeTime;
             SetAmmoMaterial(ammoDetails.ammoChargeMaterial);
             isAmmoMaterialSet = false;
-
         }
         else
         {
@@ -103,9 +157,22 @@ public class Bullet : MonoBehaviour, IFireable
         #endregion Trail
     }
 
-    private void SetFireDirection(AmmoDetailsSO ammoDetails, float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
+    private void SetFireDirection(AmmoDetailsSO ammoDetails, float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector, float fireTime)
     {
-        float randomSpread = Random.Range(ammoDetails.ammoSpreadMin, ammoDetails.ammoSpreadMax);
+
+        float randomSpread = ammoDetails.ammoSpreadMin;
+        if (fireTime >= 0f && fireTime < 0.1f)
+        {
+            randomSpread = Random.Range(ammoDetails.ammoSpreadMin, ammoDetails.ammoSpreadMax / 3);
+        }
+        else if (fireTime >= 0.1f && fireTime < 0.3f)
+        {
+            randomSpread = Random.Range(ammoDetails.ammoSpreadMin, ammoDetails.ammoSpreadMax / 3 * 2);
+        }
+        else if (fireTime >= 0.3f)
+        {
+            randomSpread = Random.Range(ammoDetails.ammoSpreadMin, ammoDetails.ammoSpreadMax);
+        }
 
         int spreadToggle = Random.Range(0, 2) * 2 - 1;
         if (weaponAimDirectionVector.magnitude < Settings.useAimAngleDistance)
@@ -127,6 +194,19 @@ public class Bullet : MonoBehaviour, IFireable
     private void DisableAmmo()
     {
         gameObject.SetActive(false);
+    }
+
+    private void AmmoHitEffect()
+    {
+        if (ammoDetails.ammoHitEffect != null && ammoDetails.ammoHitEffect.ammoHitEffectPrefab != null)
+        {
+            AmmoHitEffect ammoHitEffect = (AmmoHitEffect)PoolManager.Instance.ReuseComponent(
+                ammoDetails.ammoHitEffect.ammoHitEffectPrefab, transform.position, Quaternion.identity
+            );
+            ammoHitEffect.SetHitEffect(ammoDetails.ammoHitEffect);
+
+            ammoHitEffect.gameObject.SetActive(true);
+        }
     }
     private void SetAmmoMaterial(Material material)
     {

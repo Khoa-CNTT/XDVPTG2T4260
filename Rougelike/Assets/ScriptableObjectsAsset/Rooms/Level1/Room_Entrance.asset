@@ -15,13 +15,15 @@ MonoBehaviour:
   guid: 60c6f5596338c6443b9103db8d40c29f
   prefab: {fileID: 8355784810037384008, guid: 7c627b384c5cb7d4894b58b79253afb6, type: 3}
   previousPrefab: {fileID: 8355784810037384008, guid: 7c627b384c5cb7d4894b58b79253afb6, type: 3}
+  battleMusic: {fileID: 11400000, guid: c346fb113d4c49e4aa8a0bb5bb257da3, type: 2}
+  ambientMusic: {fileID: 11400000, guid: 57c2c302a1360bc44896c467ffd63a23, type: 2}
   roomNodeType: {fileID: 11400000, guid: ed48140f64032e4449e05f88c08955ec, type: 2}
   lowerBounds: {x: -10, y: -9}
   upperBounds: {x: 10, y: 11}
   doorwayList:
   - position: {x: -3, y: 11}
     orientation: 3
-    doorPrefab: {fileID: 0}
+    doorPrefab: {fileID: 7710293978914557397, guid: a96c1b7fd4b403f45ae8d3bb359bdb97, type: 3}
     doorwayStartCopyPosition: {x: -6, y: 11}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
@@ -29,7 +31,7 @@ MonoBehaviour:
     isUnavailable: 0
   - position: {x: 2, y: -9}
     orientation: 2
-    doorPrefab: {fileID: 0}
+    doorPrefab: {fileID: 7710293978914557397, guid: a96c1b7fd4b403f45ae8d3bb359bdb97, type: 3}
     doorwayStartCopyPosition: {x: -1, y: -8}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 2
@@ -37,7 +39,7 @@ MonoBehaviour:
     isUnavailable: 0
   - position: {x: -10, y: -4}
     orientation: 1
-    doorPrefab: {fileID: 0}
+    doorPrefab: {fileID: 7710293978914557397, guid: f81280d9f0326c040a9ec394acd376d1, type: 3}
     doorwayStartCopyPosition: {x: -10, y: 0}
     doorwayCopyTileWidth: 4
     doorwayCopyTileHeight: 6
@@ -45,7 +47,7 @@ MonoBehaviour:
     isUnavailable: 0
   - position: {x: 10, y: 2}
     orientation: 0
-    doorPrefab: {fileID: 0}
+    doorPrefab: {fileID: 7710293978914557397, guid: f81280d9f0326c040a9ec394acd376d1, type: 3}
     doorwayStartCopyPosition: {x: 8, y: 6}
     doorwayCopyTileWidth: 3
     doorwayCopyTileHeight: 6
@@ -53,3 +55,5 @@ MonoBehaviour:
     isUnavailable: 0
   spawnPositionArray:
   - {x: 0, y: 0}
+  enemiesByLevelList: []
+  roomEnemySpawnParametersList: []

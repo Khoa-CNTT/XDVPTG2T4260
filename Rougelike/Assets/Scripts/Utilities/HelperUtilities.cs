@@ -1,16 +1,13 @@
 ﻿using System.Collections;
-using UnityEditor;
+using tuleeeeee.Managers;
+using tuleeeeee.Dungeon;
 using UnityEngine;
 using tuleeeeee.Enums;
 using UnityEngine.InputSystem;
-using tuleeeeee.Dungeon;
-using tuleeeeee.Managers;
+
 
 namespace tuleeeeee.Utilities
 {
-    /// <summary>
-    /// empty string check
-    /// </summary>
     public static class HelperUtilities
     {
         public static Camera mainCamera;
@@ -41,6 +38,20 @@ namespace tuleeeeee.Utilities
             return worldPosition;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cameraWorldPositionLowerBounds"></param>
+        /// <param name="cameraWorldPositionUpperBounds"></param>
+        /// <param name="camera"></param>
+        public static void CameraWorldPositionBounds(out Vector2Int cameraWorldPositionLowerBounds, out Vector2Int cameraWorldPositionUpperBounds, Camera camera)
+        {
+            Vector3 worldPositionViewportBottomLeft = camera.ViewportToWorldPoint(new Vector3(0f, 0f, 0f));
+            Vector3 worldPositionViewportTopRight = camera.ViewportToWorldPoint(new Vector3(1f, 1f, 0f));
+
+            cameraWorldPositionLowerBounds = new Vector2Int((int)worldPositionViewportBottomLeft.x, (int)worldPositionViewportBottomLeft.y);
+            cameraWorldPositionUpperBounds = new Vector2Int((int)worldPositionViewportTopRight.x, (int)worldPositionViewportTopRight.y);
+        }
         /// <summary>
         /// Get Angle From Vector
         /// </summary>
@@ -106,6 +117,13 @@ namespace tuleeeeee.Utilities
 
             return direction;
         }
+
+        public static float LinearToDecibels(int linear)
+        {
+            float linearScaleRange = 20f;
+            return Mathf.Log10((float)linear / linearScaleRange) * 20f;
+        }
+
         /// <summary>
         /// Empty string debug check
         /// </summary>
@@ -113,11 +131,11 @@ namespace tuleeeeee.Utilities
         /// <param name="fieldName"></param>
         /// <param name="stringToCheck"></param>
         /// <returns></returns>
-        public static bool ValidateCheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
+        public static bool ValidateCheckEmptyString(UnityEngine.Object thisObject, string fieldName, string stringToCheck)
         {
             if (stringToCheck == "")
             {
-                Debug.Log(fieldName + " is empty and must contain a value in object " + thisObject.name.ToString());
+                UnityEngine.Debug.Log(fieldName + " is empty and must contain a value in object " + thisObject.name.ToString());
                 return true;
             }
             return false;
@@ -129,11 +147,11 @@ namespace tuleeeeee.Utilities
         /// <param name="fieldName"></param>
         /// <param name="objectToCheck"></param>
         /// <returns></returns>
-        public static bool ValidateCheckNullValue(Object thisObject, string fieldName, UnityEngine.Object objectToCheck)
+        public static bool ValidateCheckNullValue(UnityEngine.Object thisObject, string fieldName, UnityEngine.Object objectToCheck)
         {
             if (objectToCheck == null)
             {
-                Debug.Log(fieldName + " is null and must contain a value in object " + thisObject.name.ToString());
+                UnityEngine.Debug.Log(fieldName + " is null and must contain a value in object " + thisObject.name.ToString());
                 return true;
             }
             return false;
@@ -146,14 +164,14 @@ namespace tuleeeeee.Utilities
         /// <param name="fieldName"></param>
         /// <param name="enumerableObjectToCheck"></param>
         /// <returns></returns>
-        public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
+        public static bool ValidateCheckEnumerableValues(UnityEngine.Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
         {
             bool error = false;
             int count = 0;
 
             if (enumerableObjectToCheck == null)
             {
-                Debug.Log(fieldName + "is null in object" + thisObject.name.ToString());
+                UnityEngine.Debug.Log(fieldName + "is null in object" + thisObject.name.ToString());
                 return true;
             }
 
@@ -161,7 +179,7 @@ namespace tuleeeeee.Utilities
             {
                 if (item == null)
                 {
-                    Debug.Log(fieldName + " has null values in object " + thisObject.name.ToString());
+                    UnityEngine.Debug.Log(fieldName + " has null values in object " + thisObject.name.ToString());
                     error = true;
                 }
                 else
@@ -172,7 +190,7 @@ namespace tuleeeeee.Utilities
 
             if (count == 0)
             {
-                Debug.Log(fieldName + " has no values in object " + thisObject.name.ToString());
+                UnityEngine.Debug.Log(fieldName + " has no values in object " + thisObject.name.ToString());
                 error = true;
             }
 
@@ -186,14 +204,14 @@ namespace tuleeeeee.Utilities
         /// <param name="valueToCheck"></param>
         /// <param name="isZeroAllowed"></param>
         /// <returns></returns>
-        public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, int valueToCheck, bool isZeroAllowed)
+        public static bool ValidateCheckPositiveValue(UnityEngine.Object thisObject, string fieldName, int valueToCheck, bool isZeroAllowed)
         {
             bool error = false;
             if (isZeroAllowed)
             {
                 if (valueToCheck < 0)
                 {
-                    Debug.Log(fieldName + " must contain a positive value or zero in object " + thisObject.name.ToString());
+                    UnityEngine.Debug.Log(fieldName + " must contain a positive value or zero in object " + thisObject.name.ToString());
                     error = true;
                 }
             }
@@ -201,12 +219,97 @@ namespace tuleeeeee.Utilities
             {
                 if (valueToCheck <= 0)
                 {
-                    Debug.Log(fieldName + " must contain a positive value in object " + thisObject.name.ToString());
+                    UnityEngine.Debug.Log(fieldName + " must contain a positive value in object " + thisObject.name.ToString());
                     error = true;
                 }
             }
             return error;
         }
+        /// <summary>
+        /// positive value debug check
+        /// </summary>
+        /// <param name="thisObject"></param>
+        /// <param name="fieldName"></param>
+        /// <param name="valueToCheck"></param>
+        /// <param name="isZeroAllowed"></param>
+        /// <returns></returns>
+        public static bool ValidateCheckPositiveValue(UnityEngine.Object thisObject, string fieldName, float valueToCheck, bool isZeroAllowed)
+        {
+            bool error = false;
+            if (isZeroAllowed)
+            {
+                if (valueToCheck < 0.0f)
+                {
+                    UnityEngine.Debug.Log(fieldName + " must contain a positive value or zero in object " + thisObject.name.ToString());
+                    error = true;
+                }
+            }
+            else
+            {
+                if (valueToCheck <= 0.0f)
+                {
+                    UnityEngine.Debug.Log(fieldName + " must contain a positive value in object " + thisObject.name.ToString());
+                    error = true;
+                }
+            }
+            return error;
+        }
+
+        /// <summary>
+        /// Check range
+        /// </summary>
+        /// <param name="thisObject"></param>
+        /// <param name="fieldNameMinimum"></param>
+        /// <param name="valueToCheckMinimum"></param>
+        /// <param name="fieldNameMaximum"></param>
+        /// <param name="valueToCheckMaximum"></param>
+        /// <param name="isZeroAllowed"></param>
+        /// <returns></returns>
+        public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, int valueToCheckMinimum,
+       string fieldNameMaximum, int valueToCheckMaximum, bool isZeroAllowed)
+        {
+            bool error = false;
+            if (valueToCheckMinimum > valueToCheckMaximum)
+            {
+                Debug.Log(fieldNameMinimum + " must be less than or equal to " + fieldNameMinimum + " in object " + thisObject.name.ToString());
+                error = true;
+            }
+
+            if (ValidateCheckPositiveValue(thisObject, fieldNameMinimum, valueToCheckMinimum, isZeroAllowed)) error = true;
+
+            if (ValidateCheckPositiveValue(thisObject, fieldNameMaximum, valueToCheckMaximum, isZeroAllowed)) error = true;
+
+            return error;
+
+        }
+        /// <summary>
+        /// Check range
+        /// </summary>
+        /// <param name="thisObject"></param>
+        /// <param name="fieldNameMinimum"></param>
+        /// <param name="valueToCheckMinimum"></param>
+        /// <param name="fieldNameMaximum"></param>
+        /// <param name="valueToCheckMaximum"></param>
+        /// <param name="isZeroAllowed"></param>
+        /// <returns></returns>
+        public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, float valueToCheckMinimum,
+            string fieldNameMaximum, float valueToCheckMaximum, bool isZeroAllowed)
+        {
+            bool error = false;
+            if (valueToCheckMinimum > valueToCheckMaximum)
+            {
+                Debug.Log(fieldNameMinimum + " must be less than or equal to " + fieldNameMaximum + " in object " + thisObject.name.ToString());
+                error = true;
+            }
+
+            if (ValidateCheckPositiveValue(thisObject, fieldNameMinimum, valueToCheckMinimum, isZeroAllowed)) error = true;
+
+            if (ValidateCheckPositiveValue(thisObject, fieldNameMaximum, valueToCheckMaximum, isZeroAllowed)) error = true;
+
+            return error;
+
+        }
+
         public static Vector3 GetSpawnPositionNearestToPlayer(Vector3 playerPosition)
         {
             Room currentRoom = GameManager.Instance.GetCurrentRoom();

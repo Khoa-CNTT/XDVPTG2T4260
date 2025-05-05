@@ -13,12 +13,11 @@ namespace tuleeeeee.Enums
     public enum Direction
     {
         up,
-        upright,
         upleft,
-        right,
+        upright,
         left, 
+        right,
         down,
-        Up,
     }
     public enum GameState
     {

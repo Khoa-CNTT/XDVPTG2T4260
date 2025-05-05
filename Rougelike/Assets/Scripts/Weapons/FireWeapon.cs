@@ -1,9 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(WeaponFiredEvent))]
-[RequireComponent(typeof(FireWeaponEvent))]
-[DisallowMultipleComponent]
 public class FireWeapon : MonoBehaviour
 {
     private float firePreChargeTimer = 0f;
@@ -42,22 +40,37 @@ public class FireWeapon : MonoBehaviour
 
     private void WeaponFire(FireWeaponEventArgs fireWeaponEventArgs)
     {
-
+        WeaponPreCharge(fireWeaponEventArgs);
 
         if (fireWeaponEventArgs.fire)
         {
             if (IsWeaponReadyToFire())
             {
-                FireAmmo(fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponAimAngle, fireWeaponEventArgs.weaponAimDirectionVector);
+                FireAmmo(fireWeaponEventArgs.aimAngle, fireWeaponEventArgs.weaponAimAngle,
+                    fireWeaponEventArgs.weaponAimDirectionVector, fireWeaponEventArgs.fireTime);
 
                 ResetCoolDownTimer();
 
-
+                ResetPrechargeTimer();
             }
         }
     }
+
+    private void WeaponPreCharge(FireWeaponEventArgs fireWeaponEventArgs)
+    {
+        if (fireWeaponEventArgs.firePreviousFrame)
+        {
+            firePreChargeTimer -= Time.deltaTime;
+        }
+        else
+        {
+            ResetPrechargeTimer();
+        }
+    }
+
     private bool IsWeaponReadyToFire()
     {
+
         Weapon currentWeapon = activeWeapon.GetCurrentWeapon();
         bool hasInfiniteAmmo = currentWeapon.weaponDetails.hasInfiniteAmmo;
         bool hasInfiniteClipCapacity = currentWeapon.weaponDetails.hasInfiniteClipCapacity;
@@ -75,17 +88,17 @@ public class FireWeapon : MonoBehaviour
         return true;
     }
 
-    private void FireAmmo(float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
+    private void FireAmmo(float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector, float fireTime)
     {
         AmmoDetailsSO currentAmmo = activeWeapon.GetCurrentAmmo();
 
         if (currentAmmo != null)
         {
-            StartCoroutine(FireAmmoRoutine(currentAmmo, aimAngle, weaponAimAngle, weaponAimDirectionVector));
+            StartCoroutine(FireAmmoRoutine(currentAmmo, aimAngle, weaponAimAngle, weaponAimDirectionVector, fireTime));
         }
     }
 
-    private IEnumerator FireAmmoRoutine(AmmoDetailsSO currentAmmo, float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector)
+    private IEnumerator FireAmmoRoutine(AmmoDetailsSO currentAmmo, float aimAngle, float weaponAimAngle, Vector3 weaponAimDirectionVector, float fireTime)
     {
 
         int ammoCounter = 0;
@@ -114,13 +127,14 @@ public class FireWeapon : MonoBehaviour
 
             IFireable ammo = (IFireable)PoolManager.Instance.ReuseComponent(ammoPrefab, activeWeapon.GetShootPosition(), Quaternion.identity);
 
-            ammo.InitialiseAmmo(currentAmmo, aimAngle, weaponAimAngle, ammoSpeed, weaponAimDirectionVector);
+            ammo.InitialiseAmmo(currentAmmo, aimAngle, weaponAimAngle, ammoSpeed, weaponAimDirectionVector, fireTime);
 
             yield return new WaitForSeconds(ammoSpawnInterval);
         }
 
         Weapon currentWeapon = activeWeapon.GetCurrentWeapon();
         bool hasInfiniteClipCapacity = currentWeapon.weaponDetails.hasInfiniteClipCapacity;
+
         if (!hasInfiniteClipCapacity)
         {
             currentWeapon.weaponClipRemainingAmmo--;
@@ -128,10 +142,47 @@ public class FireWeapon : MonoBehaviour
         }
 
         weaponFiredEvent.CallWeaponFiredEvent(currentWeapon);
+
+        WeaponShootEffect(aimAngle);
+
+        WeaponSoundEffect();
+
     }
 
     private void ResetCoolDownTimer()
     {
         fireRateCoolDownTimer = activeWeapon.GetCurrentWeapon().weaponDetails.weaponFireRate;
     }
+
+    private void ResetPrechargeTimer()
+    {
+        float weaponPrechargeTime = activeWeapon.GetCurrentWeapon().weaponDetails.weaponPrechargeTime;
+        firePreChargeTimer = weaponPrechargeTime;
+    }
+
+    private void WeaponShootEffect(float aimAngle)
+    {
+        Weapon currentWeapon = activeWeapon.GetCurrentWeapon();
+        WeaponShootEffectSO weaponShootEffectSO = currentWeapon.weaponDetails.weaponShootEffect;
+        GameObject weaponShootEffectPrefab = weaponShootEffectSO.weaponShootEffectPrefab;
+        if (weaponShootEffectSO != null && weaponShootEffectPrefab != null)
+        {
+            Vector3 shootEffectPosition = activeWeapon.GetShootEffectPosition();
+            WeaponShootEffect weaponShootEffect = (WeaponShootEffect)PoolManager.Instance.ReuseComponent(weaponShootEffectPrefab,
+                shootEffectPosition, Quaternion.identity);
+            weaponShootEffect.SetShootEffect(weaponShootEffectSO, aimAngle);
+            weaponShootEffect.gameObject.SetActive(true);
+        }
+    }
+
+    private void WeaponSoundEffect()
+    {
+        Weapon currentWeapon = activeWeapon.GetCurrentWeapon();
+        SoundEffectSO weaponFiringSoundEffect = currentWeapon.weaponDetails.weaponFiringSoundEffect;
+        if (weaponFiringSoundEffect != null)
+        {
+            SoundEffectManager.Instance.PlaySoundEffect(weaponFiringSoundEffect);
+        }
+    }
+
 }

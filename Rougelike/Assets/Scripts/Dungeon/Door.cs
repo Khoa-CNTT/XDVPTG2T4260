@@ -58,7 +58,7 @@ namespace tuleeeeee.Dungeon
 
                 animator.SetBool(Settings.open, true);
 
-                //SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.doorOpenCloseSoundEffect);
+                SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.doorOpenCloseSoundEffect);
             }
         }
 

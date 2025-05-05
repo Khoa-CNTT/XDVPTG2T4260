@@ -1,10 +1,10 @@
 ﻿using tuleeeeee.Enums;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
 using tuleeeeee.Managers;
 using tuleeeeee.Misc;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 using tuleeeeee.StaticEvent;
 
 
@@ -23,24 +23,28 @@ namespace tuleeeeee.Dungeon
         [HideInInspector] public Tilemap collisionTilemap;
         [HideInInspector] public Tilemap minimapTilemap;
         [HideInInspector] public Bounds roomColliderBounds;
+        [HideInInspector] public int[,] aStarMovementPenalty;
+        [HideInInspector] public int[,] aStarItemObstacles;
 
         #region Header OBJECT REFERENCES
         [Space(10)]
         [Header("OBJECT REFERENCES")]
         #endregion
-        [SerializeField] private GameObject environmentGameObject;
+        private GameObject environmentGameObject;
 
         private BoxCollider2D boxCollider2D;
 
         private void Awake()
         {
             boxCollider2D = GetComponent<BoxCollider2D>();
+            environmentGameObject = transform.Find("Enviroment").gameObject;
             roomColliderBounds = boxCollider2D.bounds;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.tag == Settings.playerTag && room != GameManager.Instance.GetCurrentRoom())
             {
+
                 this.room.isPreviouslyVisisted = true;
 
                 StaticEventHandler.CallRoomChangedEvent(room);
@@ -51,7 +55,11 @@ namespace tuleeeeee.Dungeon
             PopulateTilemapMemberVariables(roomGameobject);
 
             BlockOffUnusedDoorway();
-            
+
+            AddObstaclesAndPreferredPaths();
+
+            CreateItemObstaclesArray();
+
             AddDoorToRooms();
 
             DisableCollisionTilemapRenderer();
@@ -66,9 +74,7 @@ namespace tuleeeeee.Dungeon
                 switch (tilemap.gameObject.tag)
                 {
                     case "groundTilemap":
-
-                        //groundTilemap = tilemap;   // only 1 groundTilemap
-                        groundTilemaps.Add(tilemap);// more than 1 groundTilemap
+                        groundTilemaps.Add(tilemap);
                         break;
 
                     case "decoration1Tilemap":
@@ -103,12 +109,6 @@ namespace tuleeeeee.Dungeon
                 {
                     continue;
                 }
-                // only 1 groundTilemap
-                /* if (groundTilemap != null)
-                 {
-                     BlockADorrwayOnTilemapLayer(groundTilemap, doorway);
-                 }*/
-
                 foreach (Tilemap groundTilemap in groundTilemaps)// more than 1 groundTilemap
                 {
                     if (groundTilemap != null)
@@ -192,6 +192,37 @@ namespace tuleeeeee.Dungeon
                 }
             }
         }
+
+        private void AddObstaclesAndPreferredPaths()
+        {
+            aStarMovementPenalty = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1,
+                room.templateUpperBounds.y - room.templateLowerBounds.y + 1];
+
+            for (int x = 0; x < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
+            {
+                for (int y = 0; y < (room.templateUpperBounds.y - room.templateLowerBounds.y + 1); y++)
+                {
+                    aStarMovementPenalty[x, y] = Settings.defaultAStarMovementPenalty;
+
+                    TileBase tile = collisionTilemap.GetTile(new Vector3Int(x + room.templateLowerBounds.x, y + room.templateLowerBounds.y, 0));
+
+                    foreach (TileBase collisionTile in GameResources.Instance.enemyUnwalkableCollisionTilesArray)
+                    {
+                        if (tile == collisionTile)
+                        {
+                            aStarMovementPenalty[x, y] = 0;
+                            break;
+                        }
+                    }
+
+                    if (tile == GameResources.Instance.preferredEnemyPathTile)
+                    {
+                        aStarMovementPenalty[x, y] = Settings.preferredPathAStarMovementPenalty;
+                    }
+                }
+            }
+        }
+
         private void AddDoorToRooms()
         {
             if (room.roomNodeType.isCorridorEW || room.roomNodeType.isCorridorNS) return;
@@ -222,10 +253,30 @@ namespace tuleeeeee.Dungeon
                         door.transform.localPosition = new Vector3(doorway.position.x, doorway.position.y + tileDistance * 1.25f, 0f);
                     }
 
-                  
+                    Door doorComponent = door.GetComponent<Door>();
+                    if (room.roomNodeType.isBossRoom)
+                    {
+                        doorComponent.isBossRoomDoor = true;
+
+                        doorComponent.LockDoor();
+
+                        GameObject skullIcon = Instantiate(GameResources.Instance.minimapSkullPrefab, gameObject.transform);
+                        skullIcon.transform.localPosition = door.transform.localPosition;
+                    }
                 }
             }
         }
+
+        private void DisableRoomCollider()
+        {
+            boxCollider2D.enabled = false;
+        }
+
+        public void EnableRoomCollider()
+        {
+            boxCollider2D.enabled = true;
+        }
+
         public void ActivateEnvironmentGameObjects()
         {
             if (environmentGameObject != null)
@@ -241,9 +292,80 @@ namespace tuleeeeee.Dungeon
                 environmentGameObject.SetActive(false);
             }
         }
+
         private void DisableCollisionTilemapRenderer()
         {
             collisionTilemap.gameObject.GetComponent<TilemapRenderer>().enabled = false;
         }
+
+        public void LockDoors()
+        {
+            Door[] doorArray = GetComponentsInChildren<Door>();
+
+            foreach (Door door in doorArray)
+            {
+                door.LockDoor();
+            }
+
+            DisableRoomCollider();
+        }
+
+        public void UnlockDoors(float doorUnlockDelay)
+        {
+            StartCoroutine(UnlockDoorsRoutine(doorUnlockDelay));
+        }
+
+        private IEnumerator UnlockDoorsRoutine(float doorUnlockDelay)
+        {
+            if (doorUnlockDelay > 0f)
+            {
+                yield return new WaitForSeconds(doorUnlockDelay);
+            }
+
+            Door[] doorArray = GetComponentsInChildren<Door>();
+
+            foreach (Door door in doorArray)
+            {
+                door.UnlockDoor();
+            }
+
+            EnableRoomCollider();
+        }
+
+        private void CreateItemObstaclesArray()
+        {
+            aStarItemObstacles = new int[room.templateUpperBounds.x - room.templateLowerBounds.x + 1,
+                room.templateUpperBounds.y - room.templateLowerBounds.y + 1];
+        }
+
+        private void InitializeItemObstaclesArray()
+        {
+            for (int x = 0; x < (room.templateUpperBounds.x - room.templateLowerBounds.x + 1); x++)
+            {
+                for (int y = 0; y < (room.templateUpperBounds.y - room.templateLowerBounds.y + 1); y++)
+                {
+                    aStarItemObstacles[x, y] = Settings.defaultAStarMovementPenalty;
+                }
+            }
+        }
+
+       /* public void UpdateMoveableObstacles()
+        {
+            InitializeItemObstaclesArray();
+
+            foreach (MoveItem moveItem in moveableItemsList)
+            {
+                Vector3Int colliderBoundsMin = grid.WorldToCell(moveItem.boxCollider2D.bounds.min);
+                Vector3Int colliderBoundsMax = grid.WorldToCell(moveItem.boxCollider2D.bounds.max);
+
+                for (int i = colliderBoundsMin.x; i <= colliderBoundsMax.x; i++)
+                {
+                    for (int j = colliderBoundsMin.y; j <= colliderBoundsMax.y; j++)
+                    {
+                        aStarItemObstacles[i - room.templateLowerBounds.x, j - room.templateLowerBounds.y] = 0;
+                    }
+                }
+            }
+        }*/
     }
 }
