@@ -10,7 +10,7 @@ namespace tuleeeeee.StateMachine
         protected Core Core;
         protected Player player;
         protected StateManager stateManager;
-        protected PlayerDetailsSO playerData;
+        protected MovementDetailsSO playerData;
 
         protected bool isAnimationFinished;
         protected bool isExitingState;
@@ -19,7 +19,7 @@ namespace tuleeeeee.StateMachine
 
         private string animBoolName;
 
-        public PlayerState(Player player, StateManager stateManager, PlayerDetailsSO playerData, string animBoolName)
+        public PlayerState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName)
         {
             this.player = player;
             this.stateManager = stateManager;

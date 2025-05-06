@@ -37,7 +37,7 @@ namespace tuleeeeee.Dungeon
         private void Awake()
         {
             boxCollider2D = GetComponent<BoxCollider2D>();
-            environmentGameObject = transform.Find("Enviroment").gameObject;
+            environmentGameObject = transform.Find(Settings.eviroment).gameObject;
             roomColliderBounds = boxCollider2D.bounds;
         }
         private void OnTriggerEnter2D(Collider2D collision)

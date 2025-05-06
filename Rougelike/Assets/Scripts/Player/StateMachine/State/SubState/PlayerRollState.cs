@@ -1,7 +1,4 @@
 using tuleeeeee.Enums;
-using System.Collections;
-using System.Collections.Generic;
-using tuleeeeee.Data;
 using tuleeeeee.Misc;
 using tuleeeeee.StateMachine;
 using tuleeeeee.Utilities;
@@ -21,7 +18,7 @@ public class PlayerRollState : PlayerAbilityState
     private Vector2 rollDirection;
     private Vector2 rollDirectionInput;
 
-    public PlayerRollState(Player player, StateManager stateManager, PlayerDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
+    public PlayerRollState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
     {
 
     }
@@ -34,7 +31,7 @@ public class PlayerRollState : PlayerAbilityState
         player.InputHandler.UseRollInput();
 
         isHolding = true;
-        Movement.CheckIfShouldFlip(xInput);
+      
 
         Time.timeScale = playerData.holdTimeScale;
         startTime = Time.unscaledTime;

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using tuleeeeee.Data;
 using tuleeeeee.StateMachine;
 using UnityEngine;
 
@@ -13,7 +10,7 @@ public class PlayerAbilityState : PlayerState
     protected bool isAbilityDone;
     protected int xInput;
     protected Vector2 moveInput;
-    public PlayerAbilityState(Player player, StateManager stateManager, PlayerDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
+    public PlayerAbilityState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
     {
     }
 
@@ -38,7 +35,7 @@ public class PlayerAbilityState : PlayerState
         if (isAbilityDone)
         {
 
-            stateManager.ChangePlayerState(player.IdleState);
+            stateManager.ChangeState(player.IdleState);
 
         }
     }
