@@ -36,9 +36,9 @@ public class HealthUI : MonoBehaviour
         ClearHealthBar();
 
         int healthHearts = Mathf.CeilToInt(healthEventArgs.healthPercent * 5f);
-        int fullHeart = Mathf.CeilToInt(GameManager.Instance.GetPlayer().PlayerDetails.playerHealthAmount * 100f / 20f);
+        int fullHeart = Mathf.CeilToInt(GameManager.Instance.GetPlayer().PlayerDetails.playerHealthAmount / 20f);
 
-        for (int i = 0; i < healthHearts; i++)
+        for (int i = 0; i < fullHeart; i++)
         {
             GameObject heart = Instantiate((i < healthHearts) ? GameResources.Instance.heartPrefab : GameResources.Instance.emptyHeartPrefab, transform);
 
