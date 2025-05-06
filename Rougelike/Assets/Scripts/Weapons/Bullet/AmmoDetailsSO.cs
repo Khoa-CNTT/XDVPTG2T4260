@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using tuleeeeee.Utilities;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AmmoDetailsSO_", menuName = "Scriptable Objects/Weapons/Ammo Details")]
-public class AmmoDetailsSO : ScriptableObject
+[CreateAssetMenu(fileName = "AmmoDetails_", menuName = "Scriptable Objects/Weapons/Ammo Details")]
+public class AmmoDetailsSO : ScriptableObject   
 {
     #region Header BASIC AMMO DETAILS
     [Space(10)]

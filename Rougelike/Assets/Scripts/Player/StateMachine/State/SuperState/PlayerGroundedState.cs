@@ -13,7 +13,7 @@ public class PlayerGroundedState : PlayerState
 
     protected Vector2 moveInput;
     private bool dashInput;
-    public PlayerGroundedState(Player player, StateManager stateManager, PlayerDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
+    public PlayerGroundedState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
     {
     }
 
@@ -37,7 +37,7 @@ public class PlayerGroundedState : PlayerState
 
         if (moveInput != Vector2.zero && dashInput && player.RollState.CheckIfCanDash())
         {
-            stateManager.ChangePlayerState(player.RollState);
+            stateManager.ChangeState(player.RollState);
         }
     }
 }

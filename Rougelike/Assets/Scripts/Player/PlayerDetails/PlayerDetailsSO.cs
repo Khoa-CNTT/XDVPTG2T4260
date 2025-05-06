@@ -59,27 +59,6 @@ namespace tuleeeeee.Data
         #endregion
         public Sprite playerHandSprite;
 
-        #region Header STATEDETAILS
-        [Header("Move State Details")]
-        #endregion
-        #region Tooltip
-        [Tooltip("Player Movement Velocity")]
-        public float movementVelocity = 10f;
-        #endregion
-        #region Tooltip
-        [Tooltip("Player Roll")]
-        [Header("Dash State")]
-        public float rollCooldown = .4f;
-        public float maxHoldTime = 1f;
-        public float holdTimeScale = 0.25f;
-        public float rollTime = .4f;
-        public float rollVelocity = 15f;
-        public float drag = 10f;
-        public float rollEndYMultiplier = 0.2f;
-        public float distBetweenAfterImages = 0.5f;
-
-        #endregion
-
         #region Validation
 #if UNITY_EDITOR
 

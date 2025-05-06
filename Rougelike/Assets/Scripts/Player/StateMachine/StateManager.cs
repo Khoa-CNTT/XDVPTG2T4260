@@ -4,12 +4,12 @@ namespace tuleeeeee.StateMachine
     {
         public PlayerState CurrentPlayerState { get; private set; }
 
-        public void InitializePlayer(PlayerState stratingState)
+        public void Initialize(PlayerState stratingState)
         {
             CurrentPlayerState = stratingState;
             CurrentPlayerState.Enter();
         }
-        public void ChangePlayerState(PlayerState newState)
+        public void ChangeState(PlayerState newState)
         {
             CurrentPlayerState.Exit();
             CurrentPlayerState = newState;
@@ -18,12 +18,12 @@ namespace tuleeeeee.StateMachine
 
         public EnemyState CurrentEnemyState { get; private set; }
 
-        public void InitializeEnemy(EnemyState stratingState)
+        public void Initialize(EnemyState stratingState)
         {
             CurrentEnemyState = stratingState;
             CurrentEnemyState.Enter();
         }
-        public void ChangeEnemyState(EnemyState newState)
+        public void ChangeState(EnemyState newState)
         {
             CurrentEnemyState.Exit();
             CurrentEnemyState = newState;

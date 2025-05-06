@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: EnemiesBullet
   isPlayerAmmo: 0
-  ammoSprite: {fileID: 21300000, guid: 31255d87a02c51746a5661a9a961b0c1, type: 3}
+  ammoSprite: {fileID: 21300000, guid: a3da18c5e2a3ef84296bb7d0eb5e0f13, type: 3}
   ammoPrefabArray:
-  - {fileID: 3483073856098982742, guid: fe7199c37ff877143a36bc73898b930f, type: 3}
+  - {fileID: 3483073856098982742, guid: c18a02ad21b23d34eaff2159c3436379, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
   ammoChargeTime: 0
   ammoChargeMaterial: {fileID: 0}

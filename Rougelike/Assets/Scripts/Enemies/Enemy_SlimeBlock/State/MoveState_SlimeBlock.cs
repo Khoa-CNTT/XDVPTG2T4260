@@ -94,7 +94,7 @@ public class MoveState_SlimeBlock : EnemyMoveState
 
     private IEnumerator MoveEnemyRoutine()
     {
-        enemy.StateManager.ChangeEnemyState(enemy.MoveState);
+        enemy.StateManager.ChangeState(enemy.MoveState);
 
         while (movementSteps.Count > 0)
         {
@@ -113,7 +113,7 @@ public class MoveState_SlimeBlock : EnemyMoveState
         }
 
         // Path complete
-        enemy.StateManager.ChangeEnemyState(enemy.IdleState);
+        enemy.StateManager.ChangeState(enemy.IdleState);
         moveEnemyRoutine = null;
     }
 }

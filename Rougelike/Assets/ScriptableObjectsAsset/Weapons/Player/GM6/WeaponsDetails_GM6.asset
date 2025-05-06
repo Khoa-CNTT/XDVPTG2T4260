@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1241e788d4f7345bd1d454c5ad6258, type: 3}
+  m_Name: WeaponsDetails_GM6
+  m_EditorClassIdentifier: 
+  weaponName: GM6 Lynx
+  weaponSprite: {fileID: 21300000, guid: 7e70ae1621ea16746be436ae77e38ce9, type: 3}
+  weaponShootPosition: {x: 1.683, y: 0.234, z: 0}
+  weaponCurrentAmmo: {fileID: 11400000, guid: 79ee6f168e7d0e9479fb5b40102db379, type: 2}
+  weaponShootEffect: {fileID: 11400000, guid: 4eb21cc6b5c7d0b45902460a5f998fd1, type: 2}
+  weaponFiringSoundEffect: {fileID: 11400000, guid: 5a3b1ec9c3c73ef429bcb3feea695ec0, type: 2}
+  weaponReloadingSoundEffect: {fileID: 11400000, guid: 4bcd75fa44d34ed489f18aed2b463813, type: 2}
+  hasInfiniteAmmo: 0
+  hasInfiniteClipCapacity: 0
+  weaponClipAmmoCapacity: 6
+  weaponAmmoCapacity: 36
+  weaponFireRate: 1
+  weaponPrechargeTime: 0
+  weaponReloadTime: 1.5

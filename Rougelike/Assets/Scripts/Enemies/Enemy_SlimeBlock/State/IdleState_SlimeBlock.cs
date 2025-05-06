@@ -30,7 +30,7 @@ public class IdleState_SlimeBlock : EnemyIdleState
         base.LogicUpdate();
         if(Time.time >= nextReadyTime)
         {
-            enemy.StateManager.ChangeEnemyState(enemy.MoveState);
+            enemy.StateManager.ChangeState(enemy.MoveState);
             nextReadyTime = Time.time + cooldownTime;
         }
     }

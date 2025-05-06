@@ -19,7 +19,7 @@ public class Enemy : Entity
         IdleState = new IdleState_SlimeBlock(this, StateManager, "isIdle", EnemyDetails, this);
         MoveState = new MoveState_SlimeBlock(this, StateManager, "isMoving", EnemyDetails, this);
 
-        StateManager.InitializeEnemy(MoveState);
+        StateManager.Initialize(MoveState);
     }
 
     public override void Start()

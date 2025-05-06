@@ -1,8 +1,11 @@
 using tuleeeeee.Dungeon;
+using UnityEditor.EditorTools;
+using UnityEngine;
 
 [System.Serializable]
 public class RoomEnemySpawnParameters 
 {
+    [Tooltip("")]
     public DungeonLevelSO dungeonLevel;
     public int minTotalEnemiesToSpawn;
     public int maxTotalEnemiesToSpawn;

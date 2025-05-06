@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1966267047852916880, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: MovementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: e53e976b95724224ca095213aff65059, type: 2}
     - target: {fileID: 3783370326038481740, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       propertyPath: weaponPolygonCollider2D
       value: 
