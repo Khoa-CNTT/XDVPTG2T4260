@@ -21,14 +21,10 @@ MonoBehaviour:
   startingWeapon: {fileID: 11400000, guid: 4973a01863f861b4bb03127fa634cbda, type: 2}
   startingWeaponList:
   - {fileID: 11400000, guid: 4973a01863f861b4bb03127fa634cbda, type: 2}
+  - {fileID: 11400000, guid: 53ac9ff8516fae640a994e71032ef2ee, type: 2}
+  - {fileID: 11400000, guid: 63790414413535a44acf429eb17651dc, type: 2}
+  - {fileID: 11400000, guid: 44bfc2a310725f444990442ff95fb100, type: 2}
+  - {fileID: 11400000, guid: 64643f653d8b54549845eef7aa976146, type: 2}
+  - {fileID: 11400000, guid: c7f316c61bde48f4dbf7c859dfbd9acb, type: 2}
   playerMiniMapIcon: {fileID: 21300000, guid: 871ae475f9d56a44492972d1d864fc2d, type: 3}
   playerHandSprite: {fileID: 21300000, guid: 8e3b099518485564daf941788b854663, type: 3}
-  movementVelocity: 8
-  rollCooldown: 0.2
-  maxHoldTime: 1
-  holdTimeScale: 0.25
-  rollTime: 0.6
-  rollVelocity: 15
-  drag: 10
-  rollEndYMultiplier: 0.2
-  distBetweenAfterImages: 0.5

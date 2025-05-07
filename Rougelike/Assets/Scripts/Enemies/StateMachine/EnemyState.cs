@@ -8,7 +8,7 @@ public class EnemyState
     protected Core Core;
     protected Entity entity;
     protected StateManager stateManager;
-    protected EnemyDetailsSO enemyDetails;
+    protected MovementDetailsSO enemyDetails;
 
 
     protected bool isAnimationFinished;
@@ -16,7 +16,7 @@ public class EnemyState
     public float startTime { get; protected set; }
 
     private string animBoolName;
-    public EnemyState(Entity entity, StateManager stateManager, EnemyDetailsSO EnemyDetails, string animBoolName)
+    public EnemyState(Entity entity, StateManager stateManager, MovementDetailsSO EnemyDetails, string animBoolName)
     {
         this.entity = entity;
         this.stateManager = stateManager;

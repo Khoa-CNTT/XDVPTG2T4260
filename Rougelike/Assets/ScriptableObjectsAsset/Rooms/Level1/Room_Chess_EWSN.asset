@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dd8bdf4118c21408c1d32259af5679, type: 3}
   m_Name: Room_Chess_EWSN
   m_EditorClassIdentifier: 
-  guid: 1372113c15cf0e14f95fb2f16d9c0eeb
-  prefab: {fileID: 8355784810037384008, guid: 0643277561421a943a234d25a682c21a, type: 3}
-  previousPrefab: {fileID: 8355784810037384008, guid: 0643277561421a943a234d25a682c21a, type: 3}
+  guid: 49e874c0729cb7543bcb0099aa5743bb
+  prefab: {fileID: 8355784810037384008, guid: 472c778a12478b54e8a93b7987ce34e6, type: 3}
+  previousPrefab: {fileID: 8355784810037384008, guid: 472c778a12478b54e8a93b7987ce34e6, type: 3}
   battleMusic: {fileID: 11400000, guid: c346fb113d4c49e4aa8a0bb5bb257da3, type: 2}
   ambientMusic: {fileID: 11400000, guid: 57c2c302a1360bc44896c467ffd63a23, type: 2}
   roomNodeType: {fileID: 11400000, guid: 05f820717118e124a8446cb8e6897f3e, type: 2}

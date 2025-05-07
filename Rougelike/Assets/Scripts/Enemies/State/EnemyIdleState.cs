@@ -5,7 +5,7 @@ public class EnemyIdleState : EnemyState
     protected Movement Movement { get => movement != null ? movement : Core.GetCoreComponent(ref movement); }
 
     private Movement movement;
-    public EnemyIdleState(Entity entity, StateManager stateManager, string animBoolName, EnemyDetailsSO enemyDetails) : base(entity, stateManager, enemyDetails, animBoolName)
+    public EnemyIdleState(Entity entity, StateManager stateManager, string animBoolName, MovementDetailsSO enemyDetails) : base(entity, stateManager, enemyDetails, animBoolName)
     {
     }
 

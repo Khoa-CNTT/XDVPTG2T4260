@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundedState
 {
-    public PlayerMoveState(Player player, StateManager stateManager, PlayerDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
+    public PlayerMoveState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
     {
     }
     public override void LogicUpdate()
@@ -14,7 +14,7 @@ public class PlayerMoveState : PlayerGroundedState
 
         if (moveInput == Vector2.zero && !isExitingState)
         {
-            stateManager.ChangePlayerState(player.IdleState);
+            stateManager.ChangeState(player.IdleState);
         }
     }
     public override void PhysicUpdate()
@@ -26,7 +26,7 @@ public class PlayerMoveState : PlayerGroundedState
     }
     private void ApplyMovement(Vector2 direction)
     {
-        Movement.SetVelocity(playerData.movementVelocity, direction);
+        Movement.SetVelocity(player.MoveSpeed, direction);
     }
 
 }

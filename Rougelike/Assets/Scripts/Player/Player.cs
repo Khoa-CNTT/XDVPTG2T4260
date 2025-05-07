@@ -24,7 +24,10 @@ public class Player : MonoBehaviour
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerRollState RollState { get; private set; }
+    public PlayerDeadState DeadState { get; private set; }
     public PlayerDetailsSO PlayerDetails { get; private set; }
+
+    public MovementDetailsSO MovementDetails;
 
     #region Components
     public Core Core { get; private set; }
@@ -33,7 +36,7 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     #endregion
 
-    private float moveSpeed;
+    public float MoveSpeed { get; private set; }
     private bool isPlayerMovementDisabled;
 
     #region EVENTS
@@ -52,11 +55,11 @@ public class Player : MonoBehaviour
     public List<Weapon> weaponList = new List<Weapon>();
     private void OnEnable()
     {
-
+        HealthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
     }
     private void OnDisable()
     {
-
+        HealthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
     }
     private void Awake()
     {
@@ -77,7 +80,7 @@ public class Player : MonoBehaviour
         WeaponReloadedEvent = GetComponent<WeaponReloadedEvent>();
         StopReloadWeaponEvent = GetComponent<StopReloadWeaponEvent>();
         HealthEvent = GetComponentInChildren<HealthEvent>();
-        DestroyedEvent = GetComponent<DestroyedEvent>();    
+        DestroyedEvent = GetComponent<DestroyedEvent>();
         #endregion
 
     }
@@ -99,19 +102,20 @@ public class Player : MonoBehaviour
     {
         this.PlayerDetails = playerDetailsSO;
 
-        moveSpeed = PlayerDetails.movementVelocity;
+        MoveSpeed = MovementDetails.GetMoveSpeed();
 
         SetPlayerHealth();
-        
+
         CreatePlayerStartingWeapon();
 
         //  SetPlayerAnimationSpeed();
 
-        IdleState = new PlayerIdleState(this, StateManager, PlayerDetails, "isIdle");
-        MoveState = new PlayerMoveState(this, StateManager, PlayerDetails, "isMoving");
-        RollState = new PlayerRollState(this, StateManager, PlayerDetails, "isRolling");
+        IdleState = new PlayerIdleState(this, StateManager, MovementDetails, "isIdle");
+        MoveState = new PlayerMoveState(this, StateManager, MovementDetails, "isMoving");
+        RollState = new PlayerRollState(this, StateManager, MovementDetails, "isRolling");
+        DeadState = new PlayerDeadState(this, StateManager, MovementDetails, "isDead");
 
-        StateManager.InitializePlayer(IdleState);
+        StateManager.Initialize(IdleState);
     }
 
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
@@ -119,7 +123,7 @@ public class Player : MonoBehaviour
 
         if (healthEventArgs.healthAmount <= 0f)
         {
-            DestroyedEvent.CallDestroyedEvent(true, 0);
+            StateManager.ChangeState(DeadState);
         }
     }
 
@@ -130,7 +134,7 @@ public class Player : MonoBehaviour
 
     private void SetPlayerAnimationSpeed()
     {
-        Animator.speed = moveSpeed / Settings.baseSpeedForEnemyAnimation;
+        Animator.speed = MoveSpeed / Settings.baseSpeedForEnemyAnimation;
     }
 
     private void CreatePlayerStartingWeapon()
@@ -176,6 +180,9 @@ public class Player : MonoBehaviour
     public void DisablePlayer()
     {
         isPlayerMovementDisabled = true;
-        StateManager.ChangePlayerState(IdleState);
+        StateManager.ChangeState(IdleState);
     }
+    public void AnimationTrigger() => StateManager.CurrentPlayerState.AnimationTrigger();
+
+    public void AnimationFinishedTrigger() => StateManager.CurrentPlayerState.AnimationFinishedTrigger();
 }

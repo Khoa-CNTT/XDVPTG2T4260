@@ -24,18 +24,70 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 649478422258136249, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 649478422258136249, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionId
+      value: e7b8cc87-ddc1-45c6-a0ae-d0c9f340e392
+      objectReference: {fileID: 0}
+    - target: {fileID: 649478422258136249, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_ActionEvents.Array.data[7].m_ActionName
+      value: Gameplay/Reload[/Keyboard/r]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066531631038604243, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Size.x
+      value: 1.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066531631038604243, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6875
+      objectReference: {fileID: 0}
     - target: {fileID: 1066531631038604243, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: abbe40c4d6a803f42a7c4f53404a484d, type: 3}
     - target: {fileID: 1066531631038604243, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1066531631038604243, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68b984ff28336d04ab31e14ee441a9fe, type: 2}
+    - target: {fileID: 1966267047852916880, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: MovementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: e53e976b95724224ca095213aff65059, type: 2}
     - target: {fileID: 3783370326038481740, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       propertyPath: weaponPolygonCollider2D
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3827191352404103919, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cfcc1281a910e044bfbbd9698057687, type: 2}
+    - target: {fileID: 3893130080932212871, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c5fdb3a59873ac244b8b73d9c1cfe26b, type: 2}
+    - target: {fileID: 4381202006596903637, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 224095172, guid: 65f4d1cb11ff3864f886667ad5590786, type: 3}
+    - target: {fileID: 4381202006596903637, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381202006596903637, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cfcc1281a910e044bfbbd9698057687, type: 2}
+    - target: {fileID: 4673050319879558288, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cfcc1281a910e044bfbbd9698057687, type: 2}
     - target: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       propertyPath: m_Name
       value: The Robot
@@ -80,8 +132,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4988401145682593029, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -89,8 +140,14 @@ PrefabInstance:
       insertIndex: 6
       addedObject: {fileID: 3256701429790698341}
     - targetCorrespondingSourceObject: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
-      insertIndex: -1
+      insertIndex: 7
       addedObject: {fileID: 5544904611251489766}
+    - targetCorrespondingSourceObject: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1197524594124887522}
+    - targetCorrespondingSourceObject: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6557476301741451389}
     - targetCorrespondingSourceObject: {fileID: 7533541550117226655, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3019662656132761779}
@@ -186,6 +243,30 @@ CircleCollider2D:
   m_Offset: {x: 0.08, y: 0.6}
   serializedVersion: 2
   m_Radius: 0.55
+--- !u!114 &1197524594124887522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703595234823235495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd38661de21bda4fa14a6e4b1f0b648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6557476301741451389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703595234823235495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715a204348e4dca449bbcde308c396e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8229629588005338165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7533541550117226655, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
