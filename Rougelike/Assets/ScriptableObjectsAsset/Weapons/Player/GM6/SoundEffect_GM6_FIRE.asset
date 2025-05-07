@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd420ecbaaa50943a9c79c82b051d7b, type: 3}
   m_Name: SoundEffect_GM6_FIRE
   m_EditorClassIdentifier: 
-  soundEffectName: 
-  soundPrefab: {fileID: 0}
-  soundEffectClip: {fileID: 0}
+  soundEffectName: GM6 Fire
+  soundPrefab: {fileID: 2649997097972954457, guid: dad9aba5b623266488ac4feb891e69c6, type: 3}
+  soundEffectClip: {fileID: 8300000, guid: c5d39e077e05af94e8f4af8d2125ce24, type: 3}
   soundEffectPitchRandomVariationMin: 0.8
   soundEffectPitchRandomVariationMax: 1.2
   soundEffectVolume: 1

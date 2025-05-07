@@ -15,11 +15,11 @@ public class Entity : MonoBehaviour
     public Core Core { get; private set; }
     public StateManager StateManager { get; private set; }
 
-    public EnemyDetailsSO EnemyDetails;
+    public EnemyDetailsSO EnemyDetails { get; private set; }
+    public MovementDetailsSO MovementDetails;
 
     private FireWeapon fireWeapon;
     private MaterializeEffect materializeEffect;
-
 
     #region COMPONENTS
     public Rigidbody2D RB { get; private set; }
@@ -39,6 +39,8 @@ public class Entity : MonoBehaviour
     public StopReloadWeaponEvent StopReloadWeaponEvent { get; private set; }
     public HealthEvent HealthEvent { get; private set; }
     #endregion
+
+    public float MoveSpeed { get; private set; }    
 
     public int updateFrameNumber = 1;
     private List<Vector2Int> surroundingPositionList = new List<Vector2Int>();
@@ -92,12 +94,13 @@ public class Entity : MonoBehaviour
     {
         this.EnemyDetails = enemyDetails;
 
+        MoveSpeed = MovementDetails.GetMoveSpeed();
+
         SetUpdateFrameNumber(enemySpawnNumber % Settings.targetFrameRateToSpreadPathfindingOver);
 
         SetEnemyStartingHealth(dungeonLevel);
 
         SetEnemyStartingWeapon();
-
 
         StartCoroutine(MaterializeEnemy());
 

@@ -16,8 +16,8 @@ public class Enemy : Entity
     {
         base.EnemyInitialization(enemyDetails, enemySpawnNumber, dungeonLevel, materialize);
 
-        IdleState = new IdleState_SlimeBlock(this, StateManager, "isIdle", EnemyDetails, this);
-        MoveState = new MoveState_SlimeBlock(this, StateManager, "isMoving", EnemyDetails, this);
+        IdleState = new IdleState_SlimeBlock(this, StateManager, "isIdle", MovementDetails, this);
+        MoveState = new MoveState_SlimeBlock(this, StateManager, "isMoving", MovementDetails, this);
 
         StateManager.Initialize(MoveState);
     }

@@ -9,7 +9,7 @@ public class IdleState_SlimeBlock : EnemyIdleState
 
     public float cooldownTime = 2f; // cooldown duration in seconds
     private float nextReadyTime = 0f;
-    public IdleState_SlimeBlock(Entity entity, StateManager stateManager, string animBoolName, EnemyDetailsSO enemyDetails, Enemy enemy) : base(entity, stateManager, animBoolName, enemyDetails)
+    public IdleState_SlimeBlock(Entity entity, StateManager stateManager, string animBoolName, MovementDetailsSO enemyDetails, Enemy enemy) : base(entity, stateManager, animBoolName, enemyDetails)
     {
         this.enemy = enemy;
     }

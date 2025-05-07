@@ -26,7 +26,7 @@ public class PlayerMoveState : PlayerGroundedState
     }
     private void ApplyMovement(Vector2 direction)
     {
-        Movement.SetVelocity(playerData.movementVelocity, direction);
+        Movement.SetVelocity(player.MoveSpeed, direction);
     }
 
 }

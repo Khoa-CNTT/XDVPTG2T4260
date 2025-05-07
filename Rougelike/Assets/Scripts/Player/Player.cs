@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public Animator Animator { get; private set; }
     #endregion
 
-    private float moveSpeed;
+    public float MoveSpeed { get; private set; }
     private bool isPlayerMovementDisabled;
 
     #region EVENTS
@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
     {
         this.PlayerDetails = playerDetailsSO;
 
-        moveSpeed = MovementDetails.movementVelocity;
+        MoveSpeed = MovementDetails.GetMoveSpeed();
 
         SetPlayerHealth();
 
@@ -134,7 +134,7 @@ public class Player : MonoBehaviour
 
     private void SetPlayerAnimationSpeed()
     {
-        Animator.speed = moveSpeed / Settings.baseSpeedForEnemyAnimation;
+        Animator.speed = MoveSpeed / Settings.baseSpeedForEnemyAnimation;
     }
 
     private void CreatePlayerStartingWeapon()

@@ -8,6 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1239987508507978852, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: MovementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 4892f5396ffb63548afc77414ca8dbf1, type: 2}
+    - target: {fileID: 256909772039332961, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0188ef961e4c3334f95e04dd8a67ecd0, type: 2}
+    - target: {fileID: 1563625077002727608, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68b984ff28336d04ab31e14ee441a9fe, type: 2}
+    - target: {fileID: 2685056529746545630, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685056529746545630, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 644562283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2685056529746545630, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0188ef961e4c3334f95e04dd8a67ecd0, type: 2}
     - target: {fileID: 4580688506964885440, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
       propertyPath: m_Mass
       value: 400
@@ -16,6 +40,10 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6733737791801124664, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0188ef961e4c3334f95e04dd8a67ecd0, type: 2}
     - target: {fileID: 7769766291116533022, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -60,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_SlimeBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 9199441403918696554, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: dc41e2ce4d5acbc48951523157b63c48, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

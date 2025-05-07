@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1239987508507978852, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
+      propertyPath: MovementDetails
+      value: 
+      objectReference: {fileID: 11400000, guid: 4892f5396ffb63548afc77414ca8dbf1, type: 2}
     - target: {fileID: 256909772039332961, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -74,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8628395180251479479, guid: f12c983d36234fc48942fd343b2ee4b9, type: 3}
       propertyPath: m_Name
-      value: Enemy_SlimeBlock
+      value: Enemy_SlimeBlock_Purple
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,7 +7,7 @@ public class EnemyMoveState : EnemyState
 
     private Movement movement;
 
-    public EnemyMoveState(Entity entity, StateManager stateManager, string animBoolName, EnemyDetailsSO enemyDetails) : base(entity, stateManager, enemyDetails, animBoolName)
+    public EnemyMoveState(Entity entity, StateManager stateManager, string animBoolName, MovementDetailsSO enemyDetails) : base(entity, stateManager, enemyDetails, animBoolName)
     {
     }
 

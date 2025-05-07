@@ -11,7 +11,8 @@ public class MovementDetailsSO : ScriptableObject
     #region Tooltip
     [Tooltip("Player Movement Velocity")]
     #endregion
-    public float movementVelocity = 10f;
+    public float minMoveSpeed = 1.0f;
+    public float maxMoveSpeed = 2.0f;
     #region Tooltip
     [Tooltip("Player Roll")]
     [Header("Roll Details")]
@@ -24,4 +25,16 @@ public class MovementDetailsSO : ScriptableObject
     public float drag = 10f;
     public float rollEndYMultiplier = 0.2f;
     public float distBetweenAfterImages = 0.5f;
+
+    public float GetMoveSpeed()
+    {
+        if (minMoveSpeed == maxMoveSpeed)
+        {
+            return minMoveSpeed;
+        }
+        else
+        {
+            return Random.Range(minMoveSpeed, maxMoveSpeed);
+        }
+    }
 }

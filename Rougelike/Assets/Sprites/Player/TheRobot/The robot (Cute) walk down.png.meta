@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 483baeff8c446014fb37a93c1c24ea80
-      internalID: 1844994582
+      spriteID: 37f9da32e7f2adf41a8e651f9f4ed24c
+      internalID: 557605213
       vertices: []
       indices: 
       edges: []
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0255f305958bd34f8c82a3dc03ea8be
-      internalID: 834091435
+      spriteID: 0b2e9aa0267fe5a4ab27db655c69902f
+      internalID: -2093719211
       vertices: []
       indices: 
       edges: []
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e85c4cad9572754baa1960f6359f32f
-      internalID: 649035281
+      spriteID: 4de5bc76953d18f4c9b309a4764f3249
+      internalID: 1212316230
       vertices: []
       indices: 
       edges: []
@@ -174,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 601938cf95334434b84142e560288e15
-      internalID: 785290150
+      spriteID: 2f4c579c555325044a337a2463b8e831
+      internalID: 535697405
       vertices: []
       indices: 
       edges: []
@@ -195,8 +195,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 171bee1a7791c0b4fa5f040bf12bddd9
-      internalID: -8342250
+      spriteID: eb8a37d003115db4ab6144ae7c9cfd4a
+      internalID: -1862686445
       vertices: []
       indices: 
       edges: []
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61bb6412254b8a14c85243b27efa347f
-      internalID: -1360007945
+      spriteID: 67ce8f1ad3643f2488756c8c440ee29b
+      internalID: 1207571431
       vertices: []
       indices: 
       edges: []
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      The robot (Cute) walk down_0: 1844994582
-      The robot (Cute) walk down_1: 834091435
-      The robot (Cute) walk down_2: 649035281
-      The robot (Cute) walk down_3: 785290150
-      The robot (Cute) walk down_4: -8342250
-      The robot (Cute) walk down_5: -1360007945
+      The robot (Cute) walk down_0: 557605213
+      The robot (Cute) walk down_1: -2093719211
+      The robot (Cute) walk down_2: 1212316230
+      The robot (Cute) walk down_3: 535697405
+      The robot (Cute) walk down_4: -1862686445
+      The robot (Cute) walk down_5: 1207571431
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

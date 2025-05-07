@@ -18,20 +18,23 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
     private Room currentRoom;
     private RoomEnemySpawnParameters roomEnemySpawnParameters;
 
-    private void OnEnable(){
+    private void OnEnable()
+    {
         OnRoomChanged += StaticEventHandler_OnRoomChanged;
     }
-    private void OnDisable(){
+    private void OnDisable()
+    {
         OnRoomChanged -= StaticEventHandler_OnRoomChanged;
     }
 
-    private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs){
+    private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
+    {
         enemiesSpawedSoFar = 0;
         currentEnemyCount = 0;
 
         currentRoom = roomChangedEventArgs.room;
 
-        //MusicManager.Instance.PlayMusic(currentRoom.ambientMusic, 0.2f, 2f);
+        MusicManager.Instance.PlayMusic(currentRoom.ambientMusic, 0.2f, 2f);
 
         if (currentRoom.roomNodeType.isCorridorEW || currentRoom.roomNodeType.isCorridorNS || currentRoom.roomNodeType.isEntrance) return;
         if (currentRoom.isClearedOfEnemies) return;
@@ -40,7 +43,8 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
         enemiesToSpawn = currentRoom.GetNumberOfEnemiesToSpawn(currentDungeonLevel);
         roomEnemySpawnParameters = currentRoom.GetRoomEnemySpawnParameters(currentDungeonLevel);
 
-        if (enemiesToSpawn == 0){
+        if (enemiesToSpawn == 0)
+        {
             currentRoom.isClearedOfEnemies = true;
             return;
         }
@@ -49,7 +53,7 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
 
         totalFirstWave = roomEnemySpawnParameters.totalFirstWave;
 
-        //MusicManager.Instance.PlayMusic(currentRoom.battleMusic, 0.2f, 0.5f);
+        MusicManager.Instance.PlayMusic(currentRoom.battleMusic, 0.2f, 0.5f);
 
         currentRoom.instantiatedRoom.LockDoors();
 
@@ -57,36 +61,46 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
 
     }
 
-    private void SpawnEnemies(){
+    private void SpawnEnemies()
+    {
 
-        if(GameManager.Instance.gameState == GameState.bossStage){
+        if (GameManager.Instance.gameState == GameState.bossStage)
+        {
             GameManager.Instance.previousGameState = GameState.bossStage;
             GameManager.Instance.gameState = GameState.engagingBoss;
         }
-        else if (GameManager.Instance.gameState == GameState.playingLevel){
+        else if (GameManager.Instance.gameState == GameState.playingLevel)
+        {
             GameManager.Instance.previousGameState = GameState.playingLevel;
             GameManager.Instance.gameState = GameState.engagingEnemies;
         }
-         
+
         StartCoroutine(SpawnEnemiesRoutine());
     }
 
-    private IEnumerator SpawnEnemiesRoutine(){
+    private IEnumerator SpawnEnemiesRoutine()
+    {
         Grid grid = currentRoom.instantiatedRoom.grid;
 
         RandomSpawnableObject<EnemyDetailsSO> randomEnemyHelperClass = new RandomSpawnableObject<EnemyDetailsSO>(currentRoom.enemiesByLevelList);
 
-        if (currentRoom.spawnPositionArray.Length > 0){
-            for (int i = 0; i < enemiesToSpawn; i++){
-                while (currentEnemyCount >= enemyMaxConcurrentSpawnNumber || (currentEnemyCount > 0 && enemiesSpawedSoFar == totalFirstWave)){
+        if (currentRoom.spawnPositionArray.Length > 0)
+        {
+            for (int i = 0; i < enemiesToSpawn; i++)
+            {
+                while (currentEnemyCount >= enemyMaxConcurrentSpawnNumber || (currentEnemyCount > 0 && enemiesSpawedSoFar == totalFirstWave))
+                {
                     yield return null;
                 }
 
-                Vector3Int cellPosition = (Vector3Int) currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Length)];
+                Vector3Int cellPosition = (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Length)];
 
-                if(enemiesSpawedSoFar >= totalFirstWave){
+                if (enemiesSpawedSoFar >= totalFirstWave)
+                {
                     CreateEnemy(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition), true);
-                } else {
+                }
+                else
+                {
                     CreateEnemy(randomEnemyHelperClass.GetItem(), grid.CellToWorld(cellPosition), false);
                 }
 
@@ -95,15 +109,18 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
         }
     }
 
-    private float GetEnemySpawnInterval(){
+    private float GetEnemySpawnInterval()
+    {
         return Random.Range(roomEnemySpawnParameters.minSpawnInterval, roomEnemySpawnParameters.maxSpawnInterval);
     }
 
-    private int GetConcurrentEnemies(){
+    private int GetConcurrentEnemies()
+    {
         return Random.Range(roomEnemySpawnParameters.minConcurrentEnemies, roomEnemySpawnParameters.maxConcurrentEnemies);
     }
 
-    private void CreateEnemy(EnemyDetailsSO enemyDetails, Vector3 position, bool materialize){
+    private void CreateEnemy(EnemyDetailsSO enemyDetails, Vector3 position, bool materialize)
+    {
 
         enemiesSpawedSoFar++;
         currentEnemyCount++;
@@ -122,21 +139,25 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
 
     }
 
-    private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs){
+    private void Enemy_OnDestroyed(DestroyedEvent destroyedEvent, DestroyedEventArgs destroyedEventArgs)
+    {
         destroyedEvent.OnDestroyed -= Enemy_OnDestroyed;
 
         currentEnemyCount--;
 
         StaticEventHandler.CallPointScoredEvent(destroyedEventArgs.points);
 
-        if (currentEnemyCount <= 0 && enemiesSpawedSoFar == enemiesToSpawn){
+        if (currentEnemyCount <= 0 && enemiesSpawedSoFar == enemiesToSpawn)
+        {
             currentRoom.isClearedOfEnemies = true;
 
-            if (GameManager.Instance.gameState == GameState.engagingEnemies){
+            if (GameManager.Instance.gameState == GameState.engagingEnemies)
+            {
                 GameManager.Instance.previousGameState = GameState.engagingEnemies;
                 GameManager.Instance.gameState = GameState.playingLevel;
             }
-            else if (GameManager.Instance.gameState == GameState.engagingBoss){
+            else if (GameManager.Instance.gameState == GameState.engagingBoss)
+            {
                 GameManager.Instance.previousGameState = GameState.engagingBoss;
                 GameManager.Instance.gameState = GameState.playingLevel;
             }

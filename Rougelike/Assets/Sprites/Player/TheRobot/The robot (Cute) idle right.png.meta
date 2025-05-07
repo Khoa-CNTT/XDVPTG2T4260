@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 683cde645f8456148ae082523c455fbe
-      internalID: 225641640
+      spriteID: 40c8a7e88ceb559479785c48dfbf94fb
+      internalID: 461473250
       vertices: []
       indices: 
       edges: []
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12fc74302fcb4b548af3e0f87dcdfccb
-      internalID: -1917383064
+      spriteID: 8d34d5f4513cdbc4693ab3aca3a6c35b
+      internalID: 1260866601
       vertices: []
       indices: 
       edges: []
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a737701e3822c6429feba4751e5c47c
-      internalID: -1589037295
+      spriteID: a22d7f4d2b32ee5488e911c66f2c341c
+      internalID: -200716018
       vertices: []
       indices: 
       edges: []
@@ -174,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1268aea72624e354da34a048aa9c9112
-      internalID: -1938634500
+      spriteID: ff7bab9a4e478c4498d6f77026b2c055
+      internalID: -1474847912
       vertices: []
       indices: 
       edges: []
@@ -191,10 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      The robot (Cute) idle right_0: 225641640
-      The robot (Cute) idle right_1: -1917383064
-      The robot (Cute) idle right_2: -1589037295
-      The robot (Cute) idle right_3: -1938634500
+      The robot (Cute) idle right_0: 461473250
+      The robot (Cute) idle right_1: 1260866601
+      The robot (Cute) idle right_2: -200716018
+      The robot (Cute) idle right_3: -1474847912
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

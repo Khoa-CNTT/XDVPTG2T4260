@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 833da706db90c7540a53d0283ae708c5
-      internalID: 1883495470
+      spriteID: 349437a7d9517124d9dcbb9003849afd
+      internalID: -1280652717
       vertices: []
       indices: 
       edges: []
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5cd565d1663f694391703e227cee9ec
-      internalID: 842932486
+      spriteID: 00aee309b02452d4e9dc033bb5b8bdf3
+      internalID: 1930897286
       vertices: []
       indices: 
       edges: []
@@ -149,8 +149,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      The robot (Cute) idle up right_0: 1883495470
-      The robot (Cute) idle up right_1: 842932486
+      The robot (Cute) idle up right_0: -1280652717
+      The robot (Cute) idle up right_1: 1930897286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,7 +10,7 @@ public class MoveState_SlimeBlock : EnemyMoveState
 {
     private Stack<Vector3> movementSteps;
 
-    private float moveSpeed = 1f;
+    private float moveSpeed;
     private float chaseDistance;
     private bool isChasing = false;
 
@@ -27,10 +27,11 @@ public class MoveState_SlimeBlock : EnemyMoveState
     private WaitForFixedUpdate waitForFixedUpdate;
 
     private Enemy enemy;
-    public MoveState_SlimeBlock(Entity entity, StateManager stateManager, string animBoolName, EnemyDetailsSO enemyDetails, Enemy enemy) :
+    public MoveState_SlimeBlock(Entity entity, StateManager stateManager, string animBoolName, MovementDetailsSO enemyDetails, Enemy enemy) :
         base(entity, stateManager, animBoolName, enemyDetails)
     {
         this.enemy = enemy;
+        moveSpeed = entity.MoveSpeed;
     }
 
     public override void Enter()
@@ -38,8 +39,7 @@ public class MoveState_SlimeBlock : EnemyMoveState
         base.Enter();
         waitForFixedUpdate = new WaitForFixedUpdate();
         playerReferencePosition = GameManager.Instance.GetPlayer().GetPlayerPosition();
-        chaseDistance = enemyDetails.chaseDistance;
-        moveSpeed = 3f;
+        chaseDistance = entity.EnemyDetails.chaseDistance;
     }
 
     public override void Exit()
