@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09930ba9f5d1cd4696a7df815e5ad95, type: 3}
+  m_Name: AmmoDetails_C100
+  m_EditorClassIdentifier: 
+  ammoName: M4A1
+  isPlayerAmmo: 1
+  ammoSprite: {fileID: 21300000, guid: 235148474781139408d89a8a111ed234, type: 3}
+  ammoPrefabArray:
+  - {fileID: 3483073856098982742, guid: 7f70ebe5bb389cc4ab6e6399a59d990f, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: c92da765fb7cca448a71d99956fe00bd, type: 2}
+  ammoChargeTime: 0
+  ammoChargeMaterial: {fileID: 0}
+  ammoHitEffect: {fileID: 11400000, guid: 6d4d0cdcd127afa4ca81cf1aaab88a63, type: 2}
+  ammoDamage: 30
+  ammoSpeedMin: 20
+  ammoSpeedMax: 23
+  ammoRange: 1000
+  ammoRotationSpeed: 1
+  ammoSpreadMin: 1
+  ammoSpreadMax: 4
+  ammoSpawnAmountMin: 1
+  ammoSpawnAmountMax: 1
+  ammoSpawnIntervalMin: 0
+  ammoSpawnIntervalMax: 0
+  isAmmoTrail: 0
+  ammoTrailTime: 3
+  ammoTrailMaterial: {fileID: 0}
+  ammoTrailStartWidth: 0
+  ammoTrailEndWidth: 0
