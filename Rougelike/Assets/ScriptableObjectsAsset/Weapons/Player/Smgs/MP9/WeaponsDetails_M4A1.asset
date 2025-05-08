@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1241e788d4f7345bd1d454c5ad6258, type: 3}
   m_Name: WeaponsDetails_M4A1
   m_EditorClassIdentifier: 
-  weaponName: AK47
-  weaponSprite: {fileID: 21300000, guid: 2a9fe576592adb6458b203693244effb, type: 3}
+  weaponName: MP9
+  weaponSprite: {fileID: 21300000, guid: ef23198c81d2b3546b5095a64ce87d31, type: 3}
   weaponShootPosition: {x: 1.16, y: 0.113, z: 0}
-  weaponCurrentAmmo: {fileID: 11400000, guid: 5ecfb3e4bbd5459488d662de4915df42, type: 2}
+  weaponCurrentAmmo: {fileID: 11400000, guid: 243f67b7dc28b3a4b90b76647fef2c30, type: 2}
   weaponShootEffect: {fileID: 11400000, guid: 06a8d9409e0bca742ace47cbd16d2397, type: 2}
   weaponFiringSoundEffect: {fileID: 11400000, guid: 4d6410b08da47b74a9b0445b603f225e, type: 2}
   weaponReloadingSoundEffect: {fileID: 11400000, guid: 993784a365a89704b9d94ebab4804335, type: 2}
