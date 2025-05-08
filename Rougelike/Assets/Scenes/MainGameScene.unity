@@ -226,18 +226,24 @@ MonoBehaviour:
   - prefab: {fileID: 3483073856098982742, guid: ca48a55ad12cf824e849073518eeaf5a, type: 3}
     poolSize: 10
     componentType: 0
-  - prefab: {fileID: 2649997097972954457, guid: dad9aba5b623266488ac4feb891e69c6, type: 3}
-    poolSize: 10
-    componentType: 3
-  - prefab: {fileID: 5973180252224680876, guid: 735586ebad1766747addbe2ccba63264, type: 3}
-    poolSize: 10
-    componentType: 1
-  - prefab: {fileID: 2905535786968711655, guid: d948f932dd1b19346b934ba7b1ab38ea, type: 3}
-    poolSize: 10
-    componentType: 2
   - prefab: {fileID: 3483073856098982742, guid: ab525c9e7cdc33f42911c3b5499c0d9d, type: 3}
     poolSize: 10
     componentType: 0
+  - prefab: {fileID: 3483073856098982742, guid: ab525c9e7cdc33f42911c3b5499c0d9d, type: 3}
+    poolSize: 10
+    componentType: 0
+  - prefab: {fileID: 2649997097972954457, guid: dad9aba5b623266488ac4feb891e69c6, type: 3}
+    poolSize: 10
+    componentType: 3
+  - prefab: {fileID: 2905535786968711655, guid: d948f932dd1b19346b934ba7b1ab38ea, type: 3}
+    poolSize: 10
+    componentType: 2
+  - prefab: {fileID: 2905535786968711655, guid: 181154bc723c2c74aaf79c229df2cf75, type: 3}
+    poolSize: 10
+    componentType: 1
+  - prefab: {fileID: 5973180252224680876, guid: 735586ebad1766747addbe2ccba63264, type: 3}
+    poolSize: 10
+    componentType: 1
 --- !u!4 &255057283
 Transform:
   m_ObjectHideFlags: 0
@@ -619,9 +625,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.023645744
-    width: 1.0005078
-    height: 0.952816
+    y: 0.042789225
+    width: 1
+    height: 0.9146197
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

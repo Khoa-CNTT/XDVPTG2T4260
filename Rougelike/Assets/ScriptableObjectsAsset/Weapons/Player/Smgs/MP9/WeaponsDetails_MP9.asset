@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1241e788d4f7345bd1d454c5ad6258, type: 3}
+  m_Name: WeaponsDetails_MP9
+  m_EditorClassIdentifier: 
+  weaponName: MP9
+  weaponSprite: {fileID: 21300000, guid: ef23198c81d2b3546b5095a64ce87d31, type: 3}
+  weaponShootPosition: {x: 1.16, y: 0.113, z: 0}
+  weaponCurrentAmmo: {fileID: 11400000, guid: 243f67b7dc28b3a4b90b76647fef2c30, type: 2}
+  weaponShootEffect: {fileID: 11400000, guid: 319bd04301a1220489bc47ab081f23f2, type: 2}
+  weaponFiringSoundEffect: {fileID: 11400000, guid: 12e843a781b2d334e830085e1649b8a2, type: 2}
+  weaponReloadingSoundEffect: {fileID: 11400000, guid: c57cbe187197f9b4b9a21c51e9c1bf5d, type: 2}
+  hasInfiniteAmmo: 0
+  hasInfiniteClipCapacity: 0
+  weaponClipAmmoCapacity: 30
+  weaponAmmoCapacity: 500
+  weaponFireRate: 0.11
+  weaponPrechargeTime: 0
+  weaponReloadTime: 0.6
