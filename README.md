@@ -61,12 +61,14 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 **duc-oizz25**  
 >Project Manager | Game Developer | Level Design
 
-**anhkhoatran00**  
->Game Designer | Artist | UI/UX Designer
-
 **TranHuuMinhDuc**  
 >Game Developer | Level Design
 
+**anhkhoatran00**  
+>Artist | UI/UX Designer
+
+**ThaiPhuocTrong**
+>Document writer
 ---
 
 ## 🗝️ Final Note
