@@ -56,19 +56,16 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 ## 🧑‍💻 Author
 
 **Tuleeeeeeee**  
->Game Developer | Designer | Programmer | Artist 
+>Game Developer | Designer | Artist 
 
 **duc-oizz25**  
->Project Manager | Game Developer | Programmer | Level Design
-
-**tpt133**  
->Sound Designer  
+>Project Manager | Game Developer | Level Design
 
 **anhkhoatran00**  
 >Game Designer | Artist | UI/UX Designer
 
 **TranHuuMinhDuc**  
->Game Developer | Programmer  | Level Design
+>Game Developer | Level Design
 
 ---
 
