@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using tuleeeeee.Enums;
 using tuleeeeee.Misc;
 using tuleeeeee.Utilities;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
     {
         public GameObject prefab;
         public int poolSize;
-        public string componentType;
+        public ComponentType componentType;
     }
 
     private void Start()
@@ -34,7 +35,7 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
 
     }
 
-    private void CreatePool(GameObject prefab, int poolSize, string componentType)
+    private void CreatePool(GameObject prefab, int poolSize, ComponentType componentType)
     {
         int poolKey = prefab.GetInstanceID();
 
@@ -54,7 +55,7 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
 
                 newObject.SetActive(false);
 
-                poolDictionary[poolKey].Enqueue(newObject.GetComponent(Type.GetType(componentType)));
+                poolDictionary[poolKey].Enqueue(newObject.GetComponent(Type.GetType(componentType.ToString())));
             }
         }
     }

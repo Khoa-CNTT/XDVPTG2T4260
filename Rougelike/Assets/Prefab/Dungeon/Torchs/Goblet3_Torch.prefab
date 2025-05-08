@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2006707288657792588
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -989209409498204925, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e7cd000002ef67c4aba7e840f77492e6, type: 3}
+    - target: {fileID: 1179784674345690787, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681942144687070276, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_ShadowIntensityEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001894180386000637, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1450164362, guid: 9c277e55a426a1547a3a5e896b756008, type: 3}
+    - target: {fileID: 6097452334020168151, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_Name
+      value: Goblet3_Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223864437879502133, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b773fad0b40bac24d8867333e442b51f, type: 2}
+    - target: {fileID: 7608588588160605547, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608588588160605547, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7608588588160605547, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8699848601989322844, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}

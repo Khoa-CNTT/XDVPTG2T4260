@@ -77,6 +77,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 224095172, guid: 65f4d1cb11ff3864f886667ad5590786, type: 3}
     - target: {fileID: 4381202006596903637, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381202006596903637, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381202006596903637, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381202006596903637, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -148,6 +160,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6557476301741451389}
+    - targetCorrespondingSourceObject: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5897352576507343769}
     - targetCorrespondingSourceObject: {fileID: 7533541550117226655, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3019662656132761779}
@@ -267,6 +282,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715a204348e4dca449bbcde308c396e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5897352576507343769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703595234823235495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000654694747ff5c24b49df87496b3d6b264f17a400
+  m_ShapePath:
+  - {x: -0.5, y: 0, z: 0}
+  - {x: -0.5, y: 1.3, z: 0}
+  - {x: 0.5, y: 1.3, z: 0}
+  - {x: 0.5, y: 0, z: 0}
+  m_ShapePathHash: -148821259
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 38482
+  m_LocalBounds:
+    m_Center: {x: 0, y: 0.65, z: 0}
+    m_Extent: {x: 0.5, y: 0.65, z: 0}
 --- !u!1 &8229629588005338165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7533541550117226655, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}

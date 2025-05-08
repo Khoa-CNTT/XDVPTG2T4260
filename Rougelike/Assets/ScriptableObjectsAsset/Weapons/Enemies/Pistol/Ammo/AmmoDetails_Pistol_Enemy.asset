@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoName: EnemiesBullet
   isPlayerAmmo: 0
-  ammoSprite: {fileID: 21300000, guid: a3da18c5e2a3ef84296bb7d0eb5e0f13, type: 3}
+  ammoSprite: {fileID: 21300000, guid: 7ac050bc14274094bb72fcf89b5a5bd4, type: 3}
   ammoPrefabArray:
-  - {fileID: 3483073856098982742, guid: c18a02ad21b23d34eaff2159c3436379, type: 3}
+  - {fileID: 3483073856098982742, guid: ab525c9e7cdc33f42911c3b5499c0d9d, type: 3}
   ammoMaterial: {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
   ammoChargeTime: 0
   ammoChargeMaterial: {fileID: 0}
   ammoHitEffect: {fileID: 11400000, guid: 3be3d79c62dad3b42be280a23bd68704, type: 2}
   ammoDamage: 20
-  ammoSpeedMin: 15
-  ammoSpeedMax: 20
+  ammoSpeedMin: 10
+  ammoSpeedMax: 15
   ammoRange: 15
   ammoRotationSpeed: 1
   ammoSpreadMin: 1

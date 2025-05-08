@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCharacterName: The Robot
   playerPrefab: {fileID: 7703595234823235495, guid: 7a208c07e50b59145bd61892be311b9a, type: 3}
-  runtimeAnimatorController: {fileID: 9100000, guid: e8a341fd95c7d274d8b004a419c57df2, type: 2}
+  runtimeAnimatorController: {fileID: 9100000, guid: c5fdb3a59873ac244b8b73d9c1cfe26b, type: 2}
   playerHealthAmount: 100
-  isImmuneAfterHit: 0
-  hitImmunityTime: 0
+  isImmuneAfterHit: 1
+  hitImmunityTime: 1
   startingWeapon: {fileID: 11400000, guid: 4973a01863f861b4bb03127fa634cbda, type: 2}
   startingWeaponList:
   - {fileID: 11400000, guid: 4973a01863f861b4bb03127fa634cbda, type: 2}

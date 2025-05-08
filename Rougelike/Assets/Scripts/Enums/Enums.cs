@@ -33,4 +33,11 @@ namespace tuleeeeee.Enums
         dungeonOverviewMap,
         restartGame
     }
+    public enum ComponentType
+    {
+        IFireable,
+        WeaponShootEffect,
+        AmmoHitEffect,
+        SoundEffect,
+    }
 }
