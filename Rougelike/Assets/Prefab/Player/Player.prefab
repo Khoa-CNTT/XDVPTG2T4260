@@ -971,7 +971,19 @@ MonoBehaviour:
     m_ActionId: 1dfe1a2c-4564-4418-9af0-e73a79ca1386
     m_ActionName: Gameplay/FastSwitchWeapon[/DualShock4GamepadHID/buttonEast,/Keyboard/q]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7555801480545886261}
+        m_TargetAssemblyTypeName: tuleeeeee.MyInput.PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnReloadInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e7b8cc87-ddc1-45c6-a0ae-d0c9f340e392
     m_ActionName: Gameplay/Reload[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1216,7 +1228,7 @@ MonoBehaviour:
   - {x: 0.5, y: 0, z: 0}
   m_ShapePathHash: -148821259
   m_Mesh: {fileID: 0}
-  m_InstanceId: 36732
+  m_InstanceId: 95280
   m_LocalBounds:
     m_Center: {x: 0, y: 0.65, z: 0}
     m_Extent: {x: 0.5, y: 0.65, z: 0}

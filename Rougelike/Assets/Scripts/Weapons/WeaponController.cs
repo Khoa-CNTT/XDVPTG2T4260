@@ -47,6 +47,7 @@ public class WeaponController : MonoBehaviour
         inputHandler.ScrollEvent.AddListener(OnScroll);
         inputHandler.SelectWeaponEvent.AddListener(OnSelectWeapon);
         inputHandler.FastSwitchWeaponEvent.AddListener(OnFastSwitch);
+        inputHandler.ReloadEvent.AddListener(OnReloadWeapon);
     }
     private void OnDisable()
     {
@@ -55,6 +56,7 @@ public class WeaponController : MonoBehaviour
         inputHandler.ScrollEvent.RemoveListener(OnScroll);
         inputHandler.SelectWeaponEvent.RemoveListener(OnSelectWeapon);
         inputHandler.FastSwitchWeaponEvent.RemoveListener(OnFastSwitch);
+        inputHandler.ReloadEvent.RemoveListener(OnReloadWeapon);
     }
     private void Update()
     {
@@ -69,7 +71,26 @@ public class WeaponController : MonoBehaviour
         isShooting = shootInput;
         // FireWeaponInput(isShooting, currentWeaponDirection, currentWeaponAngle, currentPlayerAngle, currentAimDirection);
     }
+    public void OnReloadWeapon(bool reloadInput)
+    {
+        Weapon currentWeapon = player.ActiveWeapon.GetCurrentWeapon();
+        int weaponClipAmmoCapacity = currentWeapon.weaponDetails.weaponClipAmmoCapacity;
+        int weaponClipRemainingAmmo = currentWeapon.weaponClipRemainingAmmo;
+        bool hasInfiniteAmmo = currentWeapon.weaponDetails.hasInfiniteAmmo;
+        bool hasInfiniteClipCapacity = currentWeapon.weaponDetails.hasInfiniteClipCapacity;
 
+        if (currentWeapon.isWeaponReloading) return;
+
+        if (currentWeapon.weaponRemainingAmmo <= 0 && !hasInfiniteAmmo) return;
+
+        // Clip is full
+        if (weaponClipRemainingAmmo == weaponClipAmmoCapacity) return;
+
+        if (reloadInput || (!hasInfiniteClipCapacity && currentWeapon.weaponClipRemainingAmmo <= 0))
+        {
+            player.ReloadWeaponEvent.CallReloadWeaponEvent(currentWeapon, 0);
+        }
+    }
     public void OnAim(Vector2 newAimDirection)
     {
         aimDirection = newAimDirection;
@@ -89,7 +110,6 @@ public class WeaponController : MonoBehaviour
     public void OnFastSwitch(bool isClicked)
     {
         fastSwitchWeapon = isClicked;
-        Debug.Log("FastSwitch");
         FastSwitchWeapon();
     }
     private void CalculateAimParameters()

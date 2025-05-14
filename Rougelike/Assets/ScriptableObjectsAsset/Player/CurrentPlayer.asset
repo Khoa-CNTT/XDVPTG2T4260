@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CurrentPlayer
   m_EditorClassIdentifier: 
   playerDetails: {fileID: 11400000, guid: 9216cabbe3ad9874a92715a2a624e8ea, type: 2}
-  playerName: 
+  playerName: Concac

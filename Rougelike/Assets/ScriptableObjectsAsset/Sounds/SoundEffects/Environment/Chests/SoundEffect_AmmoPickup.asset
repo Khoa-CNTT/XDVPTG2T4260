@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SoundEffect_AmmoPickup
   m_EditorClassIdentifier: 
   soundEffectName: Ammo Pickup
-  soundPrefab: {fileID: 1504514487756828174, guid: 9ce42ad6a33a01a4da5b54c2b31b453d, type: 3}
+  soundPrefab: {fileID: 2649997097972954457, guid: dad9aba5b623266488ac4feb891e69c6, type: 3}
   soundEffectClip: {fileID: 8300000, guid: 051ac58600866b94c8dad130a28e4bca, type: 3}
   soundEffectPitchRandomVariationMin: 0.8
   soundEffectPitchRandomVariationMax: 1.2

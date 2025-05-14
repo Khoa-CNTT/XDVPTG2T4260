@@ -71,8 +71,8 @@ MonoBehaviour:
   ammoIconPrefab: {fileID: 7295225173006167845, guid: e38aed01f014be145b2da2630cc6c216, type: 3}
   emptyHeartPrefab: {fileID: 7295225173006167845, guid: 0b3ca87b67385c24db705411d784eb96, type: 3}
   heartPrefab: {fileID: 7295225173006167845, guid: d3e457eb4c2fe1b468a25792d02f67c6, type: 3}
-  chestItemPrefab: {fileID: 0}
+  chestItemPrefab: {fileID: 8706963178454371037, guid: 93b2de258892aad489bf34ccc72c1d19, type: 3}
   scorePrefab: {fileID: 0}
-  heartIcon: {fileID: 0}
-  bulletIcon: {fileID: 0}
-  minimapSkullPrefab: {fileID: 0}
+  heartIcon: {fileID: 463811012, guid: 2da28fea2fe091f4f87db5571e52138d, type: 3}
+  bulletIcon: {fileID: 21300000, guid: 1cf23612c7d4c554abeba5c9391f1de4, type: 3}
+  minimapSkullPrefab: {fileID: 464177556684535210, guid: c04cb76a92d9a5649a702047f612270e, type: 3}

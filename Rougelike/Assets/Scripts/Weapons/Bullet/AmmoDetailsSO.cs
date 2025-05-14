@@ -4,7 +4,7 @@ using tuleeeeee.Utilities;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AmmoDetails_", menuName = "Scriptable Objects/Weapons/Ammo Details")]
-public class AmmoDetailsSO : ScriptableObject   
+public class AmmoDetailsSO : ScriptableObject
 {
     #region Header BASIC AMMO DETAILS
     [Space(10)]
@@ -34,26 +34,59 @@ public class AmmoDetailsSO : ScriptableObject
     [Space(10)]
     [Header("AMMO BASE PARAMETERS")]
     #endregion
+    #region ToolTip
+    [Tooltip("The Damage Each Bullet Deals")]
+    #endregion
     public int ammoDamage = 1;
+    #region ToolTip
+    [Tooltip("The Minimum Speed of the Bullet")]
+    #endregion
     public float ammoSpeedMin = 20f;
+    #region ToolTip
+    [Tooltip("The Maximum Speed of the Bullet")]
+    #endregion
     public float ammoSpeedMax = 20f;
+    #region ToolTip
+    [Tooltip("The Range of Each Bullet")]
+    #endregion
     public float ammoRange = 20f;
+    #region ToolTip
+    [Tooltip("The rotation speed in degrees per sec")]
+    #endregion
     public float ammoRotationSpeed = 1f;
 
     #region Header AMMO SPREAD DETAILS
     [Space(10)]
     [Header("AMMO SPREAD DETAILS")]
     #endregion
+    #region ToolTip
+    [Tooltip("The Minimum spread of the Bullet")]
+    #endregion
     public float ammoSpreadMin = 0f;
+    #region ToolTip
+    [Tooltip("The Maximum spread of the Bullet")]
+    #endregion
     public float ammoSpreadMax = 0f;
 
     #region Header AMMO SPAWN DETAILS
     [Space(10)]
     [Header("AMMO SPAWN DETAILS")]
     #endregion
+    #region ToolTip
+    [Tooltip("The Minimum spread of the Bullet")]
+    #endregion
     public int ammoSpawnAmountMin = 1;
+    #region ToolTip
+    [Tooltip("The Maximum spread of the Bullet")]
+    #endregion
     public int ammoSpawnAmountMax = 1;
+    #region ToolTip
+    [Tooltip("The Minimum spawn interval of the Bullet")]
+    #endregion
     public float ammoSpawnIntervalMin = 0f;
+    #region ToolTip
+    [Tooltip("The Maximum spawn interval of the Bullet")]
+    #endregion
     public float ammoSpawnIntervalMax = 0f;
 
     #region Header AMMO TRAIL DETAILS
@@ -93,6 +126,6 @@ public class AmmoDetailsSO : ScriptableObject
         }
 
     }
-}
 #endif
-#endregion
+    #endregion
+}

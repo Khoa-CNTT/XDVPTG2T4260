@@ -10,6 +10,9 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    protected Movement Movement { get => movement != null ? movement : Core.GetCoreComponent(ref movement); }
+
+    private Movement movement;
     public Health Health { get => health != null ? health : Core.GetCoreComponent(ref health); }
     private Health health;
     public Core Core { get; private set; }
@@ -21,8 +24,9 @@ public class Entity : MonoBehaviour
     private FireWeapon fireWeapon;
     private MaterializeEffect materializeEffect;
 
+    public WaitForFixedUpdate waitForFixedUpdate { get; private set; }
+
     #region COMPONENTS
-    public Rigidbody2D RB { get; private set; }
     public Animator Animator { get; private set; }
     public SpriteRenderer[] spriteRendererArray { get; private set; }
     public CircleCollider2D CircleCollider { get; private set; }
@@ -40,12 +44,13 @@ public class Entity : MonoBehaviour
     public HealthEvent HealthEvent { get; private set; }
     #endregion
 
-    public float MoveSpeed { get; private set; }    
+    public float MoveSpeed { get; private set; }
 
     public int updateFrameNumber = 1;
-    private List<Vector2Int> surroundingPositionList = new List<Vector2Int>();
 
     private bool isEnemyMovementDisabled;
+
+    public Stack<Vector3> movementsList = new Stack<Vector3>();
 
     public virtual void OnEnable()
     {
@@ -81,13 +86,18 @@ public class Entity : MonoBehaviour
     }
     public virtual void Start()
     {
-
+        waitForFixedUpdate = new WaitForFixedUpdate();
     }
     public virtual void Update()
     {
         if (isEnemyMovementDisabled) return;
         Core.LogicUpdate();
         StateManager.CurrentEnemyState.LogicUpdate();
+
+    }
+    public virtual void FixedUpdate()
+    {
+        StateManager.CurrentEnemyState.PhysicsUpdate();
     }
 
     public virtual void EnemyInitialization(EnemyDetailsSO enemyDetails, int enemySpawnNumber, DungeonLevelSO dungeonLevel, bool materialize)
@@ -112,13 +122,11 @@ public class Entity : MonoBehaviour
             EnemyDestroyed();
         }
     }
-
     private void EnemyDestroyed()
     {
         DestroyedEvent destroyedEvent = GetComponent<DestroyedEvent>();
         destroyedEvent.CallDestroyedEvent(false, health.GetStartingHealth());
     }
-
     private void SetEnemyStartingHealth(DungeonLevelSO dungeonLevel)
     {
         EnemyHealthDetails[] enemyHealthDetailsArray = EnemyDetails.enemyHealthDetailsArray;
@@ -147,7 +155,6 @@ public class Entity : MonoBehaviour
             SetActiveWeaponEvent.CallSetActiveWeaponEvent(weapon);
         }
     }
-
     private IEnumerator MaterializeEnemy()
     {
         EnemyEnable(false);
@@ -157,7 +164,6 @@ public class Entity : MonoBehaviour
 
         EnemyEnable(true);
     }
-
     private void EnemyEnable(bool isEnabled)
     {
         CircleCollider.enabled = isEnabled;
@@ -165,75 +171,8 @@ public class Entity : MonoBehaviour
         isEnemyMovementDisabled = isEnabled;
         fireWeapon.enabled = isEnabled;
     }
-    public Stack<Vector3> CreatePath()
-    {
-        Room currentRoom = GameManager.Instance.GetCurrentRoom();
-        Vector3 playerPosition = GameManager.Instance.GetPlayer().GetPlayerPosition();
-        Grid grid = currentRoom.instantiatedRoom.grid;
-
-        Vector3Int enemyGridPosition = grid.WorldToCell(transform.position);
-        Vector3Int playerCellPosition = grid.WorldToCell(playerPosition);
-        Vector3Int playerGridPosition = GetNearestNonObstaclePlayerPosition(currentRoom, playerPosition, playerCellPosition);
-
-        return AStar.BuildPath(currentRoom, enemyGridPosition, playerGridPosition);
-    }
-    public Vector3Int GetNearestNonObstaclePlayerPosition(Room currentRoom, Vector3 playerPosition, Vector3Int playerCellPosition)
-    {
-
-        Vector2Int adjustedPlayerCellPosition = new Vector2Int(playerCellPosition.x - currentRoom.templateLowerBounds.x,
-            playerCellPosition.y - currentRoom.templateLowerBounds.y);
-        int obstacle = Mathf.Min(currentRoom.instantiatedRoom.aStarMovementPenalty[adjustedPlayerCellPosition.x, adjustedPlayerCellPosition.y],
-            currentRoom.instantiatedRoom.aStarItemObstacles[adjustedPlayerCellPosition.x, adjustedPlayerCellPosition.y]);
-
-        if (obstacle == 0)
-        {
-            surroundingPositionList.Clear();
-
-            for (int i = -1; i <= 1; i++)
-            {
-                for (int j = -1; j <= 1; j++)
-                {
-                    if (j == 0 && i == 0) continue;
-
-                    surroundingPositionList.Add(new Vector2Int(i, j));
-                }
-            }
-
-            for (int l = 0; l < 8; l++)
-            {
-                int index = Random.Range(0, surroundingPositionList.Count);
-
-                try
-                {
-                    obstacle = Mathf.Min(currentRoom.instantiatedRoom.aStarMovementPenalty[
-                        adjustedPlayerCellPosition.x + surroundingPositionList[index].x,
-                        adjustedPlayerCellPosition.y + surroundingPositionList[index].y],
-                        currentRoom.instantiatedRoom.aStarItemObstacles[
-                        adjustedPlayerCellPosition.x + surroundingPositionList[index].x,
-                        adjustedPlayerCellPosition.y + surroundingPositionList[index].y]);
-
-                    if (obstacle != 0)
-                    {
-                        return new Vector3Int(playerCellPosition.x + surroundingPositionList[index].x,
-                            playerCellPosition.y + surroundingPositionList[index].y);
-                    }
-                }
-                catch
-                {
-
-                }
-
-                surroundingPositionList.RemoveAt(index);
-            }
-            return (Vector3Int)currentRoom.spawnPositionArray[Random.Range(0, currentRoom.spawnPositionArray.Length)];
-        }
-
-        return playerCellPosition;
-    }
-
     public void SetUpdateFrameNumber(int updateFrameNumber)
     {
         this.updateFrameNumber = updateFrameNumber;
     }
-
 }

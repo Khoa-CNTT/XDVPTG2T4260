@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7548150255663389762}
   - component: {fileID: 4789538962136525200}
+  - component: {fileID: 5601782492082624030}
   m_Layer: 15
   m_Name: Health
   m_TagString: Untagged
@@ -129,6 +130,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDamageable: 1
+--- !u!114 &5601782492082624030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825896342096029263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3276382d17c42b74caf3be9699e62b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2773754020081520301
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +558,8 @@ GameObject:
   - component: {fileID: 1164722119949115670}
   - component: {fileID: 2776867715051456852}
   - component: {fileID: 3492230472562618837}
+  - component: {fileID: 8335206119744289733}
+  - component: {fileID: 1547204629946175258}
   m_Layer: 15
   m_Name: Bosses
   m_TagString: Untagged
@@ -582,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257b325253436324d974bd9d9bacd989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementDetails: {fileID: 0}
+  MovementDetails: {fileID: 11400000, guid: 1f6f6b6a3d1179e43a987bd1507f88f5, type: 2}
   updateFrameNumber: 1
 --- !u!210 &2850260028138165454
 SortingGroup:
@@ -637,15 +652,15 @@ SpriteRenderer:
   m_SortingLayerID: 644562283
   m_SortingLayer: 4
   m_SortingOrder: 2
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 5554664115643891341, guid: 7c7bfa40a3f24114b9b4a4224647a937, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1.75}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &9199441403918696554
@@ -658,7 +673,7 @@ Animator:
   m_GameObject: {fileID: 8628395180251479479}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dc41e2ce4d5acbc48951523157b63c48, type: 2}
+  m_Controller: {fileID: 9100000, guid: c584c390b9e9e4e4faab37cd1bfce8b3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -767,8 +782,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 1.75}
-    newSize: {x: 1.5, y: 1.75}
+    oldSize: {x: 3, y: 3.5}
+    newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -939,5 +954,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9686e19551484c4c9ecef123243b2a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8335206119744289733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628395180251479479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd38661de21bda4fa14a6e4b1f0b648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1547204629946175258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8628395180251479479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715a204348e4dca449bbcde308c396e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

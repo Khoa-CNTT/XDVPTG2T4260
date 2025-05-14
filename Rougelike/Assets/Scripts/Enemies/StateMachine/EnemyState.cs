@@ -13,7 +13,7 @@ public class EnemyState
 
     protected bool isAnimationFinished;
     protected bool isExitingState;
-    public float startTime { get; protected set; }
+    public float StartTime { get; protected set; }
 
     private string animBoolName;
     public EnemyState(Entity entity, StateManager stateManager, MovementDetailsSO EnemyDetails, string animBoolName)
@@ -27,14 +27,16 @@ public class EnemyState
     public virtual void Enter()
     {
         DoChecks();
-        startTime = Time.time;
+        StartTime = Time.time;
         entity.Animator.SetBool(animBoolName, true);
+        Debug.Log($"{entity.ToString()} Enter: {animBoolName}");
         isAnimationFinished = false;
         isExitingState = false;
     }
     public virtual void Exit()
     {
         entity.Animator.SetBool(animBoolName, false);
+        Debug.Log($"{entity.ToString()} Exit: {animBoolName}");
         isExitingState = true;
     }
     public virtual void LogicUpdate()

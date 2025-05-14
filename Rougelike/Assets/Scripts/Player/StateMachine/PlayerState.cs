@@ -17,27 +17,27 @@ namespace tuleeeeee.StateMachine
 
         protected float startTime;
 
-        private string animBoolName;
+        private int animBoolID;
 
-        public PlayerState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName)
+        public PlayerState(Player player, StateManager stateManager, MovementDetailsSO playerData, int animBoolID)
         {
             this.player = player;
             this.stateManager = stateManager;
             this.playerData = playerData;
-            this.animBoolName = animBoolName;
+            this.animBoolID = animBoolID;
             Core = player.Core;
         }
         public virtual void Enter()
         {
             DoCheck();
             startTime = Time.time;
-            player.Animator.SetBool(animBoolName, true);
+            player.Animator.SetBool(animBoolID, true);
             isAnimationFinished = false;
             isExitingState = false;
         }
         public virtual void Exit()
         {
-            player.Animator.SetBool(animBoolName, false);
+            player.Animator.SetBool(animBoolID, false);
             isExitingState = true;
         }
         public virtual void LogicUpdate() { }

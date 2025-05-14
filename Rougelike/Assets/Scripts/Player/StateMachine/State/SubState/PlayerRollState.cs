@@ -18,7 +18,7 @@ public class PlayerRollState : PlayerAbilityState
     private Vector2 rollDirection;
     private Vector2 rollDirectionInput;
 
-    public PlayerRollState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
+    public PlayerRollState(Player player, StateManager stateManager, MovementDetailsSO playerData, int animBoolID) : base(player, stateManager, playerData, animBoolID)
     {
 
     }
