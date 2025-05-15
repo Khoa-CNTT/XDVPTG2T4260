@@ -50,7 +50,6 @@ namespace tuleeeeee.Misc
         private void Update()
         {
             cursorTarget.position = HelperUtilities.GetMouseWorldPosition();
-
         }
     }
 }

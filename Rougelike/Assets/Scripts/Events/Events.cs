@@ -12,6 +12,11 @@ namespace tuleeeeee.Events
     public class AttackEvent : UnityEvent<bool> { }
 
     /// <summary>
+    ///     An event representing a fire input 
+    /// </summary>
+    public class ReloadEvent : UnityEvent<bool> { }
+
+    /// <summary>
     ///     An event representing a look input (where the character must look) in the direction of its parameter
     /// </summary>
     public class LookEvent : UnityEvent<Vector2> { }
@@ -21,7 +26,14 @@ namespace tuleeeeee.Events
     /// </summary>
     public class ScrollEvent : UnityEvent<Vector2> { }
 
+    /// <summary>
+    ///  SelectWeapon By 1-9
+    /// </summary>
     public class SelectWeaponEvent : UnityEvent<int> { }
+
+    /// <summary>
+    /// Fast Switch Weapon Q
+    /// </summary>
     public class FastSwitchWeaponEvent : UnityEvent<bool> { }
 
 }

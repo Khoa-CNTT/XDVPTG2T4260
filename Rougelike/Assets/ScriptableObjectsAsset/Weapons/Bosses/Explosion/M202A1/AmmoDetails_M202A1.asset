@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09930ba9f5d1cd4696a7df815e5ad95, type: 3}
+  m_Name: AmmoDetails_M202A1
+  m_EditorClassIdentifier: 
+  ammoName: M202A1
+  isPlayerAmmo: 1
+  ammoSprite: {fileID: 21300000, guid: 95551bf538b520a41b70274681031083, type: 3}
+  ammoPrefabArray:
+  - {fileID: 477551918507955260, guid: 2aad145a4eb251e479657d172c0163ec, type: 3}
+  ammoMaterial: {fileID: 2100000, guid: a8f373dc317a30d40a68b73a78ce1d09, type: 2}
+  ammoChargeTime: 0
+  ammoChargeMaterial: {fileID: 0}
+  ammoHitEffect: {fileID: 11400000, guid: 42a521d3938f49647b7ac6d4e3f982e4, type: 2}
+  ammoDamage: 20
+  ammoSpeedMin: 8
+  ammoSpeedMax: 10
+  ammoRange: 50
+  ammoRotationSpeed: 1
+  ammoSpreadMin: 1
+  ammoSpreadMax: 2
+  ammoSpawnAmountMin: 1
+  ammoSpawnAmountMax: 4
+  ammoSpawnIntervalMin: 1
+  ammoSpawnIntervalMax: 2
+  isAmmoTrail: 1
+  ammoTrailTime: 0.15
+  ammoTrailMaterial: {fileID: 2100000, guid: 8556be20b5f346149bb8497e4b4dfbdc, type: 2}
+  ammoTrailStartWidth: 0.15
+  ammoTrailEndWidth: 0.5

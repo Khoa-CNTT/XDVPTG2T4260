@@ -4,6 +4,7 @@ using tuleeeeee.Dungeon;
 using UnityEngine;
 using tuleeeeee.Enums;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 
 namespace tuleeeeee.Utilities
@@ -11,6 +12,45 @@ namespace tuleeeeee.Utilities
     public static class HelperUtilities
     {
         public static Camera mainCamera;
+
+        public static void ShakeCinemachineCamera(float intensity, float duration)
+        {
+            CinemachineVirtualCamera virtualCamera = GameManager.Instance.GetVirtualCamera();
+            var noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            if (noise == null) return;
+
+            noise.m_AmplitudeGain = intensity;
+            noise.m_FrequencyGain = 2f;
+
+            FunctionUpdater.Create(() => {
+                duration -= Time.unscaledDeltaTime;
+                if (duration <= 0f)
+                {
+                    noise.m_AmplitudeGain = 0f;
+                    return true;
+                }
+                return false;
+            }, "CM_CAMERA_SHAKE", true, true);
+        }
+
+
+        /// <summary>
+        /// Camera shake only work with out Cinemachine
+        /// </summary>
+        /// <param name="intensity"></param>
+        /// <param name="timer"></param>
+        public static void ShakeCamera(float intensity, float timer)
+        {
+            Vector3 lastCameraMovement = Vector3.zero;
+            FunctionUpdater.Create(delegate ()
+            {
+                timer -= Time.unscaledDeltaTime;
+                Vector3 randomMovement = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * intensity;
+                Camera.main.transform.position = Camera.main.transform.position - lastCameraMovement + randomMovement;
+                lastCameraMovement = randomMovement;
+                return timer <= 0f;
+            }, "CAMERA_SHAKE");
+        }
 
         public static Vector3 GetMousePosition()
         {

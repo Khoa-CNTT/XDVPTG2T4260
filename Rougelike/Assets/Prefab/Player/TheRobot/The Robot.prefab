@@ -8,6 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 158940441745862039, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_InstanceId
+      value: -241424
+      objectReference: {fileID: 0}
+    - target: {fileID: 158940441745862039, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_ShapePathHash
+      value: -107612907
+      objectReference: {fileID: 0}
+    - target: {fileID: 158940441745862039, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 158940441745862039, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 158940441745862039, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_ShapePath.Array.data[1].y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 158940441745862039, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_ShapePath.Array.data[2].y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8093438772940624653, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       propertyPath: m_Name
       value: The Robot

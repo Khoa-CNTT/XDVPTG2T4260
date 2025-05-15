@@ -1,4 +1,5 @@
 using tuleeeeee.StateMachine;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 public class PlayerAbilityState : PlayerState
@@ -10,7 +11,7 @@ public class PlayerAbilityState : PlayerState
     protected bool isAbilityDone;
     protected int xInput;
     protected Vector2 moveInput;
-    public PlayerAbilityState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
+    public PlayerAbilityState(Player player, StateManager stateManager, MovementDetailsSO playerData, int animBoolID) : base(player, stateManager, playerData, animBoolID)
     {
     }
 

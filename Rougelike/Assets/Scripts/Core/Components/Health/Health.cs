@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using tuleeeeee.Utilities;
 using UnityEngine;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -12,7 +13,7 @@ public class Health : CoreComponent
     private Coroutine immunityCoroutine;
     private bool isImmuneAfterHit = false;
     private float immunityTime = 0f;
-    private SpriteRenderer spriteRenderer = null;
+    private SpriteRenderer[] spriteRendererArray = null;
     private const float spriteFlashInterval = 0.2f;
     private WaitForSeconds WaitForSecondsSpriteFlashInterval = new WaitForSeconds(spriteFlashInterval);
 
@@ -40,7 +41,7 @@ public class Health : CoreComponent
             {
                 isImmuneAfterHit = true;
                 immunityTime = player.PlayerDetails.hitImmunityTime;
-                spriteRenderer = player.SpriteRenderer;
+                spriteRendererArray = player.SpriteRendererArray;
             }
         }
         else if (entity != null)
@@ -49,7 +50,7 @@ public class Health : CoreComponent
             {
                 isImmuneAfterHit = true;
                 immunityTime = entity.EnemyDetails.hitImmunityTime;
-                spriteRenderer = entity.spriteRendererArray[0];
+                spriteRendererArray = entity.spriteRendererArray;
             }
         }
     }
@@ -71,6 +72,9 @@ public class Health : CoreComponent
             currentHealth -= damageAmount;
             CallHealthEvent(damageAmount);
 
+           
+
+
             PostHitImmunity();
         }
     }
@@ -88,22 +92,55 @@ public class Health : CoreComponent
                 StopCoroutine(immunityCoroutine);
             }
             Debug.Log("PostHitImmunity");
-            immunityCoroutine = StartCoroutine(PostHitImmunityRoutine(immunityTime, spriteRenderer));
+            immunityCoroutine = StartCoroutine(PostHitImmunityRoutine(immunityTime, spriteRendererArray));
         }
     }
-    private IEnumerator PostHitImmunityRoutine(float immunityTime, SpriteRenderer spriteRenderer)
+    private IEnumerator PostHitImmunityRoutine(float immunityTime, SpriteRenderer[] spriteRenderers)
     {
         int iterations = Mathf.RoundToInt(immunityTime / spriteFlashInterval / 2f);
         isDamageable = false;
 
+        bool arraysInitialized = false;
+
+        Color[] originalColors = new Color[spriteRenderers.Length];
+        Color[] transparentColors = new Color[spriteRenderers.Length];
+
+        // Initialize color arrays only once
+        if (!arraysInitialized || originalColors.Length != spriteRenderers.Length)
+        {
+            originalColors = new Color[spriteRenderers.Length];
+            transparentColors = new Color[spriteRenderers.Length];
+
+            for (int i = 0; i < spriteRenderers.Length; i++)
+            {
+                originalColors[i] = spriteRenderers[i].color;
+                transparentColors[i] = originalColors[i];
+                transparentColors[i].a = 0f;
+            }
+
+            arraysInitialized = true;
+        }
+
         while (iterations > 0)
         {
-            spriteRenderer.color = Color.red;
+            for (int i = 0; i < spriteRenderers.Length; i++)
+            {
+                spriteRenderers[i].color = transparentColors[i];
+            }
             yield return WaitForSecondsSpriteFlashInterval;
-            spriteRenderer.color = Color.white;
+            for (int i = 0; i < spriteRenderers.Length; i++)
+            {
+                spriteRenderers[i].color = originalColors[i];
+            }
             yield return WaitForSecondsSpriteFlashInterval;
             iterations--;
             yield return null;
+        }
+
+        // Ensure end with original colors
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            spriteRenderers[i].color = originalColors[i];
         }
 
         isDamageable = true;
@@ -118,5 +155,23 @@ public class Health : CoreComponent
     {
         return startingHealth;
     }
+    public void AddHealth(int healthPercent)
+    {
+        int healthIncrease = Mathf.RoundToInt((startingHealth * healthPercent) / 100f);
+
+        int totalHealth = currentHealth + healthIncrease;
+
+        if (totalHealth > startingHealth)
+        {
+            currentHealth = startingHealth;
+        }
+        else
+        {
+            currentHealth = totalHealth;
+        }
+
+        CallHealthEvent(0);
+    }
+
 
 }

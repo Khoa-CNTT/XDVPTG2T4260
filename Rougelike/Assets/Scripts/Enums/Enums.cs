@@ -10,6 +10,16 @@ namespace tuleeeeee.Enums
         north,
         none
     }
+    public enum ChestSpawnEvent
+    {
+        onRoomEntry,
+        onEnemiesDefeated
+    }
+    public enum ChestSpawnPosition
+    {
+        atSpawnerPosition,
+        atPlayerPosition
+    }
     public enum Direction
     {
         up,

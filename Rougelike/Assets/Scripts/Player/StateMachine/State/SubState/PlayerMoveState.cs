@@ -1,10 +1,11 @@
 using tuleeeeee.Data;
 using tuleeeeee.StateMachine;
+using UnityEditor.AnimatedValues;
 using UnityEngine;
 
 public class PlayerMoveState : PlayerGroundedState
 {
-    public PlayerMoveState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
+    public PlayerMoveState(Player player, StateManager stateManager, MovementDetailsSO playerData, int animBoolID) : base(player, stateManager, playerData, animBoolID)
     {
     }
     public override void LogicUpdate()

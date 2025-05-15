@@ -31,6 +31,8 @@ namespace tuleeeeee.Misc
 
         public static int isIdle = Animator.StringToHash("isIdle");
         public static int isMoving = Animator.StringToHash("isMoving");
+        public static int isRolling = Animator.StringToHash("isRolling");
+        public static int isDead = Animator.StringToHash("isDead");
 
         public static int rollUp = Animator.StringToHash("rollUp");
         public static int rollUpRight = Animator.StringToHash("rollUpRight");
@@ -43,7 +45,7 @@ namespace tuleeeeee.Misc
         public static int flipDown = Animator.StringToHash("flipDown");
 
         public static int use = Animator.StringToHash("use");
-        public static float baseSpeedForPlayerAnimation = 8f;
+        public static float baseSpeedForPlayerAnimation = 10f;
         public static float baseSpeedForEnemyAnimation = 3f;
         // Door
         public static int open = Animator.StringToHash("open");

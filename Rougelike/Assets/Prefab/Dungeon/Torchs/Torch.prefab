@@ -275,6 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8699848601989322844}
   - component: {fileID: -989209409498204925}
+  - component: {fileID: 8269580494906781556}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Untagged
@@ -352,3 +353,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8269580494906781556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097452334020168151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b30ac89fa045847a59ef663f2bf4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightIntensityMin: 0.8
+  lightIntensityMax: 1.5
+  lightFlickerTimeMin: 1
+  lightFlickerTimeMax: 4

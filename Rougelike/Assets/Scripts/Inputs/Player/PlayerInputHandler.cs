@@ -129,6 +129,27 @@ namespace tuleeeeee.MyInput
                 RollInputStop = true;
             }
         }
+        /// <summary>
+        ///  Reload
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnReloadInput(InputAction.CallbackContext context)
+        {
+            bool isReloading = false;
+            if (context.started)
+            {
+                isReloading = true;
+            }
+            else if (context.canceled)
+            {
+                isReloading = false;
+            }
+            ReloadEvent.Invoke(isReloading);
+        }
+        /// <summary>
+        /// Fire
+        /// </summary>
+        /// <param name="context"></param>
         public void OnFireInput(InputAction.CallbackContext context)
         {
             if (context.started)
@@ -158,11 +179,13 @@ namespace tuleeeeee.MyInput
         private readonly SelectWeaponEvent onSelectWeaponEvent = new SelectWeaponEvent();
         private readonly FastSwitchWeaponEvent onFastSwitchWeaponEvent = new FastSwitchWeaponEvent();
         private readonly AttackEvent onAttackEvent = new AttackEvent();
+        private readonly ReloadEvent onReloadEvent = new ReloadEvent();
         public UnityEvent<Vector2> LookEvent => onLookEvent;
         public UnityEvent<Vector2> ScrollEvent => onScrollEvent;
         public UnityEvent<int> SelectWeaponEvent => onSelectWeaponEvent;
         public UnityEvent<bool> FastSwitchWeaponEvent => onFastSwitchWeaponEvent;
         public UnityEvent<bool> AttackEvent => onAttackEvent;
+        public UnityEvent<bool> ReloadEvent => onReloadEvent;
 
         #endregion
 

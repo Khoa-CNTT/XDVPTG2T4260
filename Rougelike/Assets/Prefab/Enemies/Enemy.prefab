@@ -525,7 +525,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7769766291116533022}
-  - component: {fileID: -1239987508507978852}
+  - component: {fileID: 8713663412788110526}
   - component: {fileID: 2850260028138165454}
   - component: {fileID: 256909772039332961}
   - component: {fileID: 9199441403918696554}
@@ -570,7 +570,7 @@ Transform:
   - {fileID: 4649735376448150773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1239987508507978852
+--- !u!114 &8713663412788110526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257b325253436324d974bd9d9bacd989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementDetails: {fileID: 0}
+  MovementDetails: {fileID: 11400000, guid: 4892f5396ffb63548afc77414ca8dbf1, type: 2}
   updateFrameNumber: 1
 --- !u!210 &2850260028138165454
 SortingGroup:

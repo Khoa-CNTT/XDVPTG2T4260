@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using tuleeeeee.Data;
 using tuleeeeee.StateMachine;
+using UnityEditor.AnimatedValues;
 
 
 public class PlayerGroundedState : PlayerState
@@ -13,7 +14,7 @@ public class PlayerGroundedState : PlayerState
 
     protected Vector2 moveInput;
     private bool dashInput;
-    public PlayerGroundedState(Player player, StateManager stateManager, MovementDetailsSO playerData, string animBoolName) : base(player, stateManager, playerData, animBoolName)
+    public PlayerGroundedState(Player player, StateManager stateManager, MovementDetailsSO playerData, int animBoolID) : base(player, stateManager, playerData, animBoolID)
     {
     }
 

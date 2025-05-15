@@ -6,6 +6,7 @@ using tuleeeeee.Managers;
 using tuleeeeee.Misc;
 using tuleeeeee.MyInput;
 using tuleeeeee.StateMachine;
+using tuleeeeee.Utilities;
 using UnityEngine;
 
 /*[RequireComponent(typeof(Health))]
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
     #region Components
     public Core Core { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
-    public SpriteRenderer SpriteRenderer { get; private set; }
+    public SpriteRenderer[] SpriteRendererArray { get; private set; }
     public Animator Animator { get; private set; }
     #endregion
 
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour
         #region Compoments
         Core = GetComponentInChildren<Core>();
         InputHandler = GetComponent<PlayerInputHandler>();
-        SpriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRendererArray = GetComponentsInChildren<SpriteRenderer>();
         Animator = GetComponent<Animator>();
         StateManager = new StateManager();
         #endregion
@@ -93,6 +94,26 @@ public class Player : MonoBehaviour
         if (isPlayerMovementDisabled) return;
         Core.LogicUpdate();
         StateManager.CurrentPlayerState.LogicUpdate();
+        UseItemInput();
+    }
+    private void UseItemInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            float useItemRadius = 2.5f;
+
+            Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(transform.position, useItemRadius);
+
+            foreach (Collider2D collider2D in collider2DArray)
+            {
+                IUseable iUseable = collider2D.GetComponent<IUseable>();
+
+                if (iUseable != null)
+                {
+                    iUseable.UseItem();
+                }
+            }
+        }
     }
     private void FixedUpdate()
     {
@@ -108,19 +129,19 @@ public class Player : MonoBehaviour
 
         CreatePlayerStartingWeapon();
 
-        //  SetPlayerAnimationSpeed();
+        SetPlayerAnimationSpeed();
 
-        IdleState = new PlayerIdleState(this, StateManager, MovementDetails, "isIdle");
-        MoveState = new PlayerMoveState(this, StateManager, MovementDetails, "isMoving");
-        RollState = new PlayerRollState(this, StateManager, MovementDetails, "isRolling");
-        DeadState = new PlayerDeadState(this, StateManager, MovementDetails, "isDead");
+        IdleState = new PlayerIdleState(this, StateManager, MovementDetails, Settings.isIdle);
+        MoveState = new PlayerMoveState(this, StateManager, MovementDetails, Settings.isMoving);
+        RollState = new PlayerRollState(this, StateManager, MovementDetails, Settings.isRolling);
+        DeadState = new PlayerDeadState(this, StateManager, MovementDetails, Settings.isDead);
 
         StateManager.Initialize(IdleState);
     }
 
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-
+        HelperUtilities.ShakeCinemachineCamera(2f, 0.5f);
         if (healthEventArgs.healthAmount <= 0f)
         {
             StateManager.ChangeState(DeadState);
@@ -134,7 +155,7 @@ public class Player : MonoBehaviour
 
     private void SetPlayerAnimationSpeed()
     {
-        Animator.speed = MoveSpeed / Settings.baseSpeedForEnemyAnimation;
+        Animator.speed = MoveSpeed / Settings.baseSpeedForPlayerAnimation;
     }
 
     private void CreatePlayerStartingWeapon()
@@ -147,7 +168,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
+    public Weapon AddWeaponToPlayer(WeaponDetailsSO weaponDetails)
     {
         Weapon weapon = new Weapon()
         {
@@ -182,7 +203,25 @@ public class Player : MonoBehaviour
         isPlayerMovementDisabled = true;
         StateManager.ChangeState(IdleState);
     }
+    public bool IsWeaponHeldByPlayer(WeaponDetailsSO weaponDetails)
+    {
+        foreach (Weapon weapon in weaponList)
+        {
+            if (weapon.weaponDetails == weaponDetails) return true;
+        }
+        return false;
+    }
     public void AnimationTrigger() => StateManager.CurrentPlayerState.AnimationTrigger();
 
     public void AnimationFinishedTrigger() => StateManager.CurrentPlayerState.AnimationFinishedTrigger();
+
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(MovementDetails), MovementDetails);
+    }
+
+#endif
+    #endregion
 }
