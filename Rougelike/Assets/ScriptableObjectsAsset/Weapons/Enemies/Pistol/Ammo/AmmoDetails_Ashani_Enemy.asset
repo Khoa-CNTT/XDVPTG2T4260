@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b09930ba9f5d1cd4696a7df815e5ad95, type: 3}
-  m_Name: AmmoDetails_Pistol_Enemy
+  m_Name: AmmoDetails_Ashani_Enemy
   m_EditorClassIdentifier: 
   ammoName: EnemiesBullet
   isPlayerAmmo: 0
@@ -22,8 +22,8 @@ MonoBehaviour:
   ammoChargeMaterial: {fileID: 0}
   ammoHitEffect: {fileID: 11400000, guid: 3be3d79c62dad3b42be280a23bd68704, type: 2}
   ammoDamage: 20
-  ammoSpeedMin: 10
-  ammoSpeedMax: 15
+  ammoSpeedMin: 6
+  ammoSpeedMax: 9
   ammoRange: 15
   ammoRotationSpeed: 1
   ammoSpreadMin: 1

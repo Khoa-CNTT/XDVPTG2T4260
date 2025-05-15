@@ -24,12 +24,12 @@ MonoBehaviour:
   ammoDamage: 20
   ammoSpeedMin: 8
   ammoSpeedMax: 10
-  ammoRange: 50
+  ammoRange: 70
   ammoRotationSpeed: 1
   ammoSpreadMin: 1
-  ammoSpreadMax: 2
+  ammoSpreadMax: 4
   ammoSpawnAmountMin: 1
-  ammoSpawnAmountMax: 4
+  ammoSpawnAmountMax: 12
   ammoSpawnIntervalMin: 1
   ammoSpawnIntervalMax: 2
   isAmmoTrail: 1

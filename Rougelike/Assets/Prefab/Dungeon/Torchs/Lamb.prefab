@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightIntensityMin: 1
-  lightIntensityMax: 1.2
+  lightIntensityMax: 1.3
   lightFlickerTimeMin: 1
   lightFlickerTimeMax: 2
 --- !u!1 &8523884477912996645

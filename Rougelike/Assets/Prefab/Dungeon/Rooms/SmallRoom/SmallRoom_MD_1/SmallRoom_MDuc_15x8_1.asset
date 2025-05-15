@@ -15,8 +15,8 @@ MonoBehaviour:
   guid: d00e9d25ad353c6449241abb2e6bd4e6
   prefab: {fileID: 8355784810037384008, guid: 86962a1ed90f3244d83ebdef546c448e, type: 3}
   previousPrefab: {fileID: 8355784810037384008, guid: 86962a1ed90f3244d83ebdef546c448e, type: 3}
-  battleMusic: {fileID: 0}
-  ambientMusic: {fileID: 0}
+  battleMusic: {fileID: 11400000, guid: c346fb113d4c49e4aa8a0bb5bb257da3, type: 2}
+  ambientMusic: {fileID: 11400000, guid: 57c2c302a1360bc44896c467ffd63a23, type: 2}
   roomNodeType: {fileID: 11400000, guid: 8ade7c6dcfd8fa649807ec2965425f27, type: 2}
   lowerBounds: {x: -10, y: -5}
   upperBounds: {x: 12, y: 10}
@@ -65,7 +65,7 @@ MonoBehaviour:
       ratio: 3
   roomEnemySpawnParametersList:
   - dungeonLevel: {fileID: 11400000, guid: 60f1a094610282741a429abd7fcfdd44, type: 2}
-    minTotalEnemiesToSpawn: 1
+    minTotalEnemiesToSpawn: 3
     maxTotalEnemiesToSpawn: 3
     minConcurrentEnemies: 0
     maxConcurrentEnemies: 0

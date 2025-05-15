@@ -15,8 +15,8 @@ MonoBehaviour:
   guid: e79c7518e815004428ccd6be4b3c5141
   prefab: {fileID: 8355784810037384008, guid: 6a83a6c427db74043a79db395a6c66a2, type: 3}
   previousPrefab: {fileID: 8355784810037384008, guid: 6a83a6c427db74043a79db395a6c66a2, type: 3}
-  battleMusic: {fileID: 0}
-  ambientMusic: {fileID: 0}
+  battleMusic: {fileID: 11400000, guid: c346fb113d4c49e4aa8a0bb5bb257da3, type: 2}
+  ambientMusic: {fileID: 11400000, guid: 57c2c302a1360bc44896c467ffd63a23, type: 2}
   roomNodeType: {fileID: 11400000, guid: 8ade7c6dcfd8fa649807ec2965425f27, type: 2}
   lowerBounds: {x: -13, y: -11}
   upperBounds: {x: 10, y: 9}
@@ -71,4 +71,4 @@ MonoBehaviour:
     maxConcurrentEnemies: 0
     minSpawnInterval: 0
     maxSpawnInterval: 0
-    totalFirstWave: 3
+    totalFirstWave: 1

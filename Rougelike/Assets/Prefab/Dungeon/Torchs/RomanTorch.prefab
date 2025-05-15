@@ -54,7 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8269580494906781556, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
       propertyPath: lightIntensityMax
-      value: 1.2
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269580494906781556, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
+      propertyPath: lightIntensityMin
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8269580494906781556, guid: 3745af965f0b6ed4eb1346f45ee6d34f, type: 3}
       propertyPath: lightFlickerTimeMax
