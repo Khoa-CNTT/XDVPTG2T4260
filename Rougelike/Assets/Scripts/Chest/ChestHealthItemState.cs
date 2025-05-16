@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using tuleeeeee.Managers;
+﻿using tuleeeeee.Managers;
 using tuleeeeee.StateMachine;
-using UnityEditor.AnimatedValues;
-using UnityEngine;
 
 namespace tuleeeeee.Chests
 {

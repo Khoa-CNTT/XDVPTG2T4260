@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using tuleeeeee.Chests;
 using tuleeeeee.StateMachine;
-using UnityEditor.AnimatedValues;
-using UnityEngine;
 
 public class ChestOpenState : ChestState
 {
