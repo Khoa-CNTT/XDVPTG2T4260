@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef036d09015aab14dbfd274c56411fd9, type: 3}
-  m_Name: TheNomad
+  m_Name: TheNomadDetails
   m_EditorClassIdentifier: 
   playerCharacterName: The Nomad
   playerPrefab: {fileID: 9189316646537621502, guid: e94637c9e5e73a8418a84e41c824fcee, type: 3}
   runtimeAnimatorController: {fileID: 9100000, guid: fea4272487f0c6a41b972c0a0ef0d315, type: 2}
   playerHealthAmount: 100
-  isImmuneAfterHit: 0
-  hitImmunityTime: 2
+  isImmuneAfterHit: 1
+  hitImmunityTime: 1.5
   startingWeapon: {fileID: 11400000, guid: 3a34efa1c3dd01444a569bbcc7ce13a4, type: 2}
   startingWeaponList:
   - {fileID: 11400000, guid: 3a34efa1c3dd01444a569bbcc7ce13a4, type: 2}

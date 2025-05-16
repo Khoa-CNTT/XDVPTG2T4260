@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using tuleeeeee.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,11 +14,7 @@ public class MainMenuUI : MonoBehaviour
     #endregion
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject quitButton;
-    [SerializeField] private GameObject optionsButton;
-    [SerializeField] private GameObject instructionsButton;
-    [SerializeField] private GameObject returnToMainMenuButton;
-    private bool isInstructionSceneLoaded = false;
-    private bool isHighScoresSceneLoaded = false;
+    [SerializeField] private TextMeshProUGUI versionText;
 
     private void Start()
     {
@@ -25,42 +22,24 @@ public class MainMenuUI : MonoBehaviour
 
         SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
 
-        returnToMainMenuButton.SetActive(false);
+        versionText.SetText(Application.version.ToString());
     }
 
-    public void PlayGame(){
+    public void PlayGame()
+    {
         SceneManager.LoadScene("MainGameScene");
     }
-
-    public void LoadCharacterSelector(){
-        returnToMainMenuButton.SetActive(false);
-
-        if (isHighScoresSceneLoaded){
-            SceneManager.UnloadSceneAsync("HighScoreScene");
-            isHighScoresSceneLoaded = false;
-        }
-        else if (isInstructionSceneLoaded){
-            SceneManager.UnloadSceneAsync("InstructionsScene");
-            isInstructionSceneLoaded = false;
-        }
-
-        playButton.SetActive(true);
-        quitButton.SetActive(true);
-
-        SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
-    }
-
-    public void QuitGame(){
+    public void QuitGame()
+    {
         Application.Quit();
     }
 
     #region Validation
 #if UNITY_EDITOR
-    private void OnValidate(){
+    private void OnValidate()
+    {
         HelperUtilities.ValidateCheckNullValue(this, nameof(playButton), playButton);
         HelperUtilities.ValidateCheckNullValue(this, nameof(quitButton), quitButton);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(instructionsButton), instructionsButton);
-        HelperUtilities.ValidateCheckNullValue(this, nameof(returnToMainMenuButton), returnToMainMenuButton);
     }
 #endif
     #endregion

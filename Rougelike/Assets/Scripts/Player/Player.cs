@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
 
     private void HealthEvent_OnHealthChanged(HealthEvent healthEvent, HealthEventArgs healthEventArgs)
     {
-        HelperUtilities.ShakeCinemachineCamera(2f, 0.5f);
+        HelperUtilities.ShakeCinemachineCamera(2f, 1f);
         if (healthEventArgs.healthAmount <= 0f)
         {
             StateManager.ChangeState(DeadState);

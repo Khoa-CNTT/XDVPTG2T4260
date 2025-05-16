@@ -75,4 +75,4 @@ MonoBehaviour:
     maxConcurrentEnemies: 3
     minSpawnInterval: 0
     maxSpawnInterval: 0
-    totalFirstWave: 3
+    totalFirstWave: 1
