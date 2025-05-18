@@ -64,6 +64,7 @@ namespace tuleeeeee.Misc
         public const float musicFadeInTime = 0.5f;
 
         public const string MusicVolumeKey = "musicVolume";
+        public const string SoundsVolumeKey = "soundsVolume";
 
         #endregion
 
