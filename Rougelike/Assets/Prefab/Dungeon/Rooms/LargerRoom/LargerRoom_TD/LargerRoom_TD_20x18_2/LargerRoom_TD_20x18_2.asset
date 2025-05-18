@@ -24,30 +24,30 @@ MonoBehaviour:
   - position: {x: 15, y: 6}
     orientation: 0
     doorPrefab: {fileID: 7710293978914557397, guid: f81280d9f0326c040a9ec394acd376d1, type: 3}
-    doorwayStartCopyPosition: {x: 12, y: 9}
+    doorwayStartCopyPosition: {x: 12, y: 10}
     doorwayCopyTileWidth: 4
     doorwayCopyTileHeight: 6
     isConnected: 0
     isUnavailable: 0
-  - position: {x: -14, y: 2}
+  - position: {x: -14, y: -1}
     orientation: 1
     doorPrefab: {fileID: 7710293978914557397, guid: f81280d9f0326c040a9ec394acd376d1, type: 3}
-    doorwayStartCopyPosition: {x: -14, y: 6}
+    doorwayStartCopyPosition: {x: -14, y: 3}
     doorwayCopyTileWidth: 4
     doorwayCopyTileHeight: 6
     isConnected: 0
     isUnavailable: 0
-  - position: {x: 3, y: -11}
+  - position: {x: 4, y: -11}
     orientation: 2
     doorPrefab: {fileID: 7710293978914557397, guid: a96c1b7fd4b403f45ae8d3bb359bdb97, type: 3}
-    doorwayStartCopyPosition: {x: 0, y: -8}
+    doorwayStartCopyPosition: {x: 1, y: -8}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 4
     isConnected: 0
     isUnavailable: 0
   - position: {x: -8, y: 15}
     orientation: 3
-    doorPrefab: {fileID: 7710293978914557397, guid: f81280d9f0326c040a9ec394acd376d1, type: 3}
+    doorPrefab: {fileID: 7710293978914557397, guid: a96c1b7fd4b403f45ae8d3bb359bdb97, type: 3}
     doorwayStartCopyPosition: {x: -11, y: 15}
     doorwayCopyTileWidth: 5
     doorwayCopyTileHeight: 5
@@ -68,12 +68,14 @@ MonoBehaviour:
       ratio: 1
     - dungeonObject: {fileID: 11400000, guid: 3369b3a073f50524eafc775f007e2b89, type: 2}
       ratio: 1
+    - dungeonObject: {fileID: 11400000, guid: 53b78f54ad2e1f3449f23dee13968a50, type: 2}
+      ratio: 1
   roomEnemySpawnParametersList:
   - dungeonLevel: {fileID: 11400000, guid: 60f1a094610282741a429abd7fcfdd44, type: 2}
     minTotalEnemiesToSpawn: 6
     maxTotalEnemiesToSpawn: 6
-    minConcurrentEnemies: 1
-    maxConcurrentEnemies: 3
+    minConcurrentEnemies: 4
+    maxConcurrentEnemies: 6
     minSpawnInterval: 0
     maxSpawnInterval: 0
     totalFirstWave: 3

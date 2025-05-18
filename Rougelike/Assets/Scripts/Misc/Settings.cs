@@ -62,6 +62,9 @@ namespace tuleeeeee.Misc
         #region AUDIO
         public const float musicFadeOutTime = 0.5f;
         public const float musicFadeInTime = 0.5f;
+
+        public const string MusicVolumeKey = "musicVolume";
+
         #endregion
 
         #region FIRING CONTROL
@@ -79,6 +82,10 @@ namespace tuleeeeee.Misc
         public const int targetFrameRateToSpreadPathfindingOver = 60;
         public const float playerMoveDistanceToRebuildPath = 3f;
         public const float enemyPathRebulidCooldown = 2f;
+        #endregion
+
+        #region  CONTACT DAMAGE PARAMTERS
+        public const float contactDamageCollisionResetDelay = 0.5f;
         #endregion
 
         #region UI PARAMETERS

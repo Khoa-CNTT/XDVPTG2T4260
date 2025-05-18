@@ -43,6 +43,7 @@ public class GameResources : MonoBehaviour
     [Tooltip("The current player SO, used to reference the current player between scenes")]
     #endregion
     public CurrentPlayerSO currentPlayerSO;
+    public CurrentPlayerSO currentSecondPlayerSO;
     public List<PlayerDetailsSO> playerDetailsList;
 
     #region Header MUSIC

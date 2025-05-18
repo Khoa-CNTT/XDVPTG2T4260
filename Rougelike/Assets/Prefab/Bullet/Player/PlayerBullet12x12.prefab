@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4421850078341055467}
   - component: {fileID: 5444832917058670155}
   - component: {fileID: 1059781957350270233}
-  - component: {fileID: 1574017909852033643}
+  - component: {fileID: -2079805223847527924}
   m_Layer: 14
   m_Name: PlayerBullet12x12
   m_TagString: Untagged
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.06, y: 0.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -125,7 +125,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.375, y: 0.375}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.06, y: 0.06}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1574017909852033643
+--- !u!114 &-2079805223847527924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3483073856098982742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3ce0d8bc1da3e42826ffc2233e7ab0, type: 3}
+  m_Script: {fileID: 11500000, guid: 58a4e4576f52bcc49a0d78d0bb0c9639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   trailRenderer: {fileID: 46813722962509208}

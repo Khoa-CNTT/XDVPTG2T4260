@@ -21,15 +21,15 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
     }
 
     private void Start(){
-        if (PlayerPrefs.HasKey("musicVolume")){
-            musicVolume = PlayerPrefs.GetInt("musicVolume");
+        if (PlayerPrefs.HasKey(Settings.MusicVolumeKey)){
+            musicVolume = PlayerPrefs.GetInt(Settings.MusicVolumeKey);
         }
 
         SetMusicVolume(musicVolume);
     }
 
     private void OnDisable(){
-        PlayerPrefs.SetInt("musicVolume", musicVolume);
+        PlayerPrefs.SetInt(Settings.MusicVolumeKey, musicVolume);
     }
 
     public void PlayMusic(MusicTrackSO musicTrack, float fadeOutTime = Settings.musicFadeOutTime, float fadeInTime = Settings.musicFadeInTime){
@@ -93,9 +93,9 @@ public class MusicManager : SingletonMonoBehaviour<MusicManager>
         float muteDecibels = -80f;
 
         if (musicVolume == 0){
-            GameResources.Instance.musicMasterMixerGroup.audioMixer.SetFloat("musicVolume", muteDecibels);
+            GameResources.Instance.musicMasterMixerGroup.audioMixer.SetFloat(Settings.MusicVolumeKey, muteDecibels);
         } else {
-            GameResources.Instance.musicMasterMixerGroup.audioMixer.SetFloat("musicVolume", HelperUtilities.LinearToDecibels(musicVolume));
+            GameResources.Instance.musicMasterMixerGroup.audioMixer.SetFloat(Settings.MusicVolumeKey, HelperUtilities.LinearToDecibels(musicVolume));
         }
     }
 }

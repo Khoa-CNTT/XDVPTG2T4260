@@ -46,7 +46,7 @@ MonoBehaviour:
     isConnected: 0
     isUnavailable: 0
   - position: {x: 0, y: 15}
-    orientation: 0
+    orientation: 3
     doorPrefab: {fileID: 7710293978914557397, guid: a96c1b7fd4b403f45ae8d3bb359bdb97, type: 3}
     doorwayStartCopyPosition: {x: -3, y: 15}
     doorwayCopyTileWidth: 5
@@ -68,12 +68,14 @@ MonoBehaviour:
       ratio: 1
     - dungeonObject: {fileID: 11400000, guid: 73e8304c393a60349b66dbef4e7af274, type: 2}
       ratio: 1
+    - dungeonObject: {fileID: 11400000, guid: 53b78f54ad2e1f3449f23dee13968a50, type: 2}
+      ratio: 1
   roomEnemySpawnParametersList:
   - dungeonLevel: {fileID: 11400000, guid: 60f1a094610282741a429abd7fcfdd44, type: 2}
     minTotalEnemiesToSpawn: 6
     maxTotalEnemiesToSpawn: 6
-    minConcurrentEnemies: 0
-    maxConcurrentEnemies: 0
+    minConcurrentEnemies: 4
+    maxConcurrentEnemies: 6
     minSpawnInterval: 0
     maxSpawnInterval: 0
     totalFirstWave: 3

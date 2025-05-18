@@ -31,6 +31,13 @@ namespace tuleeeeee.Misc
                 target = GameManager.Instance.GetPlayer().transform
             };
 
+       /*     CinemachineTargetGroup.Target cinemachineGroupTarget_secondPlayer = new CinemachineTargetGroup.Target
+            {
+                weight = 1f,
+                radius = 2.5f,
+                target = GameManager.Instance.GetSecondlayer().transform
+            };
+*/
             CinemachineTargetGroup.Target cinemachineGroupTarget_cursor = new CinemachineTargetGroup.Target
             {
                 // weight = 0.43f,
@@ -40,6 +47,7 @@ namespace tuleeeeee.Misc
             };
 
             CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[]{
+           // cinemachineGroupTarget_secondPlayer,
             cinemachineGroupTarget_player,
             cinemachineGroupTarget_cursor
         };

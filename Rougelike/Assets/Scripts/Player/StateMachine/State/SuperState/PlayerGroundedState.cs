@@ -12,7 +12,7 @@ public class PlayerGroundedState : PlayerState
     private Movement movement;
 
     protected Vector2 moveInput;
-    private bool dashInput;
+    protected bool dashInput;
     public PlayerGroundedState(Player player, StateManager stateManager, MovementDetailsSO playerData, int animBoolID) : base(player, stateManager, playerData, animBoolID)
     {
     }

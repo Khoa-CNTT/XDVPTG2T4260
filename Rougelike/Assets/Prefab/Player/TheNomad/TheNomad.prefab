@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_ShapePath.Array.data[2].y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 649478422258136249, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1066531631038604243, guid: 1a56a5a33ca19004fa2aa6b0cdf0afbb, type: 3}
       propertyPath: m_Sprite
       value: 

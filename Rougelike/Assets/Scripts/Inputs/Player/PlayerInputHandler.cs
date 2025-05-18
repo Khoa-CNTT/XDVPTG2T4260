@@ -33,6 +33,7 @@ namespace tuleeeeee.MyInput
         public void OnMoveInput(InputAction.CallbackContext context)
         {
             RawMovementInput = context.ReadValue<Vector2>();
+
             NormInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
             NormInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
         }

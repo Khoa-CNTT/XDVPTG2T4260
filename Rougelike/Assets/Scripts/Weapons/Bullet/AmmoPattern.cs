@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AmmoPattern : MonoBehaviour, IFireable
 {
-    [SerializeField] private Bullet[] ammoArray;
+    [SerializeField] private Ammo[] ammoArray;
 
     private float ammoRange;
     private float ammoSpeed;
@@ -31,12 +31,10 @@ public class AmmoPattern : MonoBehaviour, IFireable
 
         gameObject.SetActive(true);
 
-        foreach (Bullet ammo in ammoArray)
+        foreach (Ammo ammo in ammoArray)
         {
             ammo.InitialiseAmmo(ammoDetails, aimAngle, weaponAimAngle, ammoSpeed, weaponAimDirectionVector, fireTime, true);
         }
-
-       
 
         if (ammoDetails.ammoChargeTime > 0f)
         {

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonBehaviorUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class ButtonBehaviorUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
 {
     private TextMeshProUGUI text;
 
@@ -14,20 +14,24 @@ public class ButtonBehaviorUI : MonoBehaviour, IPointerDownHandler, IPointerEnte
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
     }
+    private void Start()
+    {
+        SetTextColor(grey);
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        SetTextColor(grey);
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
-
+        SetTextColor(grey);
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("OnPointerEnter");
         SetTextColor(white);
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("OnPointerExit");
         SetTextColor(grey);
     }
     private void SetTextColor(string hex)
@@ -41,4 +45,6 @@ public class ButtonBehaviorUI : MonoBehaviour, IPointerDownHandler, IPointerEnte
             Debug.LogWarning($"Invalid hex color code: {hex}");
         }
     }
+
+
 }

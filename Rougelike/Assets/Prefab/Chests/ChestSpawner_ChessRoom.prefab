@@ -57,9 +57,45 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: chestSpawnChanceMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: chestSpawnChanceMin
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: weaponSpawnByLevelList.Array.data[0].spawnableObjectRatioList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
       propertyPath: weaponSpawnByLevelList.Array.data[0].spawnableObjectRatioList.Array.data[0].ratio
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: weaponSpawnByLevelList.Array.data[0].spawnableObjectRatioList.Array.data[1].ratio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: weaponSpawnByLevelList.Array.data[0].spawnableObjectRatioList.Array.data[2].ratio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: weaponSpawnByLevelList.Array.data[0].spawnableObjectRatioList.Array.data[3].ratio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: weaponSpawnByLevelList.Array.data[0].spawnableObjectRatioList.Array.data[1].dungeonObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 405a80490ca354c469bcbd5632f031ae, type: 2}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: weaponSpawnByLevelList.Array.data[0].spawnableObjectRatioList.Array.data[2].dungeonObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 64643f653d8b54549845eef7aa976146, type: 2}
+    - target: {fileID: 7732527186594919106, guid: cb973b7a3a550144494a655b394d369d, type: 3}
+      propertyPath: weaponSpawnByLevelList.Array.data[0].spawnableObjectRatioList.Array.data[3].dungeonObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 63790414413535a44acf429eb17651dc, type: 2}
     - target: {fileID: 8706963178454371037, guid: cb973b7a3a550144494a655b394d369d, type: 3}
       propertyPath: m_Name
       value: ChestSpawner_ChessRoom

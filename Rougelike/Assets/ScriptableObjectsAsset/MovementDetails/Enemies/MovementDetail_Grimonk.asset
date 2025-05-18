@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab25e82dfcb1824685f72f1d6d43cac, type: 3}
+  m_Name: MovementDetail_Grimonk
+  m_EditorClassIdentifier: 
+  minMoveSpeed: 1
+  maxMoveSpeed: 2
+  rollCooldown: 0.4
+  maxHoldTime: 1
+  holdTimeScale: 0.25
+  rollTime: 0.4
+  rollVelocity: 15
+  drag: 10
+  rollEndYMultiplier: 0.2
+  distBetweenAfterImages: 0.5

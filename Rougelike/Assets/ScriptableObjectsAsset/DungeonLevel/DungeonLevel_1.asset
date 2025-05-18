@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127839348a902654ca26f51c8f8c3e21, type: 3}
   m_Name: DungeonLevel_1
   m_EditorClassIdentifier: 
-  levelName: Hall
+  levelName: The Sunken Archive
   roomTemplateList:
   - {fileID: 11400000, guid: 9ffd7b434a5170f40b337bdca3102e74, type: 2}
   - {fileID: 11400000, guid: 299bf2f3196ae7e41bf2d5565554a204, type: 2}

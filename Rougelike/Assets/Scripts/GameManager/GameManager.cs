@@ -13,6 +13,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using Cinemachine;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 namespace tuleeeeee.Managers
 {
@@ -24,11 +26,15 @@ namespace tuleeeeee.Managers
         [Header("GAMEOBJECT REFERENCES")]
         #endregion
         [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private GameObject audioMenu;
+        [SerializeField] private GameObject miniMap;
 
         [SerializeField] private TextMeshProUGUI messageTextTMP;
         [SerializeField] private CanvasGroup canvasGroup;
 
         [SerializeField] private CinemachineVirtualCamera cVirtualCamera;
+
+        private PlayerInputManager inputManager;
 
         #region Header DUNGEON LEVELS
         [Space(10)]
@@ -46,7 +52,9 @@ namespace tuleeeeee.Managers
         private Room currentRoom;
         private Room previousRoom;
         private PlayerDetailsSO playerDetails;
+        private PlayerDetailsSO secondPlayerDetails;
         private Player player;
+        private Player secondPlayer;
         [HideInInspector] public GameState gameState;
         [HideInInspector] public GameState previousGameState;
         private long gameScore;
@@ -55,13 +63,28 @@ namespace tuleeeeee.Managers
         private bool isFading = false;
         private float speedRunTimer = 0.0f;
 
+        [SerializeField] private float maxDistance = 10f;
+
         protected override void Awake()
         {
             base.Awake();
 
             playerDetails = GameResources.Instance.currentPlayerSO.playerDetails;
 
+            secondPlayerDetails = GameResources.Instance.currentSecondPlayerSO.playerDetails;
+
             InstantiatePlayer();
+
+            //InstantiateSecondPlayer();
+        }
+
+        public void InstantiateSecondPlayer()
+        {
+            GameObject playerGameObject = Instantiate(secondPlayerDetails.playerPrefab);
+
+            secondPlayer = playerGameObject.GetComponent<Player>();
+
+            secondPlayer.Initialize(secondPlayerDetails);
         }
 
         private void InstantiatePlayer()
@@ -130,6 +153,7 @@ namespace tuleeeeee.Managers
                     RoomEnemiesDefeated();
                     break;
                 case GameState.playingLevel:
+                    miniMap.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         PauseGameMenu();
@@ -140,6 +164,7 @@ namespace tuleeeeee.Managers
                     }
                     break;
                 case GameState.engagingEnemies:
+                    miniMap.SetActive(false);
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         PauseGameMenu();
@@ -259,6 +284,7 @@ namespace tuleeeeee.Managers
             else if (gameState == GameState.gamePaused)
             {
                 pauseMenu.SetActive(false);
+                audioMenu.SetActive(false);
                 GetPlayer().EnablePlayer();
 
                 gameState = previousGameState;
@@ -358,8 +384,8 @@ namespace tuleeeeee.Managers
 
             yield return StartCoroutine(Fade(0f, 1f, 2f, new Color(0f, 0f, 0f, 0.4f)));
 
-            string levelCompletedText = "WELL DONE " + GameResources.Instance.currentPlayerSO.playerName + "\n\n YOU'VE SURVIVED THIS DUNGEON LEVEL";
-            string nextLevelText = "PRESS ENTER TO DESCEND FURTHER INTO THE DUNGEON";
+            string levelCompletedText = "WELL DONE " + "\n\n YOU'VE SURVIVED THIS DUNGEON LEVEL";
+            string nextLevelText = "PRESS ENTER TO ASCEND FURTHER INTO THE DUNGEON";
             yield return StartCoroutine(DisplayMessageRoutine(levelCompletedText, Color.white, 5f));
             yield return StartCoroutine(DisplayMessageRoutine(nextLevelText, Color.white, 5f));
 
@@ -444,7 +470,7 @@ namespace tuleeeeee.Managers
 
             string timeFormatted = string.Format("{0:D2}:{1:D2}:{2:D2}", speedRunHour, speedRunMinute, speedRunSecond);
 
-            string lostText = "NICE TRY, " + GameResources.Instance.currentPlayerSO.playerName + "!\n\nBUT YOU LOST!";
+            string lostText = "NICE TRY" + "!\n\nBUT YOU LOST!";
 
             yield return StartCoroutine(DisplayMessageRoutine(lostText, Color.white, 2.5f));
 
@@ -464,10 +490,13 @@ namespace tuleeeeee.Managers
         {
             return currentRoom;
         }
-
         public Player GetPlayer()
         {
             return player;
+        }
+        public Player GetSecondlayer()
+        {
+            return secondPlayer;
         }
 
         public Sprite GetPlayerMiniMapIcon()
@@ -484,14 +513,15 @@ namespace tuleeeeee.Managers
         {
             return cVirtualCamera;
         }
-
         #region Validation
 #if UNITY_EDITOR
         private void OnValidate()
         {
             HelperUtilities.ValidateCheckNullValue(this, nameof(pauseMenu), pauseMenu);
+            HelperUtilities.ValidateCheckNullValue(this, nameof(miniMap), miniMap);
             HelperUtilities.ValidateCheckNullValue(this, nameof(messageTextTMP), messageTextTMP);
             HelperUtilities.ValidateCheckNullValue(this, nameof(canvasGroup), canvasGroup);
+            HelperUtilities.ValidateCheckNullValue(this, nameof(cVirtualCamera), cVirtualCamera);
             HelperUtilities.ValidateCheckEnumerableValues(this, nameof(dungeonLevelList), dungeonLevelList);
         }
 #endif
