@@ -172,7 +172,7 @@ public class WeaponStatusUI : MonoBehaviour
 
     private IEnumerator UpdateWeaponReloadBarRoutine(Weapon weapon)
     {
-        barImage.color = Color.red;
+        barImage.color = Color.white;
         float weaponReloadTime = weapon.weaponDetails.weaponReloadTime;
 
         while (weapon.isWeaponReloading)
@@ -186,7 +186,7 @@ public class WeaponStatusUI : MonoBehaviour
     private void ResetWeaponReloadBar()
     {
         StopReloadWeaponCoroutine();
-        barImage.color = Color.green;
+        barImage.color = Color.black;
         reloadBar.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 

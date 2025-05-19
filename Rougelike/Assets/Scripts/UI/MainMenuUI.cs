@@ -17,11 +17,13 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject quitButton;
     [SerializeField] private TextMeshProUGUI versionText;
 
+    private bool isChosenCharacter;
+
     private void Start()
     {
-        MusicManager.Instance.PlayMusic(GameResources.Instance.mainMenuMusic, 0f, 2f);
+        isChosenCharacter = false;
 
-        SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
+        MusicManager.Instance.PlayMusic(GameResources.Instance.mainMenuMusic, 0f, 2f);
 
         versionText.SetText(Application.version.ToString());
     }
@@ -30,6 +32,8 @@ public class MainMenuUI : MonoBehaviour
         playButton.SetActive(true);
         optionsButton.SetActive(true);
         quitButton.SetActive(true);
+
+        isChosenCharacter = true;
 
         SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
     }
@@ -43,7 +47,14 @@ public class MainMenuUI : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("MainGameScene");
+        if (isChosenCharacter)
+        {
+            SceneManager.LoadScene("MainGameScene");
+        }
+        else
+        {
+            LoadCharacterSelector();
+        }
     }
     public void QuitGame()
     {

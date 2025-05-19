@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using tuleeeeee.Data;
 using tuleeeeee.Utilities;
+using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 public class CharacterSelectorUI : MonoBehaviour
@@ -28,6 +29,9 @@ public class CharacterSelectorUI : MonoBehaviour
     }
 
     private void Start(){
+
+        UpdateArrowVisibility();
+
         for (int i = 0; i < playerDetailsList.Count; i++){
             GameObject playerSelectionObject = Instantiate(playerSelectionPrefab, characterSelector);
             playerCharacterGameObjectList.Add(playerSelectionObject);
@@ -70,8 +74,6 @@ public class CharacterSelectorUI : MonoBehaviour
 
         UpdateArrowVisibility();
     }
-
-
 
     private void MoveToSelectedCharacter(int index){
         if (coroutine != null){
