@@ -72,7 +72,7 @@ Shade     |A silent figure in worn robes, armed with a longbow. Arrows strike wi
 ---
 
 ## 🗝️ Final Note
-> *“Downning? Nah. Upping.”*
+> *“Upping? Nah. Downning.”*
 
 
 
