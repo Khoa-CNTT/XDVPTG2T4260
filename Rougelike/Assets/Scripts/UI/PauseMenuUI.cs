@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuUI : MonoBehaviour
 {
-    [SerializeField] GameObject audioMenu;
     private void Start()
     {
         gameObject.SetActive(false);

@@ -56,7 +56,7 @@ namespace tuleeeeee.Misc
         #region GAMEOBJECT TAGS
         public const string playerTag = "Player";
         public const string playerWeapon = "playerWeapon";
-        public const string eviroment = "Enviroment";
+        public const string enviroment = "Enviroment";
         #endregion
 
         #region AUDIO

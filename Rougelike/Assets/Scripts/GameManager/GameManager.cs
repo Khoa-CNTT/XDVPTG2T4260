@@ -385,7 +385,7 @@ namespace tuleeeeee.Managers
             yield return StartCoroutine(Fade(0f, 1f, 2f, new Color(0f, 0f, 0f, 0.4f)));
 
             string levelCompletedText = "WELL DONE " + "\n\n YOU'VE SURVIVED THIS DUNGEON LEVEL";
-            string nextLevelText = "PRESS ENTER TO ASCEND FURTHER INTO THE DUNGEON";
+            string nextLevelText = "PRESS ENTER TO DESCEND FURTHER INTO THE DUNGEON";
             yield return StartCoroutine(DisplayMessageRoutine(levelCompletedText, Color.white, 5f));
             yield return StartCoroutine(DisplayMessageRoutine(nextLevelText, Color.white, 5f));
 

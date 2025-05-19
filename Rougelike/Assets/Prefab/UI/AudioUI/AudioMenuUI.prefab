@@ -746,10 +746,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7111162460525216406}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4877264076869242026}
+        m_TargetAssemblyTypeName: AudioMenuUI, Assembly-CSharp
+        m_MethodName: Return
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1444,11 +1444,11 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 170
+  m_SortingOrder: 160
   m_TargetDisplay: 0
 --- !u!114 &7558171416178515005
 MonoBehaviour:
@@ -1502,6 +1502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd089b81a548cb42ae57d03e1673aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsMenuUI: {fileID: 0}
   musicLevelText: {fileID: 473324881259254661}
   soundsLevelText: {fileID: 2592593143731788967}
 --- !u!1 &7165665714500775597

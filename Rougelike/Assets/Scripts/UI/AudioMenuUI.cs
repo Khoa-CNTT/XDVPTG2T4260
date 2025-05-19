@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class AudioMenuUI : MonoBehaviour
 {
+    [SerializeField] private GameObject optionsMenuUI;
     [SerializeField] private TextMeshProUGUI musicLevelText;
     [SerializeField] private TextMeshProUGUI soundsLevelText;
 
@@ -50,10 +51,11 @@ public class AudioMenuUI : MonoBehaviour
         SoundEffectManager.Instance.DecreaseSoundVolume();
         soundsLevelText.SetText(SoundEffectManager.Instance.soundsVolume.ToString());
     }
-    public void ConfirmVolume()
+    public void Return()
     {
-
-    }     
+        this.gameObject.SetActive(false);
+        optionsMenuUI.SetActive(true);
+    }
 
     #region Validation
 #if UNITY_EDITOR
