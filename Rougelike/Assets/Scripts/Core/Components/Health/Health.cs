@@ -7,6 +7,12 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class Health : CoreComponent
 {
+    #region Header References
+    [Space(10)]
+    [Header("Reference")]
+    #endregion
+    [SerializeField] private HealthBar healthBar;
+
     private Player player;
     private Entity entity;
 
@@ -18,6 +24,7 @@ public class Health : CoreComponent
     private WaitForSeconds WaitForSecondsSpriteFlashInterval = new WaitForSeconds(spriteFlashInterval);
 
     [HideInInspector] public bool isDamageable = true;
+    [HideInInspector] public Enemy enemy;
 
     private int startingHealth;
     private int currentHealth;
@@ -53,6 +60,16 @@ public class Health : CoreComponent
                 spriteRendererArray = entity.spriteRendererArray;
             }
         }
+
+        if (entity != null && entity.EnemyDetails.isHealthBarDisplayed == true && healthBar != null)
+        {
+            healthBar.EnableHealthBar();
+
+        }
+        else if (healthBar != null)
+        {
+            healthBar.DisableHealthBar();
+        }
     }
     private void CallHealthEvent(int damageAmount)
     {
@@ -72,8 +89,11 @@ public class Health : CoreComponent
             currentHealth -= damageAmount;
             CallHealthEvent(damageAmount);
 
-           
 
+            if (healthBar != null)
+            {
+                healthBar.SetHealthBarValue((float)currentHealth / (float)startingHealth);
+            }
 
             PostHitImmunity();
         }

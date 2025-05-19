@@ -501,10 +501,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3437351860157552258, guid: f2628924792683444885a5908ce161d2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3437351860157552258, guid: f2628924792683444885a5908ce161d2, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -1585,6 +1581,49 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 871193988489959985, guid: 839abd0419a116d43b5ffb86b5cd3493, type: 3}
   m_PrefabInstance: {fileID: 1013221299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1088549310 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8510023556208881792, guid: e4bbbc083d4037a4298793efbb6f2031, type: 3}
+  m_PrefabInstance: {fileID: 1695362851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1088549311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088549310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1088549313
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088549310}
+  m_CullTransparentMesh: 1
 --- !u!1 &1223390750
 GameObject:
   m_ObjectHideFlags: 3
@@ -2517,7 +2556,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8510023556208881792, guid: e4bbbc083d4037a4298793efbb6f2031, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1088549313}
+    - targetCorrespondingSourceObject: {fileID: 8510023556208881792, guid: e4bbbc083d4037a4298793efbb6f2031, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1088549311}
   m_SourcePrefab: {fileID: 100100000, guid: e4bbbc083d4037a4298793efbb6f2031, type: 3}
 --- !u!224 &1695362852 stripped
 RectTransform:

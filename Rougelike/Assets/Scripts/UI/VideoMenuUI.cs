@@ -22,9 +22,15 @@ public class VideoMenuUI : MonoBehaviour
     {
         Time.timeScale = 0f;
     }
+
     private void OnDisable()
     {
         Time.timeScale = 1f;
+    }
+
+    private void Awake()
+    {
+
     }
 
     private void Start()
@@ -63,8 +69,15 @@ public class VideoMenuUI : MonoBehaviour
         int height = selectedResolutionList[selectedResolution].height;
 
         Screen.SetResolution(width, height, isFullScreen);
-        SaveSettings();
+
+        PlayerPrefs.SetInt("SavedResolutionWidth", width);
+        PlayerPrefs.SetInt("SavedResolutionHight", height);
+
+        PlayerPrefs.SetInt("ResolutionIndex", selectedResolution);
+
+        PlayerPrefs.Save();
     }
+
     public void ChangeFullScreen()
     {
         isFullScreen = toggle.isOn;
@@ -73,41 +86,36 @@ public class VideoMenuUI : MonoBehaviour
         int height = selectedResolutionList[selectedResolution].height;
 
         Screen.SetResolution(width, height, isFullScreen);
-        SaveSettings();
+        PlayerPrefs.SetInt("IsFullScreen", isFullScreen ? 1 : 0);
+        PlayerPrefs.Save();
     }
+
     public void Return()
     {
         this.gameObject.SetActive(false);
         optionsMenuUI.SetActive(true);
     }
+
     private void LoadSettings()
     {
-        if (PlayerPrefs.HasKey("ResolutionIndex"))
+        int width, height;
+        if (PlayerPrefs.HasKey("IsFullScreen"))
         {
-            selectedResolution = PlayerPrefs.GetInt("ResolutionIndex");
+            isFullScreen = PlayerPrefs.GetInt("IsFullScreen", 1) == 1;
+            toggle.isOn = isFullScreen;
+        }
+        if (PlayerPrefs.HasKey("SavedResolutionWidth") && PlayerPrefs.HasKey("SavedResolutionHight") && PlayerPrefs.HasKey("ResolutionIndex"))
+        {
+            selectedResolution = PlayerPrefs.GetInt("ResolutionIndex", 0);
+
+            width = PlayerPrefs.GetInt("SavedResolutionWidth", 1920);
+            height = PlayerPrefs.GetInt("SavedResolutionHight", 1080);
+
             if (selectedResolution >= 0 && selectedResolution < selectedResolutionList.Count)
             {
                 resDropdown.value = selectedResolution;
-                resDropdown.RefreshShownValue();
             }
+            Screen.SetResolution(width, height, isFullScreen);
         }
-
-        if (PlayerPrefs.HasKey("IsFullScreen"))
-        {
-            isFullScreen = PlayerPrefs.GetInt("IsFullScreen") == 1;
-            toggle.isOn = isFullScreen;
-        }
-
-        // Apply loaded settings
-        int width = selectedResolutionList[selectedResolution].width;
-        int height = selectedResolutionList[selectedResolution].height;
-        Screen.SetResolution(width, height, isFullScreen);
-    }
-
-    public void SaveSettings()
-    {
-        PlayerPrefs.SetInt("ResolutionIndex", selectedResolution);
-        PlayerPrefs.SetInt("IsFullScreen", isFullScreen ? 1 : 0);
-        PlayerPrefs.Save();
     }
 }
