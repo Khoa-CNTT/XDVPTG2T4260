@@ -13,6 +13,7 @@ public class MainMenuUI : MonoBehaviour
     [Header("OBJECT REFERENCES")]
     #endregion
     [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject optionsButton;
     [SerializeField] private GameObject quitButton;
     [SerializeField] private TextMeshProUGUI versionText;
 
@@ -24,7 +25,22 @@ public class MainMenuUI : MonoBehaviour
 
         versionText.SetText(Application.version.ToString());
     }
+    public void LoadCharacterSelector()
+    {
+        playButton.SetActive(true);
+        optionsButton.SetActive(true);
+        quitButton.SetActive(true);
 
+        SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
+    }
+    public void LoadOptions()
+    {
+        playButton.SetActive(false);
+        optionsButton.SetActive(false);
+        quitButton.SetActive(false);
+
+        SceneManager.UnloadSceneAsync("CharacterSelectorScene");
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("MainGameScene");

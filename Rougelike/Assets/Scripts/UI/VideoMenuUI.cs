@@ -18,6 +18,15 @@ public class VideoMenuUI : MonoBehaviour
 
     private bool isFullScreen = false;
 
+    private void OnEnable()
+    {
+        Time.timeScale = 0f;
+    }
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+    }
+
     private void Start()
     {
         this.gameObject.SetActive(false);
