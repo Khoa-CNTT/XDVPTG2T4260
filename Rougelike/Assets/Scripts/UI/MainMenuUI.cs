@@ -15,6 +15,9 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject optionsButton;
     [SerializeField] private GameObject quitButton;
+
+    [SerializeField] private GameObject coopButton;
+
     [SerializeField] private TextMeshProUGUI versionText;
 
     private bool isChosenCharacter;
@@ -33,9 +36,25 @@ public class MainMenuUI : MonoBehaviour
         optionsButton.SetActive(true);
         quitButton.SetActive(true);
 
+        coopButton.SetActive(true);
+
         isChosenCharacter = true;
 
         SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
+
+    }
+    public void UnLoadOptions()
+    {
+        playButton.SetActive(true);
+        optionsButton.SetActive(true);
+        quitButton.SetActive(true);
+
+        coopButton.SetActive(true);
+
+        if (isChosenCharacter)
+        {
+            SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
+        }
     }
     public void LoadOptions()
     {
@@ -43,7 +62,12 @@ public class MainMenuUI : MonoBehaviour
         optionsButton.SetActive(false);
         quitButton.SetActive(false);
 
-        SceneManager.UnloadSceneAsync("CharacterSelectorScene");
+        coopButton.SetActive(false);
+
+        if (isChosenCharacter)
+        {
+            SceneManager.UnloadSceneAsync("CharacterSelectorScene");
+        }
     }
     public void PlayGame()
     {
