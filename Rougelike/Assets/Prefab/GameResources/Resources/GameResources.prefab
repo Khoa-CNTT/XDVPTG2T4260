@@ -57,12 +57,15 @@ MonoBehaviour:
   musicLowSnapshot: {fileID: 8893122114324796974, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   musicOffSnapshot: {fileID: -3084740370723268673, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
   soundsMasterMixerGroup: {fileID: -4734643798044506327, guid: 2ac509b551addfb48950fbdc0d9cefb4, type: 2}
-  doorOpenCloseSoundEffect: {fileID: 11400000, guid: 4d6410b08da47b74a9b0445b603f225e, type: 2}
+  doorOpenCloseSoundEffect: {fileID: 11400000, guid: 3b8061e281bd2e743ad1abd25fd8a143, type: 2}
   tableFlip: {fileID: 11400000, guid: 5236242eaacff284182850e3c5e832ae, type: 2}
   chestOpen: {fileID: 11400000, guid: ef3f994ff66093140b94afe319f5d5ca, type: 2}
   healthPickUp: {fileID: 11400000, guid: 014e7dbc3993289468b3c8799c3341ae, type: 2}
   weaponPickup: {fileID: 11400000, guid: 7cbed7e9d7c15714786d9365313232e6, type: 2}
   ammoPickup: {fileID: 11400000, guid: d08b8ee42eb57724c81cda0be96620f9, type: 2}
+  anhsoi: {fileID: 11400000, guid: 8c485ac1cbbdbb24ab535551212b07b5, type: 2}
+  uiSelect: {fileID: 11400000, guid: a41ca20d8326d684dad2ebb93831449d, type: 2}
+  uiCursor: {fileID: 11400000, guid: 681b28c0b1db7c446ba8798d2644220f, type: 2}
   dimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
   litMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   variableLitShader: {fileID: -6465566751694194690, guid: 4ba7b97ebdd457646b9d143848bb61b9, type: 3}

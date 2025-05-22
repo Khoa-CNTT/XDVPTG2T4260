@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Claims;
 using tuleeeeee.Data;
 using tuleeeeee.Managers;
 using tuleeeeee.Misc;
@@ -19,18 +20,23 @@ using UnityEngine;
 [DisallowMultipleComponent]*/
 public class Player : MonoBehaviour
 {
+    #region CORECOMPOMENTS
     public Health Health { get => health != null ? health : Core.GetCoreComponent(ref health); }
-    private Health health;
+    private Health health; 
+    #endregion
+
+    #region STATES
     public StateManager StateManager { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerRollState RollState { get; private set; }
-    public PlayerDeadState DeadState { get; private set; }
+    public PlayerDeadState DeadState { get; private set; } 
+    #endregion
     public PlayerDetailsSO PlayerDetails { get; private set; }
 
     public MovementDetailsSO MovementDetails;
 
-    #region Components
+    #region UNITYCOMPOMENTS
     public Core Core { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public SpriteRenderer[] SpriteRendererArray { get; private set; }
@@ -38,7 +44,6 @@ public class Player : MonoBehaviour
     #endregion
 
     public float MoveSpeed { get; private set; }
-    private bool isPlayerMovementDisabled;
 
     #region EVENTS
     public AimWeaponEvent AimWeaponEvent { get; private set; }
@@ -54,13 +59,19 @@ public class Player : MonoBehaviour
     #endregion
 
     public List<Weapon> weaponList = new List<Weapon>();
+
+    private bool isPlayerMovementDisabled;
+    private bool isUsedItem;
+
     private void OnEnable()
     {
         HealthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
+        InputHandler.UseItemEvent.AddListener(OnUsedItem);
     }
     private void OnDisable()
     {
         HealthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
+        InputHandler.UseItemEvent.RemoveListener(OnUsedItem);
     }
     private void Awake()
     {
@@ -96,9 +107,13 @@ public class Player : MonoBehaviour
         StateManager.CurrentPlayerState.LogicUpdate();
         UseItemInput();
     }
+    public void OnUsedItem(bool hasUsedItem)
+    {
+        isUsedItem = hasUsedItem;
+    }
     private void UseItemInput()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (isUsedItem)
         {
             float useItemRadius = 2.5f;
 

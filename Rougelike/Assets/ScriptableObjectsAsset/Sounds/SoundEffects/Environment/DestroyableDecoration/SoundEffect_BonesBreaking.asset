@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SoundEffect_BonesBreaking
   m_EditorClassIdentifier: 
   soundEffectName: Bones Breaking
-  soundPrefab: {fileID: 1504514487756828174, guid: 9ce42ad6a33a01a4da5b54c2b31b453d, type: 3}
+  soundPrefab: {fileID: 2649997097972954457, guid: dad9aba5b623266488ac4feb891e69c6, type: 3}
   soundEffectClip: {fileID: 8300000, guid: a359800f30ed2d04cba7001ef7af6855, type: 3}
   soundEffectPitchRandomVariationMin: 1
   soundEffectPitchRandomVariationMax: 1.2

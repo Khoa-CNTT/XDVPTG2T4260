@@ -91,13 +91,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 7701506144722876150}
+    m_SelectOnDown: {fileID: 2135686396071271620}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7482853502128931528}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuUI, Assembly-CSharp
         m_MethodName: LoadMainMenu
         m_Mode: 1
@@ -146,6 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278cb55b2f179f24f96d9117928fc53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAffectText: 1
+  isAffectImage: 1
+  isPrimary: 0
 --- !u!1 &3320284589307889066
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,8 +359,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285493103
+  m_fontColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -541,8 +544,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285493103
+  m_fontColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -677,8 +680,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285493103
+  m_fontColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -963,7 +966,7 @@ GameObject:
   - component: {fileID: 1732233490060183010}
   - component: {fileID: 7777086074627937448}
   - component: {fileID: 5197038442609194905}
-  - component: {fileID: 7482853502128931528}
+  - component: {fileID: 4173056041122400215}
   m_Layer: 5
   m_Name: PauseMenuUI
   m_TagString: Untagged
@@ -1054,7 +1057,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7482853502128931528
+--- !u!114 &4173056041122400215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1063,7 +1066,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6979692994116390025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d8f542c8a6653740bb52ecb34d2636a, type: 3}
+  m_Script: {fileID: 11500000, guid: bf233b7c8a6e5c144aaca3d093a82f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   videoMenuUI: {fileID: 0}
@@ -1129,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -1159,13 +1162,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 2245307785609975155}
+    m_SelectOnDown: {fileID: 21612159019464617}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
@@ -1190,7 +1193,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7482853502128931528}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuUI, Assembly-CSharp
         m_MethodName: OpenVideoMenuUI
         m_Mode: 1
@@ -1214,6 +1217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278cb55b2f179f24f96d9117928fc53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAffectText: 1
+  isAffectImage: 1
+  isPrimary: 1
 --- !u!1 &8262072929820356563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,13 +1311,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 2135686396071271620}
+    m_SelectOnDown: {fileID: 7701506144722876150}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
@@ -1336,7 +1342,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7482853502128931528}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PauseMenuUI, Assembly-CSharp
         m_MethodName: OpenAudioMenuUI
         m_Mode: 1
@@ -1360,6 +1366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278cb55b2f179f24f96d9117928fc53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAffectText: 1
+  isAffectImage: 1
+  isPrimary: 0
 --- !u!1 &8425510886796884508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,6 +1453,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6614911387025353154}
+  - component: {fileID: 1807001893988781612}
+  - component: {fileID: 2363489559986638492}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1471,6 +1482,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1807001893988781612
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8510023556208881792}
+  m_CullTransparentMesh: 1
+--- !u!114 &2363489559986638492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8510023556208881792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8734344889310133228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,13 +1611,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 21612159019464617}
+    m_SelectOnDown: {fileID: 2245307785609975155}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
@@ -1617,6 +1666,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278cb55b2f179f24f96d9117928fc53e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAffectText: 1
+  isAffectImage: 1
+  isPrimary: 0
 --- !u!1 &8818203802306570537
 GameObject:
   m_ObjectHideFlags: 0

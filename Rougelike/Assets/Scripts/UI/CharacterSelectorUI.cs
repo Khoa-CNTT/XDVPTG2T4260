@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using tuleeeeee.Data;
 using tuleeeeee.Utilities;
-using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 [DisallowMultipleComponent]
 public class CharacterSelectorUI : MonoBehaviour
@@ -25,10 +25,11 @@ public class CharacterSelectorUI : MonoBehaviour
         playerSelectionPrefab = GameResources.Instance.playerSelectionPrefab;
         playerDetailsList = GameResources.Instance.playerDetailsList;
         currentPlayer = GameResources.Instance.currentPlayerSO;
-
     }
 
     private void Start(){
+
+        EventSystem.current.SetSelectedGameObject(nextButton);
 
         UpdateArrowVisibility();
 

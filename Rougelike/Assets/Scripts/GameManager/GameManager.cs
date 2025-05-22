@@ -26,6 +26,7 @@ namespace tuleeeeee.Managers
         [Header("GAMEOBJECT REFERENCES")]
         #endregion
         [SerializeField] private GameObject pauseMenu;
+        [SerializeField] private GameObject videoMenu;
         [SerializeField] private GameObject audioMenu;
         [SerializeField] private GameObject miniMap;
 
@@ -278,13 +279,23 @@ namespace tuleeeeee.Managers
                 pauseMenu.SetActive(true);
                 GetPlayer().DisablePlayer();
 
+                Time.timeScale = 0f;
+
                 previousGameState = gameState;
                 gameState = GameState.gamePaused;
             }
-            else if (gameState == GameState.gamePaused)
+            else
             {
+                if (videoMenu.activeSelf || audioMenu.activeSelf)
+                {
+                    videoMenu.SetActive(false);
+                    audioMenu.SetActive(false);
+                    return;
+                }
+
+                Time.timeScale = 1f;
+
                 pauseMenu.SetActive(false);
-                audioMenu.SetActive(false);
                 GetPlayer().EnablePlayer();
 
                 gameState = previousGameState;

@@ -42,21 +42,21 @@ public class WeaponController : MonoBehaviour
     }
     private void OnEnable()
     {
-        inputHandler.LookEvent.AddListener(OnAim);
-        inputHandler.AttackEvent.AddListener(OnShoot);
-        inputHandler.ScrollEvent.AddListener(OnScroll);
-        inputHandler.SelectWeaponEvent.AddListener(OnSelectWeapon);
-        inputHandler.FastSwitchWeaponEvent.AddListener(OnFastSwitch);
-        inputHandler.ReloadEvent.AddListener(OnReloadWeapon);
+        inputHandler.LookEvent.AddListener(AimWeapon);
+        inputHandler.AttackEvent.AddListener(WeaponShooted);
+        inputHandler.ScrollEvent.AddListener(ScrollSelectedWeapon);
+        inputHandler.SelectWeaponEvent.AddListener(SelectWeapon);
+        inputHandler.FastSwitchWeaponEvent.AddListener(FastSwitchWeapon);
+        inputHandler.ReloadEvent.AddListener(ReloadWeapon);
     }
     private void OnDisable()
     {
-        inputHandler.LookEvent.RemoveListener(OnAim);
-        inputHandler.AttackEvent.RemoveListener(OnShoot);
-        inputHandler.ScrollEvent.RemoveListener(OnScroll);
-        inputHandler.SelectWeaponEvent.RemoveListener(OnSelectWeapon);
-        inputHandler.FastSwitchWeaponEvent.RemoveListener(OnFastSwitch);
-        inputHandler.ReloadEvent.RemoveListener(OnReloadWeapon);
+        inputHandler.LookEvent.RemoveListener(AimWeapon);
+        inputHandler.AttackEvent.RemoveListener(WeaponShooted);
+        inputHandler.ScrollEvent.RemoveListener(ScrollSelectedWeapon);
+        inputHandler.SelectWeaponEvent.RemoveListener(SelectWeapon);
+        inputHandler.FastSwitchWeaponEvent.RemoveListener(FastSwitchWeapon);
+        inputHandler.ReloadEvent.RemoveListener(ReloadWeapon);
     }
     private void Update()
     {
@@ -66,12 +66,12 @@ public class WeaponController : MonoBehaviour
             FireWeaponInput(isShooting, currentWeaponDirection, currentWeaponAngle, currentPlayerAngle, currentAimDirection);
         }
     }
-    public void OnShoot(bool shootInput)
+    public void WeaponShooted(bool shootInput)
     {
         isShooting = shootInput;
         // FireWeaponInput(isShooting, currentWeaponDirection, currentWeaponAngle, currentPlayerAngle, currentAimDirection);
     }
-    public void OnReloadWeapon(bool reloadInput)
+    public void ReloadWeapon(bool reloadInput)
     {
         Weapon currentWeapon = player.ActiveWeapon.GetCurrentWeapon();
         int weaponClipAmmoCapacity = currentWeapon.weaponDetails.weaponClipAmmoCapacity;
@@ -91,23 +91,23 @@ public class WeaponController : MonoBehaviour
             player.ReloadWeaponEvent.CallReloadWeaponEvent(currentWeapon, 0);
         }
     }
-    public void OnAim(Vector2 newAimDirection)
+    public void AimWeapon(Vector2 newAimDirection)
     {
         aimDirection = newAimDirection;
         CalculateAimParameters();
         AimWeapon(currentWeaponDirection, currentWeaponAngle, currentPlayerAngle, currentAimDirection);
     }
-    public void OnScroll(Vector2 newScrollValue)
+    public void ScrollSelectedWeapon(Vector2 newScrollValue)
     {
         scrollValue = newScrollValue;
         SwitchWeaponInput(scrollValue);
     }
-    public void OnSelectWeapon(int newWeaponSlotIndex)
+    public void SelectWeapon(int newWeaponSlotIndex)
     {
         weaponSlotIndex = newWeaponSlotIndex;
         SetWeaponByIndex(weaponSlotIndex);
     }
-    public void OnFastSwitch(bool isClicked)
+    public void FastSwitchWeapon(bool isClicked)
     {
         fastSwitchWeapon = isClicked;
         FastSwitchWeapon();

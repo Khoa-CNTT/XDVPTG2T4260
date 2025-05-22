@@ -68,6 +68,15 @@ public class GameResources : MonoBehaviour
     public SoundEffectSO weaponPickup;
     public SoundEffectSO ammoPickup;
 
+    public SoundEffectSO anhsoi;
+
+    #region Header UISOUNDS
+    [Space(10)]
+    [Header("UISOUNDS")]
+    #endregion
+    public SoundEffectSO uiSelect;
+    public SoundEffectSO uiCursor;
+
     #region Header MATERIALS
     [Space(10)]
     [Header("MATERIALS")]

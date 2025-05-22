@@ -6,6 +6,7 @@ using tuleeeeee.Events;
 
 namespace tuleeeeee.MyInput
 {
+    [RequireComponent(typeof(PlayerInput))]
     public class PlayerInputHandler : MonoBehaviour
     {
         private Camera _camera;
@@ -24,13 +25,12 @@ namespace tuleeeeee.MyInput
         {
             _camera = Camera.main;
         }
-
         /// <summary>
         ///   Method called when the user input movement
         /// </summary>
         /// <param name="context"></param>
         /// 
-        public void OnMoveInput(InputAction.CallbackContext context)
+        public void OnMove(InputAction.CallbackContext context)
         {
             RawMovementInput = context.ReadValue<Vector2>();
 
@@ -42,7 +42,7 @@ namespace tuleeeeee.MyInput
         /// Method called when the user input mouse
         /// </summary>
         /// <param name="context"></param>
-        public void OnLookInput(InputAction.CallbackContext context)
+        public void OnAim(InputAction.CallbackContext context)
         {
             Vector2 newInput = context.ReadValue<Vector2>();
 
@@ -76,10 +76,46 @@ namespace tuleeeeee.MyInput
         }
 
         /// <summary>
+        /// Method called when the user input roll
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnRoll(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                RollInput = true;
+                RollInputStop = false;
+                rollInputStartTime = Time.time;
+            }
+            else if (context.canceled)
+            {
+                RollInput = false;
+                RollInputStop = true;
+            }
+        }
+
+        /// <summary>
+        /// Fire
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnFire(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                ShotInput = true;
+            }
+            else if (context.canceled)
+            {
+                ShotInput = false;
+            }
+            AttackEvent.Invoke(ShotInput);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="context"></param>
-        public void OnScrollInput(InputAction.CallbackContext context)
+        public void OnScroll(InputAction.CallbackContext context)
         {
             Vector2 newInput = context.ReadValue<Vector2>();
             ScrollEvent.Invoke(newInput);
@@ -106,35 +142,17 @@ namespace tuleeeeee.MyInput
             }
             else if (context.canceled)
             {
-                isClick= false;
+                isClick = false;
             }
 
             FastSwitchWeaponEvent.Invoke(isClick);
         }
 
         /// <summary>
-        /// Method called when the user input roll
-        /// </summary>
-        /// <param name="context"></param>
-        public void OnRollInput(InputAction.CallbackContext context)
-        {
-            if (context.started)
-            {
-                RollInput = true;
-                RollInputStop = false;
-                rollInputStartTime = Time.time;
-            }
-            else if (context.canceled)
-            {
-                RollInput = false;
-                RollInputStop = true;
-            }
-        }
-        /// <summary>
         ///  Reload
         /// </summary>
         /// <param name="context"></param>
-        public void OnReloadInput(InputAction.CallbackContext context)
+        public void OnReload(InputAction.CallbackContext context)
         {
             bool isReloading = false;
             if (context.started)
@@ -148,21 +166,23 @@ namespace tuleeeeee.MyInput
             ReloadEvent.Invoke(isReloading);
         }
         /// <summary>
-        /// Fire
+        ///  Reload
         /// </summary>
         /// <param name="context"></param>
-        public void OnFireInput(InputAction.CallbackContext context)
+        public void OnUseItem(InputAction.CallbackContext context)
         {
+            bool isUsedItenm = false;
             if (context.started)
             {
-                ShotInput = true;
+                isUsedItenm = true;
             }
             else if (context.canceled)
             {
-                ShotInput = false;
+                isUsedItenm = false;
             }
-            AttackEvent.Invoke(ShotInput);
+            ReloadEvent.Invoke(isUsedItenm);
         }
+
 
         public void UseRollInput() => RollInput = false;
         private void CheckRollInputHoldTime()
@@ -181,12 +201,14 @@ namespace tuleeeeee.MyInput
         private readonly FastSwitchWeaponEvent onFastSwitchWeaponEvent = new FastSwitchWeaponEvent();
         private readonly AttackEvent onAttackEvent = new AttackEvent();
         private readonly ReloadEvent onReloadEvent = new ReloadEvent();
+        private readonly UseItemEvent onUseItemEvent = new UseItemEvent();
         public UnityEvent<Vector2> LookEvent => onLookEvent;
         public UnityEvent<Vector2> ScrollEvent => onScrollEvent;
         public UnityEvent<int> SelectWeaponEvent => onSelectWeaponEvent;
         public UnityEvent<bool> FastSwitchWeaponEvent => onFastSwitchWeaponEvent;
         public UnityEvent<bool> AttackEvent => onAttackEvent;
         public UnityEvent<bool> ReloadEvent => onReloadEvent;
+        public UnityEvent<bool> UseItemEvent => onUseItemEvent;
 
         #endregion
 

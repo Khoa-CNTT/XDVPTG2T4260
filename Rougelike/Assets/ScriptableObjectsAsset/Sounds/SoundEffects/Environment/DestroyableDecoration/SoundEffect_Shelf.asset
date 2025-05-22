@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SoundEffect_Shelf
   m_EditorClassIdentifier: 
   soundEffectName: Shelf Breaking
-  soundPrefab: {fileID: 1504514487756828174, guid: 9ce42ad6a33a01a4da5b54c2b31b453d, type: 3}
+  soundPrefab: {fileID: 2649997097972954457, guid: dad9aba5b623266488ac4feb891e69c6, type: 3}
   soundEffectClip: {fileID: 8300000, guid: c9541f773a3e60045ac644f29ebb25a6, type: 3}
   soundEffectPitchRandomVariationMin: 1.239
   soundEffectPitchRandomVariationMax: 1.402

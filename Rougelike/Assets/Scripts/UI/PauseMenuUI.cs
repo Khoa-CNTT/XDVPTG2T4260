@@ -4,24 +4,17 @@ using TMPro;
 using tuleeeeee.Managers;
 using tuleeeeee.Utilities;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject videoMenuUI;
     [SerializeField] private GameObject audioMenuUI;
+
     private void Start()
     {
         gameObject.SetActive(false);
-    }
-
-    private void OnEnable()
-    {
-        Time.timeScale = 0f;
-    }
-    private void OnDisable()
-    {
-        Time.timeScale = 1f;
     }
 
     public void LoadMainMenu()
@@ -39,4 +32,13 @@ public class PauseMenuUI : MonoBehaviour
         audioMenuUI.SetActive(true);
     }
 
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(videoMenuUI), videoMenuUI);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(audioMenuUI), audioMenuUI);
+    }
+#endif
+    #endregion
 }

@@ -15,6 +15,6 @@ MonoBehaviour:
   soundEffectName: PistolReload
   soundPrefab: {fileID: 2649997097972954457, guid: dad9aba5b623266488ac4feb891e69c6, type: 3}
   soundEffectClip: {fileID: 8300000, guid: 28a2b6d663b81204a8dfb1dd072eefe1, type: 3}
-  soundEffectPitchRandomVariationMin: 0.8
-  soundEffectPitchRandomVariationMax: 1.2
-  soundEffectVolume: 1
+  soundEffectPitchRandomVariationMin: 0.6
+  soundEffectPitchRandomVariationMax: 1
+  soundEffectVolume: 0.6

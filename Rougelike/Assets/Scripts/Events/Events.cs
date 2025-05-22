@@ -12,9 +12,14 @@ namespace tuleeeeee.Events
     public class AttackEvent : UnityEvent<bool> { }
 
     /// <summary>
-    ///     An event representing a fire input 
+    ///     An event when player a reload input
     /// </summary>
     public class ReloadEvent : UnityEvent<bool> { }
+
+    /// <summary>
+    ///     An event when play useitem input
+    /// </summary>
+    public class UseItemEvent : UnityEvent<bool> { }
 
     /// <summary>
     ///     An event representing a look input (where the character must look) in the direction of its parameter

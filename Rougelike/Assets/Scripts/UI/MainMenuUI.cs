@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using tuleeeeee.Utilities;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
@@ -24,6 +25,8 @@ public class MainMenuUI : MonoBehaviour
 
     private void Start()
     {
+        EventSystem.current.SetSelectedGameObject(playButton);
+
         isChosenCharacter = false;
 
         MusicManager.Instance.PlayMusic(GameResources.Instance.mainMenuMusic, 0f, 2f);
@@ -41,7 +44,6 @@ public class MainMenuUI : MonoBehaviour
         isChosenCharacter = true;
 
         SceneManager.LoadScene("CharacterSelectorScene", LoadSceneMode.Additive);
-
     }
     public void UnLoadOptions()
     {
@@ -50,6 +52,7 @@ public class MainMenuUI : MonoBehaviour
         quitButton.SetActive(true);
 
         coopButton.SetActive(true);
+
 
         if (isChosenCharacter)
         {
@@ -90,7 +93,10 @@ public class MainMenuUI : MonoBehaviour
     private void OnValidate()
     {
         HelperUtilities.ValidateCheckNullValue(this, nameof(playButton), playButton);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(coopButton), coopButton);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(optionsButton), optionsButton);
         HelperUtilities.ValidateCheckNullValue(this, nameof(quitButton), quitButton);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(versionText), versionText);
     }
 #endif
     #endregion

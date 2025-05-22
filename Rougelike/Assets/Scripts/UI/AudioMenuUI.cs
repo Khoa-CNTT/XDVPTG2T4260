@@ -3,12 +3,24 @@ using System.Collections.Generic;
 using TMPro;
 using tuleeeeee.Utilities;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class AudioMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject optionsMenuUI;
     [SerializeField] private TextMeshProUGUI musicLevelText;
     [SerializeField] private TextMeshProUGUI soundsLevelText;
+
+    private void OnEnable()
+    {
+        StartCoroutine(InitializeUI());
+    }
+
+    private void OnDisable()
+    {
+       
+    }
 
     private void Start()
     {
@@ -21,16 +33,6 @@ public class AudioMenuUI : MonoBehaviour
 
         soundsLevelText.SetText(SoundEffectManager.Instance.soundsVolume.ToString());
         musicLevelText.SetText(MusicManager.Instance.musicVolume.ToString());
-    }
-
-    private void OnEnable()
-    {
-        StartCoroutine(InitializeUI());
-        Time.timeScale = 0f;
-    }
-    private void OnDisable()
-    {
-        Time.timeScale = 1f;
     }
 
     public void IncreaseMusicVolume()
@@ -66,6 +68,7 @@ public class AudioMenuUI : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(optionsMenuUI), optionsMenuUI);
         HelperUtilities.ValidateCheckNullValue(this, nameof(musicLevelText), musicLevelText);
         HelperUtilities.ValidateCheckNullValue(this, nameof(soundsLevelText), soundsLevelText);
     }

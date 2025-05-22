@@ -24,8 +24,9 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
         public ComponentType componentType;
     }
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         objectPoolTransform = this.gameObject.transform;
 
         for (int i = 0; i < poolArray.Length; i++)

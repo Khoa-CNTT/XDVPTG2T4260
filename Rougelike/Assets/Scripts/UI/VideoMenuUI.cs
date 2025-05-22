@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using tuleeeeee.Utilities;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class VideoMenuUI : MonoBehaviour
@@ -9,6 +11,7 @@ public class VideoMenuUI : MonoBehaviour
     [SerializeField] private GameObject optionsMenuUI;
     [SerializeField] private TMP_Dropdown resDropdown;
     [SerializeField] private Toggle toggle;
+
 
     private Resolution[] resolutionArray;
 
@@ -18,20 +21,17 @@ public class VideoMenuUI : MonoBehaviour
 
     private bool isFullScreen = false;
 
+
     private void OnEnable()
     {
-        Time.timeScale = 0f;
+
     }
 
     private void OnDisable()
     {
-        Time.timeScale = 1f;
+     
     }
 
-    private void Awake()
-    {
-
-    }
 
     private void Start()
     {
@@ -118,4 +118,14 @@ public class VideoMenuUI : MonoBehaviour
             Screen.SetResolution(width, height, isFullScreen);
         }
     }
+    #region Validation
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(optionsMenuUI), optionsMenuUI);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(resDropdown), resDropdown);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(toggle), toggle);
+    }
+#endif
+    #endregion
 }
