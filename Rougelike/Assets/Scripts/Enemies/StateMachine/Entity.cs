@@ -17,13 +17,11 @@ public class Entity : MonoBehaviour
     private Health health;
     public Core Core { get; private set; }
     public StateManager StateManager { get; private set; }
-
     public EnemyDetailsSO EnemyDetails { get; private set; }
     public MovementDetailsSO MovementDetails;
 
     private FireWeapon fireWeapon;
     private MaterializeEffect materializeEffect;
-
     public WaitForFixedUpdate waitForFixedUpdate { get; private set; }
 
     #region COMPONENTS
@@ -49,8 +47,6 @@ public class Entity : MonoBehaviour
     public int updateFrameNumber = 1;
 
     private bool isEnemyMovementDisabled;
-
-    public Stack<Vector3> movementsList = new Stack<Vector3>();
 
     public virtual void OnEnable()
     {

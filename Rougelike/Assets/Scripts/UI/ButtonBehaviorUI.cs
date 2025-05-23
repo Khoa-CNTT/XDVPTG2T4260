@@ -43,6 +43,11 @@ public class ButtonBehaviorUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
         button.onClick.RemoveListener(OnButtonPressed);
         SetColors(grey, white);
     }
+    private void OnButtonPressed()
+    {
+        if (SoundEffectManager.Instance == null) return;
+        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.uiCursor);
+    }
 
     public void OnSelect(BaseEventData eventData)
     {
@@ -54,13 +59,6 @@ public class ButtonBehaviorUI : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnDeselect(BaseEventData eventData)
     {
         SetColors(grey, white);
-    }
-
-    private void OnButtonPressed()
-    {
-        SetColors(grey, white);
-        if (SoundEffectManager.Instance == null) return;
-        SoundEffectManager.Instance.PlaySoundEffect(GameResources.Instance.uiCursor);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

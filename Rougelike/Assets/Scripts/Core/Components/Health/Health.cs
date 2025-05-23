@@ -64,7 +64,6 @@ public class Health : CoreComponent
         if (entity != null && entity.EnemyDetails.isHealthBarDisplayed == true && healthBar != null)
         {
             healthBar.EnableHealthBar();
-
         }
         else if (healthBar != null)
         {

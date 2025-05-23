@@ -11,11 +11,11 @@ public class OptionsMenuUI : MonoBehaviour
 
     private void OnEnable()
     {
-        
+
     }
     private void OnDisable()
     {
-       
+
     }
     private void Start()
     {
@@ -37,5 +37,6 @@ public class OptionsMenuUI : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenuScene");
+        Time.timeScale = 1f;
     }
 }

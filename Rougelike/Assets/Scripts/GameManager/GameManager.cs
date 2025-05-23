@@ -1,20 +1,18 @@
 ﻿using System.Collections.Generic;
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+using Cinemachine;
+
 using tuleeeeee.Enums;
 using tuleeeeee.Dungeon;
 using tuleeeeee.Data;
 using tuleeeeee.Misc;
 using tuleeeeee.Utilities;
 using tuleeeeee.StaticEvent;
-using static tuleeeeee.StaticEvent.StaticEventHandler;
-using System;
-using System.Collections;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using TMPro;
-using Cinemachine;
-using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 
 namespace tuleeeeee.Managers
 {
@@ -34,9 +32,6 @@ namespace tuleeeeee.Managers
         [SerializeField] private CanvasGroup canvasGroup;
 
         [SerializeField] private CinemachineVirtualCamera cVirtualCamera;
-
-        private PlayerInputManager inputManager;
-
         #region Header DUNGEON LEVELS
         [Space(10)]
         [Header("DUNGEON LEVELS")]
@@ -52,19 +47,19 @@ namespace tuleeeeee.Managers
         [SerializeField] private int currentDungeonLevelListIndex;
         private Room currentRoom;
         private Room previousRoom;
+
         private PlayerDetailsSO playerDetails;
         private PlayerDetailsSO secondPlayerDetails;
         private Player player;
         private Player secondPlayer;
         [HideInInspector] public GameState gameState;
         [HideInInspector] public GameState previousGameState;
+
         private long gameScore;
         private int scoreMultiplier;
         private InstantiatedRoom bossRoom;
         private bool isFading = false;
         private float speedRunTimer = 0.0f;
-
-        [SerializeField] private float maxDistance = 10f;
 
         protected override void Awake()
         {
@@ -113,12 +108,12 @@ namespace tuleeeeee.Managers
             player.DestroyedEvent.OnDestroyed -= Player_OnDestroyed;
         }
 
-        private void StaticEventHandler_OnRoomChanged(RoomChangedEventArgs roomChangedEventArgs)
+        private void StaticEventHandler_OnRoomChanged(StaticEventHandler.RoomChangedEventArgs roomChangedEventArgs)
         {
             SetCurrentRoom(roomChangedEventArgs.room);
         }
 
-        private void StaticEventHandler_OnRoomEnemiesDefeated(RoomEnemiesDefeatedArgs roomEnemiesDefeatedArgs)
+        private void StaticEventHandler_OnRoomEnemiesDefeated(StaticEventHandler.RoomEnemiesDefeatedArgs roomEnemiesDefeatedArgs)
         {
             RoomEnemiesDefeated();
         }
@@ -141,7 +136,6 @@ namespace tuleeeeee.Managers
         {
             HandleGameState();
             speedRunTimer += Time.deltaTime;
-
         }
 
         private void HandleGameState()
@@ -155,7 +149,7 @@ namespace tuleeeeee.Managers
                     break;
                 case GameState.playingLevel:
                     miniMap.SetActive(true);
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (GetPlayer().IsMenuOpen())
                     {
                         PauseGameMenu();
                     }
@@ -166,7 +160,7 @@ namespace tuleeeeee.Managers
                     break;
                 case GameState.engagingEnemies:
                     miniMap.SetActive(false);
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (GetPlayer().IsMenuOpen())
                     {
                         PauseGameMenu();
                     }
@@ -180,7 +174,7 @@ namespace tuleeeeee.Managers
                     break;
 
                 case GameState.bossStage:
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (GetPlayer().IsMenuOpen())
                     {
                         PauseGameMenu();
                     }
@@ -191,7 +185,7 @@ namespace tuleeeeee.Managers
                     break;
 
                 case GameState.engagingBoss:
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (GetPlayer().IsMenuOpen())
                     {
                         PauseGameMenu();
                     }
@@ -219,7 +213,7 @@ namespace tuleeeeee.Managers
                     break;
 
                 case GameState.gamePaused:
-                    if (Input.GetKeyDown(KeyCode.Escape))
+                    if (GetPlayer().IsMenuOpen())
                     {
                         PauseGameMenu();
                     }
@@ -501,10 +495,12 @@ namespace tuleeeeee.Managers
         {
             return currentRoom;
         }
+
         public Player GetPlayer()
         {
             return player;
         }
+
         public Player GetSecondlayer()
         {
             return secondPlayer;

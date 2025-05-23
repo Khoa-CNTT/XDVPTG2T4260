@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using tuleeeeee.Managers;
 using tuleeeeee.Utilities;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuUI : MonoBehaviour

@@ -16,6 +16,7 @@ namespace tuleeeeee.MyInput
         public bool RollInput { get; private set; }
         public bool RollInputStop { get; private set; }
         public bool ShotInput { get; private set; }
+        public bool IsOpenMenu { get; private set; }
 
         private float rollInputStartTime;
         [SerializeField]
@@ -132,7 +133,10 @@ namespace tuleeeeee.MyInput
 
             SelectWeaponEvent.Invoke(number);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public void OnFastSwitchWeapon(InputAction.CallbackContext context)
         {
             bool isClick = false;
@@ -165,25 +169,38 @@ namespace tuleeeeee.MyInput
             }
             ReloadEvent.Invoke(isReloading);
         }
+
         /// <summary>
         ///  Reload
         /// </summary>
         /// <param name="context"></param>
         public void OnUseItem(InputAction.CallbackContext context)
         {
-            bool isUsedItenm = false;
+            bool isUseItem = false;
             if (context.started)
             {
-                isUsedItenm = true;
+                isUseItem = true;
             }
             else if (context.canceled)
             {
-                isUsedItenm = false;
+                isUseItem = false;
             }
-            ReloadEvent.Invoke(isUsedItenm);
+            UseItemEvent.Invoke(isUseItem);
         }
 
-
+        /// <summary>
+        ///  Reload
+        /// </summary>
+        /// <param name="context"></param>
+        public void OnOpenMenu(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                IsOpenMenu = !IsOpenMenu;
+                Debug.Log($"Menu toggled: {IsOpenMenu}");
+            }
+            
+        }
         public void UseRollInput() => RollInput = false;
         private void CheckRollInputHoldTime()
         {
@@ -194,7 +211,6 @@ namespace tuleeeeee.MyInput
         }
 
         #region EVENTS
-
         private readonly LookEvent onLookEvent = new LookEvent();
         private readonly ScrollEvent onScrollEvent = new ScrollEvent();
         private readonly SelectWeaponEvent onSelectWeaponEvent = new SelectWeaponEvent();
@@ -209,7 +225,6 @@ namespace tuleeeeee.MyInput
         public UnityEvent<bool> AttackEvent => onAttackEvent;
         public UnityEvent<bool> ReloadEvent => onReloadEvent;
         public UnityEvent<bool> UseItemEvent => onUseItemEvent;
-
         #endregion
 
     }

@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 {
     #region CORECOMPOMENTS
     public Health Health { get => health != null ? health : Core.GetCoreComponent(ref health); }
-    private Health health; 
+    private Health health;
     #endregion
 
     #region STATES
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerRollState RollState { get; private set; }
-    public PlayerDeadState DeadState { get; private set; } 
+    public PlayerDeadState DeadState { get; private set; }
     #endregion
     public PlayerDetailsSO PlayerDetails { get; private set; }
 
@@ -60,18 +60,16 @@ public class Player : MonoBehaviour
 
     public List<Weapon> weaponList = new List<Weapon>();
 
-    private bool isPlayerMovementDisabled;
-    private bool isUsedItem;
-
+    private bool isPlayerMovementDisabled = false;
     private void OnEnable()
     {
         HealthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
-        InputHandler.UseItemEvent.AddListener(OnUsedItem);
+        InputHandler.UseItemEvent.AddListener(UsedItem);
     }
     private void OnDisable()
     {
         HealthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
-        InputHandler.UseItemEvent.RemoveListener(OnUsedItem);
+        InputHandler.UseItemEvent.RemoveListener(UsedItem);
     }
     private void Awake()
     {
@@ -94,24 +92,18 @@ public class Player : MonoBehaviour
         HealthEvent = GetComponentInChildren<HealthEvent>();
         DestroyedEvent = GetComponent<DestroyedEvent>();
         #endregion
-
-    }
-    private void Start()
-    {
-
     }
     private void Update()
     {
         if (isPlayerMovementDisabled) return;
         Core.LogicUpdate();
         StateManager.CurrentPlayerState.LogicUpdate();
-        UseItemInput();
     }
-    public void OnUsedItem(bool hasUsedItem)
+    public void UsedItem(bool isUsedItem)
     {
-        isUsedItem = hasUsedItem;
+        UseItemInput(isUsedItem);
     }
-    private void UseItemInput()
+    private void UseItemInput(bool isUsedItem)
     {
         if (isUsedItem)
         {
@@ -206,6 +198,11 @@ public class Player : MonoBehaviour
     public Vector3 GetPlayerPosition()
     {
         return transform.position;
+    }
+
+    public bool IsMenuOpen()
+    {
+        return InputHandler.IsOpenMenu;
     }
 
     public void EnablePlayer()

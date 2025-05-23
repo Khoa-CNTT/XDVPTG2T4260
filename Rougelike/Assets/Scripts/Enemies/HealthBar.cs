@@ -1,4 +1,5 @@
 using tuleeeeee.Managers;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class HealthBar : MonoBehaviour
@@ -7,7 +8,7 @@ public class HealthBar : MonoBehaviour
     [Space(10)]
     [Header("GameObject References")]
     #endregion
-    [SerializeField] private GameObject healthBar;
+    [SerializeField] private Image healthBar;
     public void EnableHealthBar(){
         gameObject.SetActive(true);
     }
@@ -17,6 +18,6 @@ public class HealthBar : MonoBehaviour
     }
 
     public void SetHealthBarValue(float healthPerCent){
-        healthBar.transform.localScale = new Vector3(healthPerCent, 1f, 1f);
+        healthBar.fillAmount = healthPerCent;
     }
 }
