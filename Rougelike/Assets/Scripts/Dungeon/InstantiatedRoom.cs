@@ -44,10 +44,33 @@ namespace tuleeeeee.Dungeon
         {
             if (collision.tag == Settings.playerTag && room != GameManager.Instance.GetCurrentRoom())
             {
-
                 this.room.isPreviouslyVisisted = true;
 
                 StaticEventHandler.CallRoomChangedEvent(room);
+
+                if (GlobalState.isCoop)
+                {
+                    Player enteringPlayer = collision.GetComponent<Player>();
+                    Player otherPlayer = GameManager.Instance.GetOtherPlayer(enteringPlayer);
+                    if (otherPlayer != null && !(room.roomNodeType.isCorridorEW || room.roomNodeType.isCorridorNS || room.roomNodeType.isEntrance))
+                    {
+                        // Calculate position near the entering player
+                        Vector3 teleportPosition = collision.transform.position;
+
+                        float offset = 1f; // Adjust this value as needed
+
+                        if (Random.value > 0.5f)
+                        {
+                            teleportPosition.x += offset;
+                        }
+                        else
+                        {
+                            teleportPosition.x -= offset;
+                        }
+
+                        otherPlayer.TeleportToPosition(teleportPosition);
+                    }
+                }
             }
         }
         public void Initialise(GameObject roomGameobject)
@@ -349,23 +372,23 @@ namespace tuleeeeee.Dungeon
             }
         }
 
-       /* public void UpdateMoveableObstacles()
-        {
-            InitializeItemObstaclesArray();
+        /* public void UpdateMoveableObstacles()
+         {
+             InitializeItemObstaclesArray();
 
-            foreach (MoveItem moveItem in moveableItemsList)
-            {
-                Vector3Int colliderBoundsMin = grid.WorldToCell(moveItem.boxCollider2D.bounds.min);
-                Vector3Int colliderBoundsMax = grid.WorldToCell(moveItem.boxCollider2D.bounds.max);
+             foreach (MoveItem moveItem in moveableItemsList)
+             {
+                 Vector3Int colliderBoundsMin = grid.WorldToCell(moveItem.boxCollider2D.bounds.min);
+                 Vector3Int colliderBoundsMax = grid.WorldToCell(moveItem.boxCollider2D.bounds.max);
 
-                for (int i = colliderBoundsMin.x; i <= colliderBoundsMax.x; i++)
-                {
-                    for (int j = colliderBoundsMin.y; j <= colliderBoundsMax.y; j++)
-                    {
-                        aStarItemObstacles[i - room.templateLowerBounds.x, j - room.templateLowerBounds.y] = 0;
-                    }
-                }
-            }
-        }*/
+                 for (int i = colliderBoundsMin.x; i <= colliderBoundsMax.x; i++)
+                 {
+                     for (int j = colliderBoundsMin.y; j <= colliderBoundsMax.y; j++)
+                     {
+                         aStarItemObstacles[i - room.templateLowerBounds.x, j - room.templateLowerBounds.y] = 0;
+                     }
+                 }
+             }
+         }*/
     }
 }

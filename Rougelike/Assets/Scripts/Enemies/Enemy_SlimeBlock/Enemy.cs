@@ -71,12 +71,30 @@ public class Enemy : Entity
     public void CreatePath()
     {
         Room currentRoom = GameManager.Instance.GetCurrentRoom();
-        Vector3 playerPosition = GameManager.Instance.GetPlayer().GetPlayerPosition();
+
+        Vector3 targetPlayerPosition;
+        if (GlobalState.isCoop)
+        {
+            if (Random.value < 0.5f)
+            {
+                targetPlayerPosition = GameManager.Instance.GetPlayer().GetPlayerPosition();
+            }
+            else
+            {
+                targetPlayerPosition = GameManager.Instance.GetSecondPlayer().GetPlayerPosition();
+            }
+        }
+        else
+        {
+            targetPlayerPosition = GameManager.Instance.GetPlayer().GetPlayerPosition();
+        }
+
+
         Grid grid = currentRoom.instantiatedRoom.grid;
 
         Vector3Int enemyGridPosition = grid.WorldToCell(transform.position);
-        Vector3Int playerCellPosition = grid.WorldToCell(playerPosition);
-        Vector3Int playerGridPosition = GetNearestNonObstaclePlayerPosition(currentRoom, playerPosition, playerCellPosition);
+        Vector3Int playerCellPosition = grid.WorldToCell(targetPlayerPosition);
+        Vector3Int playerGridPosition = GetNearestNonObstaclePlayerPosition(currentRoom, targetPlayerPosition, playerCellPosition);
 
         movementSteps = AStar.BuildPath(currentRoom, enemyGridPosition, playerGridPosition);
 

@@ -31,16 +31,17 @@ public class PlayerRollState : PlayerAbilityState
         player.InputHandler.UseRollInput();
 
         isHolding = true;
-      
 
         Time.timeScale = playerData.holdTimeScale;
         startTime = Time.unscaledTime;
 
+        player.CircleCollider2D.enabled = false;
     }
     public override void Exit()
     {
         base.Exit();
         IsRolling = false;
+        player.CircleCollider2D.enabled = true;
     }
 
     public override void LogicUpdate()

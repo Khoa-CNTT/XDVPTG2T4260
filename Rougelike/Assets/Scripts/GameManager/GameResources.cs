@@ -68,7 +68,6 @@ public class GameResources : MonoBehaviour
     public SoundEffectSO weaponPickup;
     public SoundEffectSO ammoPickup;
 
-    public SoundEffectSO anhsoi;
 
     #region Header UISOUNDS
     [Space(10)]
@@ -106,8 +105,13 @@ public class GameResources : MonoBehaviour
     [Header("UI")]
     #endregion
     public GameObject ammoIconPrefab;
+    
     public GameObject emptyHeartPrefab;
     public GameObject heartPrefab;
+
+    public GameObject emptySecondPlayerHeartPrefab;
+    public GameObject heartSecondPlayerPrefab;
+
     public GameObject chestItemPrefab;
     public GameObject scorePrefab;
     public Sprite heartIcon;

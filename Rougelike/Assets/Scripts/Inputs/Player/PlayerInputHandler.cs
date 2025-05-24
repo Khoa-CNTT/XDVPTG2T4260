@@ -16,7 +16,7 @@ namespace tuleeeeee.MyInput
         public bool RollInput { get; private set; }
         public bool RollInputStop { get; private set; }
         public bool ShotInput { get; private set; }
-        public bool IsOpenMenu { get; private set; }
+        public bool IsOpening { get; private set; }
 
         private float rollInputStartTime;
         [SerializeField]
@@ -194,12 +194,12 @@ namespace tuleeeeee.MyInput
         /// <param name="context"></param>
         public void OnOpenMenu(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.started)
             {
-                IsOpenMenu = !IsOpenMenu;
-                Debug.Log($"Menu toggled: {IsOpenMenu}");
+                IsOpening = !IsOpening;
             }
-            
+            OpenMenuEvent.Invoke(IsOpening);
+
         }
         public void UseRollInput() => RollInput = false;
         private void CheckRollInputHoldTime()
@@ -218,6 +218,7 @@ namespace tuleeeeee.MyInput
         private readonly AttackEvent onAttackEvent = new AttackEvent();
         private readonly ReloadEvent onReloadEvent = new ReloadEvent();
         private readonly UseItemEvent onUseItemEvent = new UseItemEvent();
+        private readonly OpenMenuEvent onOpenMenuEvent = new OpenMenuEvent();
         public UnityEvent<Vector2> LookEvent => onLookEvent;
         public UnityEvent<Vector2> ScrollEvent => onScrollEvent;
         public UnityEvent<int> SelectWeaponEvent => onSelectWeaponEvent;
@@ -225,6 +226,7 @@ namespace tuleeeeee.MyInput
         public UnityEvent<bool> AttackEvent => onAttackEvent;
         public UnityEvent<bool> ReloadEvent => onReloadEvent;
         public UnityEvent<bool> UseItemEvent => onUseItemEvent;
+        public UnityEvent<bool> OpenMenuEvent => onOpenMenuEvent;
         #endregion
 
     }

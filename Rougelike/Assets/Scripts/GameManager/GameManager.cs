@@ -13,6 +13,8 @@ using tuleeeeee.Data;
 using tuleeeeee.Misc;
 using tuleeeeee.Utilities;
 using tuleeeeee.StaticEvent;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.InputSystem;
 
 namespace tuleeeeee.Managers
 {
@@ -27,6 +29,9 @@ namespace tuleeeeee.Managers
         [SerializeField] private GameObject videoMenu;
         [SerializeField] private GameObject audioMenu;
         [SerializeField] private GameObject miniMap;
+
+        [Header("Co-op")]
+        [SerializeField] private GameObject heart2Player;
 
         [SerializeField] private TextMeshProUGUI messageTextTMP;
         [SerializeField] private CanvasGroup canvasGroup;
@@ -69,9 +74,17 @@ namespace tuleeeeee.Managers
 
             secondPlayerDetails = GameResources.Instance.currentSecondPlayerSO.playerDetails;
 
+            PlayerInputManager playerInputManager = GetComponent<PlayerInputManager>();
+
+            playerInputManager.enabled = false;
+
             InstantiatePlayer();
 
-            //InstantiateSecondPlayer();
+            if (GlobalState.isCoop)
+            {
+                playerInputManager.enabled = true;
+                InstantiateSecondPlayer();
+            }
         }
 
         public void InstantiateSecondPlayer()
@@ -129,6 +142,8 @@ namespace tuleeeeee.Managers
             previousGameState = GameState.gameStarted;
             gameState = GameState.gameStarted;
 
+
+
             StartCoroutine(Fade(0f, 1f, 0f, Color.black));
         }
 
@@ -149,10 +164,10 @@ namespace tuleeeeee.Managers
                     break;
                 case GameState.playingLevel:
                     miniMap.SetActive(true);
-                    if (GetPlayer().IsMenuOpen())
-                    {
-                        PauseGameMenu();
-                    }
+                    /*  if (GetPlayer().IsMenuOpen())
+                      {
+                          PauseGameMenu();
+                      }*/
                     if (Input.GetKeyDown(KeyCode.Tab))
                     {
                         DisplayDungeonOverviewMap();
@@ -160,10 +175,10 @@ namespace tuleeeeee.Managers
                     break;
                 case GameState.engagingEnemies:
                     miniMap.SetActive(false);
-                    if (GetPlayer().IsMenuOpen())
-                    {
-                        PauseGameMenu();
-                    }
+                    /*  if (GetPlayer().IsMenuOpen())
+                      {
+                          PauseGameMenu();
+                      }*/
                     break;
 
                 case GameState.dungeonOverviewMap:
@@ -174,10 +189,10 @@ namespace tuleeeeee.Managers
                     break;
 
                 case GameState.bossStage:
-                    if (GetPlayer().IsMenuOpen())
-                    {
-                        PauseGameMenu();
-                    }
+                    /*  if (GetPlayer().IsMenuOpen())
+                      {
+                          PauseGameMenu();
+                      }*/
                     if (Input.GetKeyDown(KeyCode.Tab))
                     {
                         DisplayDungeonOverviewMap();
@@ -185,10 +200,10 @@ namespace tuleeeeee.Managers
                     break;
 
                 case GameState.engagingBoss:
-                    if (GetPlayer().IsMenuOpen())
-                    {
-                        PauseGameMenu();
-                    }
+                    /*   if (GetPlayer().IsMenuOpen())
+                       {
+                           PauseGameMenu();
+                       }*/
                     break;
 
                 case GameState.levelCompleted:
@@ -213,10 +228,10 @@ namespace tuleeeeee.Managers
                     break;
 
                 case GameState.gamePaused:
-                    if (GetPlayer().IsMenuOpen())
-                    {
-                        PauseGameMenu();
-                    }
+                    /*        if (GetPlayer().IsMenuOpen())
+                            {
+                                PauseGameMenu();
+                            }*/
                     break;
             }
         }
@@ -268,6 +283,13 @@ namespace tuleeeeee.Managers
 
         public void PauseGameMenu()
         {
+            if (gameState != GameState.playingLevel && gameState != GameState.engagingEnemies
+                && gameState != GameState.bossStage && gameState != GameState.engagingBoss
+                && gameState != GameState.gamePaused)
+            {
+                return;
+            }
+
             if (gameState != GameState.gamePaused)
             {
                 pauseMenu.SetActive(true);
@@ -501,11 +523,17 @@ namespace tuleeeeee.Managers
             return player;
         }
 
-        public Player GetSecondlayer()
+        public Player GetSecondPlayer()
         {
             return secondPlayer;
         }
-
+        public Player GetOtherPlayer(Player player)
+        {
+            if (player == this.player) return secondPlayer;
+            if (player == secondPlayer) return this.player;
+            return null;
+        }
+      
         public Sprite GetPlayerMiniMapIcon()
         {
             return playerDetails.playerMiniMapIcon;

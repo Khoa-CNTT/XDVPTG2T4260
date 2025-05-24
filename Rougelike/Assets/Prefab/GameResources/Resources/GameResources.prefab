@@ -63,7 +63,6 @@ MonoBehaviour:
   healthPickUp: {fileID: 11400000, guid: 014e7dbc3993289468b3c8799c3341ae, type: 2}
   weaponPickup: {fileID: 11400000, guid: 7cbed7e9d7c15714786d9365313232e6, type: 2}
   ammoPickup: {fileID: 11400000, guid: d08b8ee42eb57724c81cda0be96620f9, type: 2}
-  anhsoi: {fileID: 11400000, guid: 8c485ac1cbbdbb24ab535551212b07b5, type: 2}
   uiSelect: {fileID: 11400000, guid: a41ca20d8326d684dad2ebb93831449d, type: 2}
   uiCursor: {fileID: 11400000, guid: 681b28c0b1db7c446ba8798d2644220f, type: 2}
   dimmedMaterial: {fileID: 2100000, guid: fd5ae752e16da36428c7ae98c49dc19e, type: 2}
@@ -77,6 +76,8 @@ MonoBehaviour:
   ammoIconPrefab: {fileID: 7295225173006167845, guid: e38aed01f014be145b2da2630cc6c216, type: 3}
   emptyHeartPrefab: {fileID: 7295225173006167845, guid: 0b3ca87b67385c24db705411d784eb96, type: 3}
   heartPrefab: {fileID: 7295225173006167845, guid: d3e457eb4c2fe1b468a25792d02f67c6, type: 3}
+  emptySecondPlayerHeartPrefab: {fileID: 7295225173006167845, guid: 85601ec4eb656554a9420bdc1814e01e, type: 3}
+  heartSecondPlayerPrefab: {fileID: 7295225173006167845, guid: e0e71f5a541cdbf4b8b1ea0187f4d3a3, type: 3}
   chestItemPrefab: {fileID: 8706963178454371037, guid: 93b2de258892aad489bf34ccc72c1d19, type: 3}
   scorePrefab: {fileID: 0}
   heartIcon: {fileID: 463811012, guid: 2da28fea2fe091f4f87db5571e52138d, type: 3}

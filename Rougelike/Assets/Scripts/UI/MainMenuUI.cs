@@ -27,6 +27,8 @@ public class MainMenuUI : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(playButton);
 
+        coopButton.SetActive(false);
+
         isChosenCharacter = false;
 
         MusicManager.Instance.PlayMusic(GameResources.Instance.mainMenuMusic, 0f, 2f);
@@ -35,9 +37,7 @@ public class MainMenuUI : MonoBehaviour
     }
     public void LoadCharacterSelector()
     {
-        playButton.SetActive(true);
-        optionsButton.SetActive(true);
-        quitButton.SetActive(true);
+        SetMainMenuButtonsActive(true);
 
         coopButton.SetActive(true);
 
@@ -47,12 +47,7 @@ public class MainMenuUI : MonoBehaviour
     }
     public void UnLoadOptions()
     {
-        playButton.SetActive(true);
-        optionsButton.SetActive(true);
-        quitButton.SetActive(true);
-
-        coopButton.SetActive(true);
-
+        SetMainMenuButtonsActive(true);
 
         if (isChosenCharacter)
         {
@@ -61,9 +56,7 @@ public class MainMenuUI : MonoBehaviour
     }
     public void LoadOptions()
     {
-        playButton.SetActive(false);
-        optionsButton.SetActive(false);
-        quitButton.SetActive(false);
+        SetMainMenuButtonsActive(false);
 
         coopButton.SetActive(false);
 
@@ -74,6 +67,13 @@ public class MainMenuUI : MonoBehaviour
     }
     public void PlayGame()
     {
+        GlobalState.isCoop = false;
+
+        TextMeshProUGUI playText = playButton.GetComponentInChildren<TextMeshProUGUI>();
+        playText.SetText($"Single-Play");
+
+        coopButton.SetActive(true);
+
         if (isChosenCharacter)
         {
             SceneManager.LoadScene("MainGameScene");
@@ -83,9 +83,20 @@ public class MainMenuUI : MonoBehaviour
             LoadCharacterSelector();
         }
     }
+    public void Coop()
+    {
+        GlobalState.isCoop = true;
+        SceneManager.LoadScene("MainGameScene");
+    }
     public void QuitGame()
     {
         Application.Quit();
+    }
+    private void SetMainMenuButtonsActive(bool isActive)
+    {
+        playButton.SetActive(isActive);
+        optionsButton.SetActive(isActive);
+        quitButton.SetActive(isActive);
     }
 
     #region Validation

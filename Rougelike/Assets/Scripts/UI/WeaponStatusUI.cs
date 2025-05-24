@@ -27,7 +27,14 @@ public class WeaponStatusUI : MonoBehaviour
 
     private void Awake()
     {
-        player = GameManager.Instance.GetPlayer();
+        if (GlobalState.isCoop)
+        {
+            player = GameManager.Instance.GetSecondPlayer();
+        }
+        else
+        {
+            player = GameManager.Instance.GetPlayer();
+        }
     }
 
     private void OnEnable()

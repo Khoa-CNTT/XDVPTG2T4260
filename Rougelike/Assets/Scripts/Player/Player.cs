@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     public Core Core { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public SpriteRenderer[] SpriteRendererArray { get; private set; }
+    public CircleCollider2D CircleCollider2D { get; private set; }
     public Animator Animator { get; private set; }
     #endregion
 
@@ -65,11 +66,13 @@ public class Player : MonoBehaviour
     {
         HealthEvent.OnHealthChanged += HealthEvent_OnHealthChanged;
         InputHandler.UseItemEvent.AddListener(UsedItem);
+        InputHandler.OpenMenuEvent.AddListener(OpenPauseMenu);
     }
     private void OnDisable()
     {
         HealthEvent.OnHealthChanged -= HealthEvent_OnHealthChanged;
         InputHandler.UseItemEvent.RemoveListener(UsedItem);
+        InputHandler.OpenMenuEvent.RemoveListener(OpenPauseMenu);
     }
     private void Awake()
     {
@@ -77,7 +80,9 @@ public class Player : MonoBehaviour
         Core = GetComponentInChildren<Core>();
         InputHandler = GetComponent<PlayerInputHandler>();
         SpriteRendererArray = GetComponentsInChildren<SpriteRenderer>();
+        CircleCollider2D = GetComponentInChildren<CircleCollider2D>();
         Animator = GetComponent<Animator>();
+
         StateManager = new StateManager();
         #endregion
         #region Events
@@ -98,6 +103,12 @@ public class Player : MonoBehaviour
         if (isPlayerMovementDisabled) return;
         Core.LogicUpdate();
         StateManager.CurrentPlayerState.LogicUpdate();
+    }
+    public void OpenPauseMenu(bool isOpening)
+    {
+
+        GameManager.Instance.PauseGameMenu();
+
     }
     public void UsedItem(bool isUsedItem)
     {
@@ -200,11 +211,6 @@ public class Player : MonoBehaviour
         return transform.position;
     }
 
-    public bool IsMenuOpen()
-    {
-        return InputHandler.IsOpenMenu;
-    }
-
     public void EnablePlayer()
     {
         isPlayerMovementDisabled = false;
@@ -214,6 +220,20 @@ public class Player : MonoBehaviour
     {
         isPlayerMovementDisabled = true;
         StateManager.ChangeState(IdleState);
+    }
+
+    public void TeleportToPosition(Vector3 position)
+    {
+        DisablePlayer();
+        // Set the new position
+        transform.position = position;
+
+        EnableAfterDelay(1f);
+    }
+    private IEnumerator EnableAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        EnablePlayer();
     }
     public bool IsWeaponHeldByPlayer(WeaponDetailsSO weaponDetails)
     {

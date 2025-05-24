@@ -55,6 +55,8 @@ public class EnemySpawner : SingletonMonoBehaviour<EnemySpawner>
 
         MusicManager.Instance.PlayMusic(currentRoom.battleMusic, 0.2f, 0.5f);
 
+
+
         currentRoom.instantiatedRoom.LockDoors();
 
         SpawnEnemies();

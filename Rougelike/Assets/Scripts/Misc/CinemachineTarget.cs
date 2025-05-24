@@ -19,10 +19,16 @@ namespace tuleeeeee.Misc
 
         void Start()
         {
-            SetCinemachineTargetGroup();
+            if (GlobalState.isCoop)
+            {
+                SetCinemachineTargetGroupCoop();
+            }
+            else
+            {
+                SetCinemachineTargetGroupSingle();
+            }
         }
-
-        private void SetCinemachineTargetGroup()
+        private void SetCinemachineTargetGroupSingle()
         {
             CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target
             {
@@ -31,13 +37,6 @@ namespace tuleeeeee.Misc
                 target = GameManager.Instance.GetPlayer().transform
             };
 
-       /*     CinemachineTargetGroup.Target cinemachineGroupTarget_secondPlayer = new CinemachineTargetGroup.Target
-            {
-                weight = 1f,
-                radius = 2.5f,
-                target = GameManager.Instance.GetSecondlayer().transform
-            };
-*/
             CinemachineTargetGroup.Target cinemachineGroupTarget_cursor = new CinemachineTargetGroup.Target
             {
                 // weight = 0.43f,
@@ -47,8 +46,37 @@ namespace tuleeeeee.Misc
             };
 
             CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[]{
-           // cinemachineGroupTarget_secondPlayer,
             cinemachineGroupTarget_player,
+            cinemachineGroupTarget_cursor
+        };
+
+            cinemachineTargetGroup.m_Targets = cinemachineTargetArray;
+        }
+        private void SetCinemachineTargetGroupCoop()
+        {
+            CinemachineTargetGroup.Target cinemachineGroupTarget_player = new CinemachineTargetGroup.Target
+            {
+                weight = 1f,
+                radius = 2.5f,
+                target = GameManager.Instance.GetPlayer().transform
+            };
+
+            CinemachineTargetGroup.Target cinemachineGroupTarget_secondPlayer = new CinemachineTargetGroup.Target
+            {
+                weight = 1f,
+                radius = 2.5f,
+                target = GameManager.Instance.GetSecondPlayer().transform
+            };
+            CinemachineTargetGroup.Target cinemachineGroupTarget_cursor = new CinemachineTargetGroup.Target
+            {
+                // weight = 0.43f,
+                weight = 0.55f,
+                radius = 2f,
+                target = cursorTarget
+            };
+            CinemachineTargetGroup.Target[] cinemachineTargetArray = new CinemachineTargetGroup.Target[]{
+            cinemachineGroupTarget_player,
+            cinemachineGroupTarget_secondPlayer,
             cinemachineGroupTarget_cursor
         };
 
